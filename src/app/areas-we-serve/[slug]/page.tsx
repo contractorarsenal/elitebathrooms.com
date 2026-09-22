@@ -6,8 +6,11 @@ import { absoluteUrl } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
+// "tacoma" is excluded — it has its own dedicated authority page at
+// /areas-we-serve/tacoma/page.tsx (Next.js resolves that static route
+// ahead of this dynamic one for the literal "tacoma" path regardless).
 export function generateStaticParams() {
-  return areas.map((a) => ({ slug: a.slug }));
+  return areas.filter((a) => a.slug !== "tacoma").map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

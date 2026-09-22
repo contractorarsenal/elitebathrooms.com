@@ -8,14 +8,18 @@ export type Service = {
   cardImage: string;
   /** Matches Project["type"] for mechanical related-work lookups — never a hardcoded, unverifiable claim. */
   projectType: string;
+  /** Short positioning line, used on One-Day's bento cell and hero. */
+  positioning?: string;
+  /** Honest scope boundaries — shown so the service isn't oversold. */
+  notFor?: string[];
 };
 
-// Full remodeling is the primary offer; conversions/one-day work is folded
-// in rather than given the oversized "1 DAY" treatment the old site used.
 // Slugs match the original WordPress URLs exactly (full-bathroom-remodel,
-// shower-remodel, bathtub-remodel) to preserve SEO equity with zero
-// redirect hops; tub-to-shower-conversion consolidates the old
-// bathroom-conversion + one-day-bathroom-renovation pages.
+// shower-remodel, bathtub-remodel, one-day-bathroom-renovation) to preserve
+// SEO equity with zero redirect hops. tub-to-shower-conversion consolidates
+// the old bathroom-conversion page. Order matches the homepage/services-hub
+// Bento weighting: Full Remodel first and largest, One-Day last and
+// smallest — it's real, but it's not the primary offer.
 export const services: Service[] = [
   {
     slug: "full-bathroom-remodel",
@@ -23,7 +27,7 @@ export const services: Service[] = [
     summary:
       "Gut renovations built from the studs out — layout, waterproofing, tile, plumbing, electrical, and finish work handled end to end.",
     intro:
-      "A full bathroom remodel means we're not working around what's already there — we're rebuilding the room correctly, from framing to final fixture. Design consultation, material selection, demolition, waterproofing, tile, plumbing, electrical, heated floors, vanities, painting, and custom glass all happen under one crew, so nothing gets lost between contractors.",
+      "A full bathroom remodel means we're not working around what's already there — we're rebuilding the room correctly, from framing to final fixture. Design consultation, material selection, demolition, waterproofing, tile, plumbing, electrical, heated floors, vanities, painting, and custom glass all happen under one coordinated project, so nothing gets lost between trades.",
     features: [
       "Design consultation and material selection",
       "Full demolition and structural prep",
@@ -59,6 +63,24 @@ export const services: Service[] = [
     projectType: "Shower Remodel",
   },
   {
+    slug: "bathtub-remodel",
+    name: "Bathtub Remodel",
+    summary:
+      "Freestanding soaking tubs, tile surrounds, and fixture upgrades that anchor the room.",
+    intro:
+      "Whether it's a freestanding soaking tub or a rebuilt tub surround, the bathtub is usually the focal point of the room — worth getting the waterproofing, tile, and fixtures right the first time.",
+    features: [
+      "Freestanding and alcove tub installation",
+      "Tile surround and deck options",
+      "Waterproofed tub-to-wall transitions",
+      "Filler and fixture upgrades",
+      "Surround lighting and niches",
+    ],
+    heroImage: "/images/service-bathtub-remodel-hero.jpg",
+    cardImage: "/images/elite-design-consultation.jpg",
+    projectType: "Full Remodel",
+  },
+  {
     slug: "tub-to-shower-conversion",
     name: "Tub-to-Shower Conversion",
     summary:
@@ -77,22 +99,29 @@ export const services: Service[] = [
     projectType: "Shower Remodel",
   },
   {
-    slug: "bathtub-remodel",
-    name: "Bathtub Remodel",
-    summary:
-      "Freestanding soaking tubs, tile surrounds, and fixture upgrades that anchor the room.",
+    slug: "one-day-bathroom-renovation",
+    name: "One-Day Bathroom Renovation",
+    summary: "A streamlined renovation for key upgrades — fast, focused, and low-disruption.",
     intro:
-      "Whether it's a freestanding soaking tub or a rebuilt tub surround, the bathtub is usually the focal point of the room — worth getting the waterproofing, tile, and fixtures right the first time.",
+      "A one-day bathroom renovation is a streamlined renovation focused on key upgrades — tub/shower replacement, wall systems, fixtures, and finishing work — built on pre-planning, precise measurement, and prefabricated materials so installation is fast and efficient.",
     features: [
-      "Freestanding and alcove tub installation",
-      "Tile surround and deck options",
-      "Waterproofed tub-to-wall transitions",
-      "Filler and fixture upgrades",
-      "Surround lighting and niches",
+      "Tub or shower replacement",
+      "Prefabricated wall systems",
+      "Fixture replacement",
+      "Finishing work",
+      "Pre-planned, precisely measured installation",
     ],
-    heroImage: "/images/service-bathtub-remodel-hero.jpg",
-    cardImage: "/images/elite-design-consultation.jpg",
-    projectType: "Full Remodel",
+    notFor: [
+      "Major layout changes",
+      "Significant structural changes",
+      "Major plumbing relocation",
+      "Major electrical relocation",
+      "Hidden structural or moisture issues requiring larger reconstruction",
+    ],
+    positioning: "Fast. Focused. Low-disruption.",
+    heroImage: "/images/service-one-day-renovation-hero.jpg",
+    cardImage: "/images/elite-installation.jpg",
+    projectType: "Shower Remodel",
   },
 ];
 

@@ -1,12 +1,14 @@
 import { Button } from "../ui/Button";
 import { ImageSlot } from "../ui/ImageSlot";
 import { Reveal } from "../ui/Reveal";
-import { CheckIcon } from "../ui/icons";
+import { StarIcon } from "../ui/icons";
+import { siteConfig } from "@/lib/site-config";
 
-const reinforcements = [
-  "10-Year Waterproofing Warranty",
-  "Tacoma-Based Bathroom Specialists",
-  "Financing Available",
+const trust = [
+  { label: `${siteConfig.reviews.rating.toFixed(1)} Google Rating`, star: true },
+  { label: `${siteConfig.reviews.count} Reviews` },
+  { label: "10-Year Waterproofing Warranty" },
+  { label: "Financing Available" },
 ];
 
 export function Hero() {
@@ -34,32 +36,31 @@ export function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 pb-14 pt-36 sm:px-8 sm:pb-20 lg:pb-24">
         <Reveal>
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-bronze-400">
-            Tacoma-Based Bathroom Specialists
+            Tacoma &amp; Puget Sound Bathroom Specialists
           </span>
           <h1 className="mt-4 max-w-xl text-[2.5rem] font-extrabold leading-[1.02] text-warm-50 sm:text-6xl lg:text-[4rem]">
-            Bathroom remodeling <span className="text-bronze-400">built right</span> from the studs
-            out.
+            Bathroom remodeling <span className="text-bronze-400">built right.</span>
           </h1>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-ink-on-dark-muted sm:text-lg">
-            Elite Bathrooms specializes exclusively in bathrooms — design consultation, demolition,
-            waterproofing, tile, plumbing, electrical, heated floors, vanities, painting, custom
-            glass, and completion. One crew, start to finish.
+            Elite Bathrooms specializes exclusively in bathrooms — design, waterproofing, tile,
+            plumbing, electrical, and finish work, coordinated as one project from first
+            consultation to final walkthrough.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/get-a-quote" variant="primary">
-              Request an Estimate
+              Request Estimate
             </Button>
             <Button href="/projects" variant="outline-light">
-              View Our Projects
+              View Projects
             </Button>
           </div>
 
           <ul className="mt-9 flex flex-col gap-3 border-t border-warm-50/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
-            {reinforcements.map((item) => (
-              <li key={item} className="flex items-center gap-2 text-sm font-semibold text-warm-50/90">
-                <CheckIcon className="h-4 w-4 shrink-0 text-bronze-400" />
-                {item}
+            {trust.map((item) => (
+              <li key={item.label} className="flex items-center gap-2 text-sm font-semibold text-warm-50/90">
+                {item.star && <StarIcon className="h-4 w-4 shrink-0 text-bronze-400" />}
+                {item.label}
               </li>
             ))}
           </ul>

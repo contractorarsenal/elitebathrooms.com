@@ -21,14 +21,34 @@ export const siteConfig = {
     years: 10,
     label: "10-Year Waterproofing Warranty",
   },
+  // Provided directly by the client — display as-is; update here if it changes.
+  reviews: {
+    rating: 5.0,
+    count: 52,
+    source: "Google",
+  },
 };
 
-export const primaryNav = [
-  { label: "Bathroom Remodeling", href: "/services/full-bathroom-remodel" },
-  { label: "Services", href: "/services" },
+export const primaryNav: {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}[] = [
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Full Bathroom Remodel", href: "/services/full-bathroom-remodel" },
+      { label: "Shower Remodel", href: "/services/shower-remodel" },
+      { label: "Bathtub Remodel", href: "/services/bathtub-remodel" },
+      { label: "Tub-to-Shower Conversion", href: "/services/tub-to-shower-conversion" },
+      { label: "One-Day Bathroom Renovation", href: "/services/one-day-bathroom-renovation" },
+    ],
+  },
   { label: "Projects", href: "/projects" },
   { label: "Areas We Serve", href: "/areas-we-serve" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const trustStats = [

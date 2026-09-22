@@ -30,6 +30,11 @@
 
   --font-heading: var(--font-archivo);
   --font-body: var(--font-inter);
+
+  /* Restrained radii — large media panels 20-28px, small cards 14-20px, buttons moderate. */
+  --radius-panel: 24px;
+  --radius-card: 16px;
+  --radius-btn: 10px;
 }
 
 @theme inline {
@@ -56,6 +61,10 @@
 
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
+
+  --radius-panel: var(--radius-panel);
+  --radius-card: var(--radius-card);
+  --radius-btn: var(--radius-btn);
 }
 
 body {
@@ -69,17 +78,67 @@ h1, h2, h3, h4 {
   letter-spacing: -0.01em;
 }
 
-/* Entrance animation: opacity + 12px translateY, runs once, respects reduced motion. */
+/* Entrance animation: opacity + 12px translateY, runs once, respects reduced motion.
+   --reveal-delay lets callers stagger a group (Bento grids) without a JS timeline. */
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal] {
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 450ms ease-out, transform 450ms ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
   }
   [data-reveal="in"] {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Image-panel reveal mask: a solid wipe that clears on entrance. Default state has
+   the mask already cleared (no motion needed) so reduced-motion users just see the photo. */
+.mask-panel {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mask-panel {
+    transform: scaleX(1);
+    transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .mask-panel[data-mask="in"] {
+    transform: scaleX(0);
+  }
+}
+
+/* Estimate flow step transition — fires on explicit user action (Continue/Back), not scroll. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes step-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .step-transition {
+    animation: step-in 280ms ease-out;
+  }
+}
+
+/* Services nav dropdown — hover/focus reveal, keyboard accessible via focus-within. */
+.nav-dropdown {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity 160ms ease-out, transform 160ms ease-out;
+}
+.group:hover .nav-dropdown,
+.group:focus-within .nav-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Image slot object-position: desktop value, overridden on mobile via CSS var. */

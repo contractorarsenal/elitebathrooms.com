@@ -1,51 +1,64 @@
 import { Container } from "../ui/Container";
-import { ImageSlot } from "../ui/ImageSlot";
-import { SectionHeading } from "../ui/SectionHeading";
+import { Eyebrow } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
-import { CheckIcon } from "../ui/icons";
+import { CheckIcon, CompassIcon, DropletIcon, GridIcon, BoltIcon, PaneIcon } from "../ui/icons";
 
 const points = [
-  "One crew handles design, demolition, waterproofing, tile, plumbing, electrical, and finish work",
-  "No subcontractor hand-offs — the people who plan your project are the people who build it",
+  "Design, waterproofing, tile, plumbing, electrical, and finish work coordinated as one project",
+  "No hand-off gaps — the people who plan the project stay accountable for how it's built",
   "Every bathroom backed by a 10-year waterproofing warranty",
+];
+
+const capabilities = [
+  { icon: CompassIcon, label: "Design", description: "Layout, materials, and fixtures planned before demolition starts." },
+  { icon: DropletIcon, label: "Waterproofing", description: "Every wet area gets a fully sealed pan and wall assembly." },
+  { icon: GridIcon, label: "Tile", description: "Floors, walls, showers, and niches — set true, sealed right." },
+  { icon: BoltIcon, label: "Plumbing & Electrical", description: "Rough-in and finish work coordinated within the same project." },
+  { icon: PaneIcon, label: "Glass & Finishes", description: "Custom glass, vanities, and lighting to complete the room." },
 ];
 
 export function Positioning() {
   return (
     <section id="about" className="bg-warm-50 py-20 sm:py-28">
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <Reveal>
-          {/* TODO: /public/images/elite-crew-planning.jpg — crew reviewing plans outdoors, vans behind */}
-          <ImageSlot
-            alt="Elite Bathrooms crew reviewing project plans"
-            aspectRatio="4/3"
-            label="/images/elite-crew-planning.jpg"
-            className="rounded-sm"
-          />
-        </Reveal>
+      <Container className="grid gap-5 lg:grid-cols-5">
+        <Reveal className="flex flex-col justify-center rounded-panel border border-line bg-warm-100 p-8 lg:col-span-2 lg:p-10">
+          <Eyebrow>Why Elite</Eyebrow>
+          <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] text-charcoal-950 sm:text-4xl">
+            We don&rsquo;t remodel everything.
+            <br />
+            We do <span className="text-bronze-500">bathrooms</span>.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-ink-muted">
+            Most contractors spread across kitchens, additions, and whole-home remodels. Elite
+            Bathrooms does one thing, which means deeper waterproofing knowledge, tighter tile
+            work, and a project that stays coordinated end to end.
+          </p>
 
-        <Reveal>
-          <SectionHeading
-            eyebrow="Why Elite"
-            title={
-              <>
-                We don&rsquo;t remodel everything.
-                <br />
-                We specialize in <span className="text-bronze-500">bathrooms</span>.
-              </>
-            }
-            description="Most contractors spread across kitchens, additions, and whole-home remodels. Elite Bathrooms does one thing — bathrooms — which means deeper waterproofing knowledge, tighter tile work, and a crew that has solved the same problems hundreds of times over."
-          />
-
-          <ul className="mt-8 space-y-4">
+          <ul className="mt-6 space-y-3">
             {points.map((point) => (
               <li key={point} className="flex items-start gap-3">
                 <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-bronze-500" />
-                <span className="text-sm leading-relaxed text-ink-muted sm:text-base">{point}</span>
+                <span className="text-sm leading-relaxed text-ink-muted">{point}</span>
               </li>
             ))}
           </ul>
         </Reveal>
+
+        <div className="grid grid-cols-2 gap-5 lg:col-span-3">
+          {capabilities.map((cap, i) => (
+            <Reveal
+              key={cap.label}
+              delay={i * 70}
+              className={i === capabilities.length - 1 ? "col-span-2" : ""}
+            >
+              <div className="flex h-full flex-col gap-3 rounded-card border border-line bg-warm-100 p-6 transition-colors hover:border-bronze-400">
+                <cap.icon className="h-6 w-6 text-bronze-500" />
+                <h3 className="font-heading text-base font-extrabold text-charcoal-950">{cap.label}</h3>
+                <p className="text-sm leading-relaxed text-ink-muted">{cap.description}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </Container>
     </section>
   );

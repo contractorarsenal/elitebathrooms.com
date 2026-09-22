@@ -81,10 +81,10 @@ const nextConfig: NextConfig = {
       { source: "/estimate", destination: "/get-a-quote", permanent: true },
       { source: "/estimate/thank-you", destination: "/get-a-quote/thank-you", permanent: true },
 
-      // /services/full-bathroom-remodel, /shower-remodel and /bathtub-remodel
-      // need no rule — those new pages live at the exact old WP slugs.
+      // /services/full-bathroom-remodel, /shower-remodel, /bathtub-remodel, and
+      // /one-day-bathroom-renovation need no rule — those pages live at the
+      // exact old WP slugs. Only /bathroom-conversion (retired) needs a rule.
       { source: "/services/bathroom-conversion", destination: "/services/tub-to-shower-conversion", permanent: true },
-      { source: "/services/one-day-bathroom-renovation", destination: "/services/tub-to-shower-conversion", permanent: true },
 
       ...verifiedAreaRedirects,
       ...legacyCityRedirects,

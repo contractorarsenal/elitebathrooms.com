@@ -27,11 +27,12 @@ export function EstimateTeaser() {
   return (
     <section className="bg-warm-50 py-20 sm:py-28">
       <Container>
-        <Reveal className="grid items-center gap-10 overflow-hidden border border-line bg-warm-100 p-6 sm:p-10 lg:grid-cols-[0.9fr,1.1fr] lg:gap-16 lg:p-12">
+        <Reveal className="grid items-center gap-10 overflow-hidden rounded-panel border border-line bg-warm-100 p-6 sm:p-10 lg:grid-cols-[0.9fr,1.1fr] lg:gap-16 lg:p-12">
           <ImageSlot
             alt="Elite Bathrooms team member ready to help with your estimate"
             aspectRatio="4/5"
             label="/images/elite-contact-team-member.jpg"
+            className="rounded-card"
           />
 
           <div>
@@ -51,7 +52,7 @@ export function EstimateTeaser() {
                 placeholder="Full name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none sm:col-span-2"
+                className="min-h-11 rounded-btn border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none sm:col-span-2"
               />
               <input
                 type="tel"
@@ -59,7 +60,7 @@ export function EstimateTeaser() {
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+                className="min-h-11 rounded-btn border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
               />
               <input
                 type="text"
@@ -68,7 +69,7 @@ export function EstimateTeaser() {
                 placeholder="ZIP code"
                 value={zip}
                 onChange={(e) => setZip(e.target.value)}
-                className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+                className="min-h-11 rounded-btn border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
               />
               <Button type="submit" variant="primary" className="sm:col-span-2">
                 Get My Estimate

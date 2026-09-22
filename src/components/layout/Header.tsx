@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { primaryNav, siteConfig } from "@/lib/site-config";
 import { Button } from "../ui/Button";
-import { MenuIcon, PhoneIcon } from "../ui/icons";
+import { Logo } from "../ui/Logo";
+import { ChevronDownIcon, MenuIcon, PhoneIcon } from "../ui/icons";
 import { MobileNav } from "./MobileNav";
 
 export function Header() {
@@ -36,23 +37,41 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:h-20">
-        <Link href="/" className="flex items-center gap-2" aria-label="Elite Bathrooms home">
-          {/* TODO: swap for real logo mark at /public/images/elite-logo.svg */}
-          <span className="font-heading text-lg font-extrabold uppercase tracking-tight text-warm-50 sm:text-xl">
-            Elite <span className="text-bronze-400">Bathrooms</span>
-          </span>
-        </Link>
+        <Logo />
 
         <nav className="hidden items-center gap-7 lg:flex">
-          {primaryNav.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-sm font-semibold uppercase tracking-[0.04em] text-warm-50/90 transition-colors hover:text-bronze-400"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {primaryNav.map((item) =>
+            item.children ? (
+              <div key={item.label} className="group relative">
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-1 text-sm font-semibold uppercase tracking-[0.04em] text-warm-50/90 transition-colors hover:text-bronze-400"
+                >
+                  {item.label}
+                  <ChevronDownIcon className="h-3 w-3 transition-transform group-hover:rotate-180" />
+                </Link>
+                <div className="nav-dropdown absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-card border border-charcoal-700 bg-charcoal-950 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="block rounded-[10px] px-4 py-3 text-sm font-semibold text-warm-50/90 transition-colors hover:bg-charcoal-800 hover:text-bronze-400"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-sm font-semibold uppercase tracking-[0.04em] text-warm-50/90 transition-colors hover:text-bronze-400"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className="hidden items-center gap-6 lg:flex">

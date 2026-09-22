@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Container } from "../ui/Container";
 import { ImageSlot } from "../ui/ImageSlot";
-import { SectionHeading } from "../ui/SectionHeading";
+import { Eyebrow } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
 
 // TODO: replace with real paired before/after project photos once available —
@@ -17,24 +17,30 @@ function CompareSlider() {
   const [value, setValue] = useState(50);
 
   return (
-    <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
+    <div className="relative aspect-[4/3] overflow-hidden rounded-panel sm:aspect-[21/9]">
       <ImageSlot cover alt="After: finished bathroom" label={pair.afterLabel} />
 
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - value}% 0 0)` }}>
         <ImageSlot cover alt="Before: original bathroom" label={pair.beforeLabel} />
       </div>
 
-      <span className="absolute left-3 top-3 rounded bg-charcoal-950/80 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-warm-50">
+      <span className="absolute left-4 top-4 rounded-full bg-charcoal-950/85 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-warm-50">
         Before
       </span>
-      <span className="absolute right-3 top-3 rounded bg-bronze-500 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-warm-50">
+      <span className="absolute right-4 top-4 rounded-full bg-bronze-500 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-warm-50">
         After
       </span>
 
       <div
         className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-warm-50"
         style={{ left: `${value}%` }}
-      />
+      >
+        <span className="absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-warm-50 bg-charcoal-950/60 text-warm-50">
+          <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
+            <path d="M7 6l-4 4 4 4M13 6l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </span>
+      </div>
 
       <input
         type="range"
@@ -53,15 +59,14 @@ export function BeforeAfter() {
   return (
     <section className="bg-warm-50 py-20 sm:py-28">
       <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="Transformations"
-            title="See the difference, drag to compare."
-            align="center"
-          />
+        <Reveal className="mb-8">
+          <Eyebrow>Transformations</Eyebrow>
+          <h2 className="mt-2 text-2xl font-extrabold text-charcoal-950 sm:text-3xl">
+            Drag to compare.
+          </h2>
         </Reveal>
 
-        <Reveal className="mx-auto mt-10 max-w-3xl">
+        <Reveal>
           <CompareSlider />
         </Reveal>
       </Container>

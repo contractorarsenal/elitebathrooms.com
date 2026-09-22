@@ -46,3 +46,69 @@ export function ArrowRightIcon({ className = "h-4 w-4" }: { className?: string }
     </svg>
   );
 }
+
+export function ChevronDownIcon({ className = "h-3.5 w-3.5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" className={className} aria-hidden="true">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function CompassIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M14.8 9.2l-2 4.8-4.8 2 2-4.8 4.8-2z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function DropletIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M12 3.5s6.5 7 6.5 11.3a6.5 6.5 0 1 1-13 0C5.5 10.5 12 3.5 12 3.5z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function GridIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="3.5" y="3.5" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="13.5" y="3.5" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="3.5" y="13.5" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+      <rect x="13.5" y="13.5" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+export function BoltIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path d="M13 3L5 13.5h5.5L11 21l8-11h-5.5L13 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function PaneIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="4" y="3.5" width="16" height="17" rx="1" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M4 12h16M12 3.5v17" stroke="currentColor" strokeWidth="1.2" />
+    </svg>
+  );
+}
+
+export function PlusIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
+      <path d="M10 4v12M4 10h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}

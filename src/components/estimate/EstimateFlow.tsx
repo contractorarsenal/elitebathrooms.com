@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
+import { CheckIcon } from "../ui/icons";
 import { OptionGrid } from "./OptionGrid";
 import { submitLead } from "@/lib/estimate/submit";
 import { getAttribution } from "@/lib/attribution";
@@ -27,10 +28,40 @@ function StepShell({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div key={title} className="step-transition">
       <h2 className="text-2xl font-extrabold text-charcoal-950 sm:text-3xl">{title}</h2>
       {description && <p className="mt-2 text-sm text-ink-muted sm:text-base">{description}</p>}
       <div className="mt-6">{children}</div>
+    </div>
+  );
+}
+
+function Stepper({ step }: { step: number }) {
+  return (
+    <div className="mb-9 flex items-center" aria-hidden="true">
+      {STEP_LABELS.map((label, i) => (
+        <div key={label} className="flex flex-1 items-center last:flex-none">
+          <div className="flex flex-col items-center gap-1.5">
+            <span
+              className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-extrabold transition-colors duration-200 ${
+                i < step
+                  ? "bg-bronze-500 text-warm-50"
+                  : i === step
+                    ? "border-2 border-bronze-500 bg-warm-50 text-bronze-600"
+                    : "border border-line bg-warm-50 text-ink-muted"
+              }`}
+            >
+              {i < step ? <CheckIcon className="h-3.5 w-3.5" /> : i + 1}
+            </span>
+            <span className={`hidden text-[10px] font-bold uppercase tracking-[0.05em] sm:block ${i <= step ? "text-charcoal-950" : "text-ink-muted"}`}>
+              {label}
+            </span>
+          </div>
+          {i < STEP_LABELS.length - 1 && (
+            <div className={`mx-2 h-px flex-1 transition-colors duration-200 ${i < step ? "bg-bronze-500" : "bg-line"}`} />
+          )}
+        </div>
+      ))}
     </div>
   );
 }
@@ -99,19 +130,12 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
     }
   }
 
+  const inputClass =
+    "min-h-11 rounded-btn border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none";
+
   return (
-    <div className="mx-auto max-w-xl">
-      <div className="mb-8 flex items-center gap-1.5" aria-hidden="true">
-        {STEP_LABELS.map((label, i) => (
-          <div
-            key={label}
-            className={`h-1 flex-1 rounded-full ${i <= step ? "bg-bronze-500" : "bg-line"}`}
-          />
-        ))}
-      </div>
-      <p className="mb-6 text-xs font-bold uppercase tracking-[0.14em] text-bronze-500">
-        Step {step + 1} of {STEP_LABELS.length} — {STEP_LABELS[step]}
-      </p>
+    <div className="mx-auto max-w-xl rounded-panel border border-line bg-warm-100 p-6 sm:p-10">
+      <Stepper step={step} />
 
       {step === 0 && (
         <StepShell title="What kind of project is this?">
@@ -132,7 +156,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
               placeholder="ZIP code"
               value={data.zip}
               onChange={(e) => update("zip", e.target.value)}
-              className="min-h-11 w-full border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+              className={`w-full ${inputClass}`}
             />
             <OptionGrid
               options={budgetOptions}
@@ -163,7 +187,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
             placeholder="Current layout, what you'd like to change, anything else we should know…"
             value={data.details}
             onChange={(e) => update("details", e.target.value)}
-            className="w-full border border-line bg-warm-50 p-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+            className={`w-full rounded-card border border-line bg-warm-50 p-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none`}
           />
           {/* TODO: wire photo upload to storage once available — kept out of v1 to avoid a fake "upload" that goes nowhere. */}
         </StepShell>
@@ -177,28 +201,28 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
               placeholder="First name"
               value={data.firstName}
               onChange={(e) => update("firstName", e.target.value)}
-              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+              className={inputClass}
             />
             <input
               type="text"
               placeholder="Last name"
               value={data.lastName}
               onChange={(e) => update("lastName", e.target.value)}
-              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+              className={inputClass}
             />
             <input
               type="tel"
               placeholder="Phone"
               value={data.phone}
               onChange={(e) => update("phone", e.target.value)}
-              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+              className={inputClass}
             />
             <input
               type="email"
               placeholder="Email (optional)"
               value={data.email}
               onChange={(e) => update("email", e.target.value)}
-              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+              className={inputClass}
             />
             <div className="sm:col-span-2">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.08em] text-ink-muted">
@@ -217,7 +241,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
 
       {error && <p className="mt-4 text-sm font-semibold text-red-700">{error}</p>}
 
-      <div className="mt-8 flex items-center justify-between gap-4">
+      <div className="mt-9 flex items-center justify-between gap-4 border-t border-line pt-6">
         <button
           type="button"
           onClick={() => setStep((s) => Math.max(0, s - 1))}

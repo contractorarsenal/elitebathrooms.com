@@ -2,15 +2,14 @@ import Link from "next/link";
 import { primaryNav, siteConfig } from "@/lib/site-config";
 import { areas } from "@/data/areas";
 import { Container } from "../ui/Container";
+import { Logo } from "../ui/Logo";
 
 export function Footer() {
   return (
     <footer className="bg-charcoal-950 pb-14 text-warm-50 lg:pb-0">
       <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         <div>
-          <span className="font-heading text-xl font-extrabold uppercase tracking-tight">
-            Elite <span className="text-bronze-400">Bathrooms</span>
-          </span>
+          <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-on-dark-muted">
             Tacoma-based bathroom specialists. Design, waterproofing, tile, plumbing, and finish
             work — one crew, start to finish.
