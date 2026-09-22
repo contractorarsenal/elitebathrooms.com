@@ -18,7 +18,7 @@ function ServiceCard({ service, wide = false }: { service: Service; wide?: boole
       <ImageSlot
         alt={`${service.name} by Elite Bathrooms`}
         aspectRatio={wide ? "16/9" : "4/3"}
-        label={service.image}
+        label={service.cardImage}
         className="transition-transform duration-300 ease-out group-hover:scale-[1.02]"
       />
       <div className="flex flex-1 flex-col gap-2 p-6">

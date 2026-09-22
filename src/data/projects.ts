@@ -7,9 +7,11 @@ export type Project = {
 
 // Slugs and titles are carried over verbatim from the live site's project
 // sitemap (real completed jobs) to preserve SEO equity and avoid inventing
-// projects. TODO: attach verified city/scope copy and real photography per
-// project before this leaves the design pass — none of that is fabricated
-// here, only the real title/slug pairs are used.
+// projects. We deliberately do NOT attach a city, timeline, material list,
+// price, or homeowner quote to any of these — none of that was verified,
+// and the build spec is explicit that unverified project details must be
+// omitted rather than guessed. TODO: replace image slots with real photos
+// and add any of the above fields only once verified against source data.
 export const projects: Project[] = [
   {
     slug: "luxury-full-bathroom-remodel",
@@ -47,4 +49,26 @@ export const projects: Project[] = [
     type: "Shower Remodel",
     image: "/images/project-bathroom-06.jpg",
   },
+  {
+    slug: "bathtub-area-renovation-project",
+    title: "Bathtub Area Renovation",
+    type: "Full Remodel",
+    image: "/images/project-bathroom-07.jpg",
+  },
+  {
+    slug: "luxury-bathroom-renovation",
+    title: "Luxury Bathroom Renovation",
+    type: "Full Remodel",
+    image: "/images/project-bathroom-08.jpg",
+  },
+  {
+    slug: "ensuite-bathroom-project",
+    title: "Ensuite Bathroom Project",
+    type: "Full Remodel",
+    image: "/images/project-bathroom-09.jpg",
+  },
 ];
+
+export function getProjectBySlug(slug: string) {
+  return projects.find((p) => p.slug === slug);
+}
