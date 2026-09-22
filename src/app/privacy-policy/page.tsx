@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
+import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  alternates: { canonical: absoluteUrl("/privacy-policy") },
 };
 
 // TODO: replace with the client's reviewed/legal-approved privacy policy text.

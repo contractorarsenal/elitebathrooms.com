@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/lib/site-config";
+import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
+  alternates: { canonical: absoluteUrl("/cookie-policy") },
 };
 
 // TODO: replace with the client's reviewed/legal-approved cookie policy text.
