@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
+/*
+  Elite Bathrooms design tokens.
+  Charcoal / warm white / bronze system — see spec for rationale.
+  Explicit tokens only; no automatic OS dark-mode remap (this is a
+  brand palette, not a light/dark UI mode).
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-charcoal-950: #121316;
+  --color-charcoal-900: #1a1c20;
+  --color-charcoal-800: #24272c;
+  --color-charcoal-700: #34383f;
+  --color-charcoal-600: #565b63;
+
+  --color-warm-50: #f7f5f0;
+  --color-warm-100: #fbfaf7;
+  --color-line: #e4e0d8;
+  --color-line-dark: #34383f;
+
+  --color-ink: #1d1f22;
+  --color-ink-muted: #5b5e63;
+  --color-ink-on-dark: #f7f5f0;
+  --color-ink-on-dark-muted: #a3a7ad;
+
+  --color-bronze-300: #d9bd97;
+  --color-bronze-400: #c79b67;
+  --color-bronze-500: #af7c45;
+  --color-bronze-600: #8c6134;
+
+  --font-heading: var(--font-archivo);
+  --font-body: var(--font-inter);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-charcoal-950: var(--color-charcoal-950);
+  --color-charcoal-900: var(--color-charcoal-900);
+  --color-charcoal-800: var(--color-charcoal-800);
+  --color-charcoal-700: var(--color-charcoal-700);
+  --color-charcoal-600: var(--color-charcoal-600);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-warm-50: var(--color-warm-50);
+  --color-warm-100: var(--color-warm-100);
+  --color-line: var(--color-line);
+  --color-line-dark: var(--color-line-dark);
+
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-on-dark: var(--color-ink-on-dark);
+  --color-ink-on-dark-muted: var(--color-ink-on-dark-muted);
+
+  --color-bronze-300: var(--color-bronze-300);
+  --color-bronze-400: var(--color-bronze-400);
+  --color-bronze-500: var(--color-bronze-500);
+  --color-bronze-600: var(--color-bronze-600);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-warm-50);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+/* Entrance animation: opacity + 12px translateY, runs once, respects reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 450ms ease-out, transform 450ms ease-out;
+  }
+  [data-reveal="in"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image slot object-position: desktop value, overridden on mobile via CSS var. */
+.photo-el {
+  object-position: var(--obj-desktop, center);
+}
+@media (max-width: 767px) {
+  .photo-el {
+    object-position: var(--obj-mobile, var(--obj-desktop, center));
+  }
+}
+
+/* Prevent any accidental horizontal overflow from full-bleed sections. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
