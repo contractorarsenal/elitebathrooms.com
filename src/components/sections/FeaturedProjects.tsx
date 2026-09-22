@@ -47,7 +47,6 @@ export function FeaturedProjects() {
             description="No stock photography, no AI renders — every project here is a completed Elite Bathrooms job."
             tone="dark"
           />
-          {/* TODO: link becomes live once /projects ships in the next build pass. */}
           <Button href="/projects" variant="outline-light" className="self-start sm:self-auto">
             View All Projects
           </Button>

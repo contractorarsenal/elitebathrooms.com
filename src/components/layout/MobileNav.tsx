@@ -34,7 +34,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
           {siteConfig.phone.display}
         </a>
 
-        <Button href="/estimate" variant="primary" className="mt-6 w-full" onClick={onClose}>
+        <Button href="/get-a-quote" variant="primary" className="mt-6 w-full" onClick={onClose}>
           Request an Estimate
         </Button>
       </nav>

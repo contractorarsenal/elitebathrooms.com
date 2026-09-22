@@ -63,7 +63,7 @@ export function Header() {
             <PhoneIcon />
             {siteConfig.phone.display}
           </a>
-          <Button href="/estimate" variant="primary">
+          <Button href="/get-a-quote" variant="primary">
             Request Estimate
           </Button>
         </div>

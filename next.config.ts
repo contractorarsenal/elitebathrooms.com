@@ -73,13 +73,16 @@ const nextConfig: NextConfig = {
       { source: "/bathroom-remodeling-seattle", destination: "/about", permanent: true },
       { source: "/bathroom-remodel-services", destination: "/services", permanent: true },
       { source: "/contact-us", destination: "/contact", permanent: true },
-      { source: "/get-a-quote", destination: "/estimate", permanent: true },
-      { source: "/thank-you", destination: "/estimate/thank-you", permanent: true },
+      { source: "/thank-you", destination: "/get-a-quote/thank-you", permanent: true },
       { source: "/service-area", destination: "/areas-we-serve", permanent: true },
 
-      { source: "/services/full-bathroom-remodel", destination: "/services/full-bathroom-remodeling", permanent: true },
-      { source: "/services/shower-remodel", destination: "/services/shower-remodeling", permanent: true },
-      { source: "/services/bathtub-remodel", destination: "/services/bathtub-remodeling", permanent: true },
+      // Interim /estimate URL from the first build pass — now canonicalized
+      // to /get-a-quote to match the original WordPress slug exactly.
+      { source: "/estimate", destination: "/get-a-quote", permanent: true },
+      { source: "/estimate/thank-you", destination: "/get-a-quote/thank-you", permanent: true },
+
+      // /services/full-bathroom-remodel, /shower-remodel and /bathtub-remodel
+      // need no rule — those new pages live at the exact old WP slugs.
       { source: "/services/bathroom-conversion", destination: "/services/tub-to-shower-conversion", permanent: true },
       { source: "/services/one-day-bathroom-renovation", destination: "/services/tub-to-shower-conversion", permanent: true },
 

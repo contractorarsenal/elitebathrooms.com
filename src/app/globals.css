@@ -91,9 +91,3 @@ h1, h2, h3, h4 {
     object-position: var(--obj-mobile, var(--obj-desktop, center));
   }
 }
-
-/* Prevent any accidental horizontal overflow from full-bleed sections. */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}

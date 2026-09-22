@@ -19,7 +19,7 @@ export function MobileCTA() {
         Call
       </a>
       <a
-        href="/estimate"
+        href="/get-a-quote"
         className="flex min-h-14 flex-1 items-center justify-center gap-2 bg-bronze-500 text-sm font-bold uppercase tracking-wide text-warm-50"
       >
         Request Estimate

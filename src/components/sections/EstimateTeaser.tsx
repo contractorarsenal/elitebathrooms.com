@@ -21,7 +21,7 @@ export function EstimateTeaser() {
     if (phone) params.set("phone", phone);
     if (zip) params.set("zip", zip);
     const query = params.toString();
-    router.push(`/estimate${query ? `?${query}` : ""}`);
+    router.push(`/get-a-quote${query ? `?${query}` : ""}`);
   }
 
   return (

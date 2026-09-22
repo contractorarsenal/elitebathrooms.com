@@ -47,10 +47,10 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/estimate" variant="primary">
+            <Button href="/get-a-quote" variant="primary">
               Request an Estimate
             </Button>
-            <Button href="/#projects" variant="outline-light">
+            <Button href="/projects" variant="outline-light">
               View Our Projects
             </Button>
           </div>

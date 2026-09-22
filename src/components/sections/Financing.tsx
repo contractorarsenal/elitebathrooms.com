@@ -15,7 +15,7 @@ export function Financing() {
               Bathroom projects made easier to plan for.
             </h2>
           </div>
-          <Button href="/estimate" variant="secondary" className="shrink-0">
+          <Button href="/get-a-quote" variant="secondary" className="shrink-0">
             Ask About Financing
           </Button>
         </Reveal>

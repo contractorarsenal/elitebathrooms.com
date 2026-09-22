@@ -12,7 +12,7 @@ const details = [
 
 export function Waterproofing() {
   return (
-    <section className="bg-charcoal-950 py-20 sm:py-28">
+    <section id="waterproofing" className="bg-charcoal-950 py-20 sm:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <SectionHeading

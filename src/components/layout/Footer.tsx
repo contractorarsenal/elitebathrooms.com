@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { primaryNav, serviceAreas, siteConfig } from "@/lib/site-config";
+import { primaryNav, siteConfig } from "@/lib/site-config";
+import { areas } from "@/data/areas";
 import { Container } from "../ui/Container";
 
 export function Footer() {
-  const areas = [serviceAreas.primary, ...serviceAreas.secondary];
-
   return (
     <footer className="bg-charcoal-950 pb-14 text-warm-50 lg:pb-0">
       <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -37,8 +36,7 @@ export function Footer() {
               </li>
             ))}
             <li>
-              {/* TODO: point to a dedicated /contact page once it ships next pass. */}
-              <Link href="/estimate" className="text-ink-on-dark-muted hover:text-warm-50">
+              <Link href="/contact" className="text-ink-on-dark-muted hover:text-warm-50">
                 Contact
               </Link>
             </li>
@@ -51,8 +49,10 @@ export function Footer() {
           </h3>
           <ul className="mt-4 space-y-3 text-sm">
             {areas.map((area) => (
-              <li key={area.slug} className="text-ink-on-dark-muted">
-                {area.name}
+              <li key={area.slug}>
+                <Link href={`/areas-we-serve/${area.slug}`} className="text-ink-on-dark-muted hover:text-warm-50">
+                  {area.name}
+                </Link>
               </li>
             ))}
           </ul>
