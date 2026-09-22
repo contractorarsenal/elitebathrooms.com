@@ -4,13 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
 import { OptionGrid } from "./OptionGrid";
-import { submitEstimateRequest } from "@/lib/estimate/submit";
+import { submitLead } from "@/lib/estimate/submit";
+import { getAttribution } from "@/lib/attribution";
 import {
-  emptyEstimateRequest,
-  investmentRangeOptions,
+  budgetOptions,
+  emptyLead,
+  preferredContactOptions,
   projectTypeOptions,
   timelineOptions,
-  type EstimateRequest,
+  type Lead,
 } from "@/lib/estimate/types";
 
 const STEP_LABELS = ["Project", "Budget", "Timeline", "Details", "Contact"];
@@ -33,16 +35,16 @@ function StepShell({
   );
 }
 
-export function EstimateFlow({ prefill }: { prefill: Partial<EstimateRequest> }) {
+export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<EstimateRequest>({ ...emptyEstimateRequest, ...prefill });
+  const [data, setData] = useState<Lead>({ ...emptyLead, ...prefill });
 
   const isLastStep = step === STEP_LABELS.length - 1;
 
-  function update<K extends keyof EstimateRequest>(key: K, value: EstimateRequest[K]) {
+  function update<K extends keyof Lead>(key: K, value: Lead[K]) {
     setData((prev) => ({ ...prev, [key]: value }));
   }
 
@@ -51,13 +53,13 @@ export function EstimateFlow({ prefill }: { prefill: Partial<EstimateRequest> })
       case 0:
         return Boolean(data.projectType);
       case 1:
-        return data.zip.trim().length >= 5 && Boolean(data.investmentRange);
+        return data.zip.trim().length >= 5 && Boolean(data.budget);
       case 2:
         return Boolean(data.timeline);
       case 3:
         return true;
       case 4:
-        return data.name.trim().length > 1 && data.phone.trim().length >= 7;
+        return data.firstName.trim().length > 0 && data.phone.trim().length >= 7;
       default:
         return false;
     }
@@ -73,11 +75,25 @@ export function EstimateFlow({ prefill }: { prefill: Partial<EstimateRequest> })
 
     setSubmitting(true);
     setError(null);
-    const result = await submitEstimateRequest(data);
+
+    const attribution = getAttribution();
+    const result = await submitLead({
+      ...data,
+      landingPage: attribution.landingPage,
+      referrer: attribution.referrer,
+      utm: {
+        utm_source: attribution.utm_source,
+        utm_medium: attribution.utm_medium,
+        utm_campaign: attribution.utm_campaign,
+        utm_content: attribution.utm_content,
+        utm_term: attribution.utm_term,
+      },
+    });
+
     setSubmitting(false);
 
     if (result.ok) {
-      router.push("/estimate/thank-you");
+      router.push("/get-a-quote/thank-you");
     } else {
       setError(result.error);
     }
@@ -119,9 +135,9 @@ export function EstimateFlow({ prefill }: { prefill: Partial<EstimateRequest> })
               className="min-h-11 w-full border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
             />
             <OptionGrid
-              options={investmentRangeOptions}
-              value={data.investmentRange}
-              onChange={(v) => update("investmentRange", v)}
+              options={budgetOptions}
+              value={data.budget}
+              onChange={(v) => update("budget", v)}
             />
           </div>
         </StepShell>
@@ -158,10 +174,17 @@ export function EstimateFlow({ prefill }: { prefill: Partial<EstimateRequest> })
           <div className="grid gap-4 sm:grid-cols-2">
             <input
               type="text"
-              placeholder="Full name"
-              value={data.name}
-              onChange={(e) => update("name", e.target.value)}
-              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none sm:col-span-2"
+              placeholder="First name"
+              value={data.firstName}
+              onChange={(e) => update("firstName", e.target.value)}
+              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
+            />
+            <input
+              type="text"
+              placeholder="Last name"
+              value={data.lastName}
+              onChange={(e) => update("lastName", e.target.value)}
+              className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
             />
             <input
               type="tel"
@@ -177,6 +200,17 @@ export function EstimateFlow({ prefill }: { prefill: Partial<EstimateRequest> })
               onChange={(e) => update("email", e.target.value)}
               className="min-h-11 border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none"
             />
+            <div className="sm:col-span-2">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.08em] text-ink-muted">
+                Preferred contact method
+              </p>
+              <OptionGrid
+                options={preferredContactOptions}
+                value={data.preferredContactMethod}
+                onChange={(v) => update("preferredContactMethod", v)}
+                columns={3}
+              />
+            </div>
           </div>
         </StepShell>
       )}

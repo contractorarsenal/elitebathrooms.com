@@ -1,4 +1,4 @@
-import type { EstimateRequest } from "./types";
+import type { Lead } from "./types";
 
 export type SubmitResult = { ok: true } | { ok: false; error: string };
 
@@ -8,7 +8,7 @@ export type SubmitResult = { ok: true } | { ok: false; error: string };
  * file's TODO). Nothing here talks to Jobber directly, and no Jobber
  * credentials/endpoints are assumed anywhere in this codebase yet.
  */
-export async function submitEstimateRequest(payload: EstimateRequest): Promise<SubmitResult> {
+export async function submitLead(payload: Lead): Promise<SubmitResult> {
   try {
     const res = await fetch("/api/estimate", {
       method: "POST",

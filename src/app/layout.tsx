@@ -4,6 +4,9 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileCTA } from "@/components/layout/MobileCTA";
+import { AttributionCapture } from "@/components/analytics/AttributionCapture";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationSchema } from "@/lib/schema";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -24,6 +27,11 @@ export const metadata: Metadata = {
   },
   description:
     "Elite Bathrooms is a Tacoma-based bathroom remodeling specialist serving Tacoma, Seattle, Bellevue, Kirkland, Issaquah, Sammamish, and Puyallup. Full remodels, showers, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
+  openGraph: {
+    type: "website",
+    siteName: "Elite Bathrooms",
+    locale: "en_US",
+  },
 };
 
 export const viewport: Viewport = {
@@ -36,6 +44,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${archivo.variable} ${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-warm-50">
+        <JsonLd data={organizationSchema()} />
+        <AttributionCapture />
         <Header />
         {children}
         <Footer />

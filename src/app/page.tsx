@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { localBusinessSchema } from "@/lib/schema";
+import { absoluteUrl } from "@/lib/seo";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
@@ -11,9 +15,14 @@ import { Financing } from "@/components/sections/Financing";
 import { ServiceAreas } from "@/components/sections/ServiceAreas";
 import { EstimateTeaser } from "@/components/sections/EstimateTeaser";
 
+export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/") },
+};
+
 export default function HomePage() {
   return (
     <main>
+      <JsonLd data={localBusinessSchema()} />
       <Hero />
       <TrustBar />
       <FeaturedProjects />

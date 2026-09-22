@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { EstimateRequest } from "@/lib/estimate/types";
+import type { Lead } from "@/lib/estimate/types";
 
 /**
  * Estimate submission endpoint — this is the ONLY place that should ever
@@ -7,13 +7,15 @@ import type { EstimateRequest } from "@/lib/estimate/types";
  *
  * TODO(jobber): wire this up once credentials/API details are available.
  * Do not invent a Jobber client ID, API base URL, or auth flow here —
- * Jobber's request-a-quote / client-creation API needs real credentials
- * issued to this business. Until then this route validates the payload
- * and logs it server-side so the estimate flow is fully testable end to
- * end without a fake integration pretending to be real.
+ * Jobber's client-creation / request-a-quote API needs real credentials
+ * issued to this business. The `Lead` shape below (src/lib/estimate/types.ts)
+ * is already normalized to match what that call will need. Until real
+ * credentials exist, this route validates the payload and logs it
+ * server-side so the full flow — including attribution — is testable
+ * end to end without a fake integration pretending to be real.
  */
 export async function POST(request: Request) {
-  let payload: Partial<EstimateRequest>;
+  let payload: Partial<Lead>;
 
   try {
     payload = await request.json();
@@ -21,11 +23,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  if (!payload.name || !payload.phone) {
-    return NextResponse.json({ error: "Name and phone are required" }, { status: 422 });
+  if (!payload.firstName || !payload.phone) {
+    return NextResponse.json({ error: "First name and phone are required" }, { status: 422 });
   }
 
-  console.log("[estimate] new request (Jobber integration pending):", payload);
+  console.log("[estimate] new lead (Jobber integration pending):", {
+    ...payload,
+    receivedAt: new Date().toISOString(),
+  });
 
   return NextResponse.json({ ok: true });
 }
