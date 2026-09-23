@@ -5,23 +5,17 @@ import { Container } from "../ui/Container";
 import { ImageSlot } from "../ui/ImageSlot";
 import { Eyebrow } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
+import { getBeforeAfterProject } from "@/data/projects";
 
-// TODO: replace with real paired before/after project photos once available —
-// see PHOTO: FINISHED BATHROOM in the build spec for the target look.
-const pair = {
-  beforeLabel: "/images/project-before-01.jpg",
-  afterLabel: "/images/project-after-01.jpg",
-};
-
-function CompareSlider() {
+function CompareSlider({ before, after }: { before: string; after: string }) {
   const [value, setValue] = useState(50);
 
   return (
     <>
-      <ImageSlot cover alt="After: finished bathroom" label={pair.afterLabel} />
+      <ImageSlot cover src={after} alt="After: finished bathroom by Elite Bathrooms" label={after} />
 
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - value}% 0 0)` }}>
-        <ImageSlot cover alt="Before: original bathroom" label={pair.beforeLabel} />
+        <ImageSlot cover src={before} alt="Before: original bathroom" label={before} />
       </div>
 
       <span className="absolute left-4 top-4 rounded-full bg-charcoal-950/85 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-warm-50">
@@ -56,6 +50,9 @@ function CompareSlider() {
 }
 
 export function BeforeAfter() {
+  const project = getBeforeAfterProject();
+  if (!project?.before) return null;
+
   return (
     <section className="bg-warm-50 py-20 sm:py-28">
       <Container>
@@ -64,10 +61,11 @@ export function BeforeAfter() {
           <h2 className="mt-3 text-4xl font-extrabold leading-[1.02] tracking-tight text-charcoal-950 sm:text-5xl">
             Drag to compare.
           </h2>
+          <p className="mt-3 max-w-md text-base leading-relaxed text-ink-muted">{project.title}</p>
         </Reveal>
 
         <Reveal mask className="aspect-[4/5] rounded-panel sm:aspect-[16/8]">
-          <CompareSlider />
+          <CompareSlider before={project.before} after={project.image} />
         </Reveal>
       </Container>
     </section>

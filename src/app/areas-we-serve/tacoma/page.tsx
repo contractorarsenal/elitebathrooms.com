@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
-import { CompassIcon, DropletIcon, GridIcon, PhoneIcon } from "@/components/ui/icons";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import { PageHero } from "@/components/sections/PageHero";
 import { WaterproofingBanner } from "@/components/sections/WaterproofingBanner";
 import { RelatedProjects } from "@/components/sections/RelatedProjects";
@@ -14,7 +13,7 @@ import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { NextStepCTA } from "@/components/sections/NextStepCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { services } from "@/data/services";
-import { areaFaqs } from "@/data/areas";
+import { areaFaqs, areas } from "@/data/areas";
 import { siteConfig } from "@/lib/site-config";
 import { localBusinessSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
@@ -26,27 +25,11 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl("/areas-we-serve/tacoma") },
 };
 
-const whyElite = [
-  {
-    icon: DropletIcon,
-    title: "Waterproofing",
-    description: "Every bathroom we build in Tacoma is backed by a 10-year waterproofing warranty against leaks.",
-  },
-  {
-    icon: CompassIcon,
-    title: "Project Coordination",
-    description: "Design, demolition, waterproofing, tile, plumbing, and electrical stay coordinated as one project.",
-  },
-  {
-    icon: GridIcon,
-    title: "Bathroom-Only Focus",
-    description: "We don't spread across kitchens or additions. Bathrooms are the only thing we build.",
-  },
-  {
-    icon: PhoneIcon,
-    title: "Direct Communication",
-    description: "You work with the people planning your project, not a rotating cast of subcontractors.",
-  },
+const processSteps = [
+  { title: "Request an Estimate", description: "Tell us about the bathroom and what you want to change." },
+  { title: "In-Home Consultation", description: "We look at the space and understand the scope." },
+  { title: "Plan Before Demolition", description: "Layout, materials, and fixtures get determined." },
+  { title: "Build & Final Walkthrough", description: "Elite manages the renovation and reviews it with you." },
 ];
 
 export default function TacomaPage() {
@@ -95,49 +78,49 @@ export default function TacomaPage() {
       <section className="bg-warm-100 py-20 sm:py-28">
         <Container>
           <SectionHeading eyebrow="Services in Tacoma" title="Every bathroom service, in one place." />
-          <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <Reveal className="mt-10 divide-y divide-line border-t border-line">
             {services.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="flex h-full flex-col gap-2 rounded-card border border-line bg-warm-50 p-5 transition-colors hover:border-bronze-400"
+                className="group flex items-center justify-between gap-4 py-5 transition-colors"
               >
-                <h3 className="text-sm font-extrabold text-charcoal-950">{service.name}</h3>
-                <p className="text-xs leading-relaxed text-ink-muted">{service.summary}</p>
+                <div>
+                  <h3 className="text-lg font-extrabold text-charcoal-950 group-hover:text-bronze-600">
+                    {service.name}
+                  </h3>
+                  <p className="mt-1 max-w-lg text-sm leading-relaxed text-ink-muted">{service.summary}</p>
+                </div>
+                <ArrowRightIcon className="h-4 w-4 shrink-0 text-bronze-500 transition-transform group-hover:translate-x-1" />
               </Link>
             ))}
-          </Reveal>
-          <Reveal delay={280} className="mt-8">
-            <Link
-              href="/services/full-bathroom-remodel"
-              className="text-sm font-bold uppercase tracking-[0.06em] text-bronze-600 hover:text-bronze-500"
-            >
-              Explore Bathroom Remodeling ↓
-            </Link>
           </Reveal>
         </Container>
       </section>
 
-      {/* WHY TACOMA HOMEOWNERS CHOOSE ELITE */}
+      {/* PROCESS */}
       <section className="bg-charcoal-950 py-20 sm:py-28">
         <Container>
-          <SectionHeading
-              eyebrow="Why Elite"
-              title="Why Tacoma homeowners choose Elite."
-              tone="dark"
-            />
-          <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {whyElite.map((item, i) => (
-              <div
-                key={item.title}
-                className="stagger-item flex flex-col gap-3 rounded-card border border-charcoal-700 bg-charcoal-900 p-6"
-                style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties}
-              >
-                <item.icon className="h-6 w-6 text-bronze-400" />
-                <h3 className="text-base font-extrabold text-warm-50">{item.title}</h3>
-                <p className="text-sm leading-relaxed text-ink-on-dark-muted">{item.description}</p>
-              </div>
+          <SectionHeading eyebrow="How It Works" title="What happens after you reach out." tone="dark" />
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, i) => (
+              <Reveal key={step.title} delay={i * 70}>
+                <span className="font-heading text-3xl font-extrabold leading-none text-bronze-400">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 text-base font-extrabold text-warm-50">{step.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-on-dark-muted">{step.description}</p>
+              </Reveal>
             ))}
+          </div>
+          <Reveal delay={280} className="mt-10">
+            <Link
+              href="/process"
+              className="inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-[0.06em] text-bronze-400 hover:text-bronze-300"
+            >
+              See Our Full Process
+              <ArrowRightIcon className="h-3.5 w-3.5" />
+            </Link>
           </Reveal>
         </Container>
       </section>
@@ -183,6 +166,29 @@ export default function TacomaPage() {
 
       {/* REVIEWS */}
       <Testimonials />
+
+      {/* SERVICE AREAS NEARBY */}
+      <section className="bg-warm-100 py-16 sm:py-20">
+        <Container>
+          <Eyebrow>Also Serving</Eyebrow>
+          <h2 className="mt-2 text-2xl font-extrabold text-charcoal-950 sm:text-3xl">
+            Nearby service areas.
+          </h2>
+          <Reveal delay={80} className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+            {areas
+              .filter((a) => a.slug !== "tacoma")
+              .map((area) => (
+                <Link
+                  key={area.slug}
+                  href={`/areas-we-serve/${area.slug}`}
+                  className="text-base font-bold text-charcoal-950 underline-offset-4 hover:text-bronze-600 hover:underline"
+                >
+                  {area.name}
+                </Link>
+              ))}
+          </Reveal>
+        </Container>
+      </section>
 
       {/* FAQ */}
       <FaqAccordion faqs={areaFaqs} title="Tacoma Bathroom Remodeling FAQ" />

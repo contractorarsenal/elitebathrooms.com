@@ -80,8 +80,8 @@ export const services: Service[] = [
       "Filler and fixture upgrades",
       "Surround lighting and niches",
     ],
-    heroImage: "/images/services/elite-double-vanity.jpg",
-    cardImage: "/images/projects/bathtub-area-renovation-project-01.jpg",
+    heroImage: "/images/projects/luxury-bathroom-renovation-01.jpg",
+    cardImage: "/images/projects/luxury-bathroom-renovation-04.jpg",
     projectType: "Full Remodel",
   },
   {

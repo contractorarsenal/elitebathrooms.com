@@ -8,11 +8,12 @@ import { ImageSlot } from "../ui/ImageSlot";
 // Homepage-specific "what happens next" framing — the customer journey,
 // not the build methodology (that's the deeper /process page).
 const steps = [
-  { number: "01", title: "Request an Estimate", description: "Tell us what you want to remodel." },
-  { number: "02", title: "In-Home Consultation", description: "We review the space, discuss goals, and understand the project." },
-  { number: "03", title: "Plan the Project", description: "Scope, materials, layout, and schedule are coordinated." },
-  { number: "04", title: "Build", description: "Elite manages the renovation process." },
-  { number: "05", title: "Final Walkthrough", description: "Review the finished bathroom together." },
+  { number: "01", title: "Request an Estimate", description: "Tell us about the bathroom and what you want to change." },
+  { number: "02", title: "In-Home Consultation", description: "We look at the space, talk through goals, and understand the scope." },
+  { number: "03", title: "Plan Before Demolition", description: "Layout, materials, fixtures, and project details are determined." },
+  { number: "04", title: "Build", description: "The renovation begins." },
+  { number: "05", title: "Final Details", description: "Installation, finishing, cleanup." },
+  { number: "06", title: "Final Walkthrough", description: "Review the finished bathroom together." },
 ];
 
 export function Process() {

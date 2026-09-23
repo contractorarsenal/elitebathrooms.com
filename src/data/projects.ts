@@ -5,6 +5,8 @@ export type Project = {
   image: string;
   /** Additional real angles of the same job, migrated from elitebathrooms.com. */
   gallery: string[];
+  /** Real "before" photo of the same room, only set where a genuine matched pair was verified. */
+  before?: string;
   /** 2-3 short tags, grounded only in the real title/category — never invented specifics. */
   tags: string[];
   /** One safe sentence, grounded only in the title and our own verified service standards. */
@@ -19,10 +21,19 @@ export type Project = {
 // omitted rather than guessed. Tags/descriptions are grounded only in the
 // real title text and our own verified service standards (e.g. every
 // shower we build is waterproofed) — never a specific unverified detail.
+//
 // Images are real Elite Bathrooms job photography migrated from the live
 // WordPress site (see /public/images/projects), not stock or AI-generated.
-function galleryFor(slug: string) {
-  return [2, 3, 4].map((n) => `/images/projects/${slug}-${String(n).padStart(2, "0")}.jpg`);
+// Every image below was individually inspected: two projects originally
+// downloaded from the live site's gallery (spa-inspired-bathroom,
+// bathtub-area-renovation-project) turned out to contain only rough/dated
+// "before" shots with no finished result photographed, so they've been
+// removed from this list rather than presented as completed work. Two
+// others (heated-floor-bathroom, old-bathroom-shower-upgrade) had a mix of
+// before and after photos in the same gallery, so their `before` field
+// uses the real matching photo instead of a generic placeholder.
+function galleryFor(slug: string, nums: number[] = [2, 3, 4]) {
+  return nums.map((n) => `/images/projects/${slug}-${String(n).padStart(2, "0")}.jpg`);
 }
 
 export const projects: Project[] = [
@@ -60,39 +71,23 @@ export const projects: Project[] = [
     slug: "heated-floor-bathroom",
     title: "Heated Floor Bathroom",
     type: "Full Remodel",
-    image: "/images/projects/heated-floor-bathroom-01.jpg",
-    gallery: galleryFor("heated-floor-bathroom"),
+    image: "/images/projects/heated-floor-bathroom-04.jpg",
+    before: "/images/projects/heated-floor-bathroom-01.jpg",
+    gallery: galleryFor("heated-floor-bathroom", [2, 3]),
     tags: ["Heated floors", "Full remodel", "Tile"],
     description:
       "A full remodel built around heated floors for a warmer, more comfortable everyday bathroom.",
   },
   {
-    slug: "spa-inspired-bathroom",
-    title: "Spa-Inspired Bathroom",
-    type: "Full Remodel",
-    image: "/images/projects/spa-inspired-bathroom-01.jpg",
-    gallery: galleryFor("spa-inspired-bathroom"),
-    tags: ["Full remodel", "Spa-inspired finishes", "Tile"],
-    description: "A full remodel designed around a calmer, spa-inspired material palette and layout.",
-  },
-  {
     slug: "old-bathroom-shower-upgrade",
     title: "Old Bathroom Shower Upgrade",
     type: "Shower Remodel",
-    image: "/images/projects/old-bathroom-shower-upgrade-01.jpg",
-    gallery: galleryFor("old-bathroom-shower-upgrade"),
+    image: "/images/projects/old-bathroom-shower-upgrade-03.jpg",
+    before: "/images/projects/old-bathroom-shower-upgrade-01.jpg",
+    gallery: galleryFor("old-bathroom-shower-upgrade", [4]),
     tags: ["Shower remodel", "Updated fixtures", "Waterproofed pan"],
     description:
       "A shower-focused upgrade that replaced dated fixtures and rebuilt the pan and wall assembly correctly.",
-  },
-  {
-    slug: "bathtub-area-renovation-project",
-    title: "Bathtub Area Renovation",
-    type: "Full Remodel",
-    image: "/images/projects/bathtub-area-renovation-project-01.jpg",
-    gallery: galleryFor("bathtub-area-renovation-project"),
-    tags: ["Bathtub remodel", "Tile surround", "Full remodel"],
-    description: "A renovation centered on the bathtub area, including a rebuilt tile surround.",
   },
   {
     slug: "luxury-bathroom-renovation",
@@ -116,4 +111,9 @@ export const projects: Project[] = [
 
 export function getProjectBySlug(slug: string) {
   return projects.find((p) => p.slug === slug);
+}
+
+/** The one project we can show a real, verified before/after pair for. */
+export function getBeforeAfterProject() {
+  return projects.find((p) => p.before);
 }

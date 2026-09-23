@@ -5,7 +5,10 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/sections/PageHero";
 import { WaterproofingBanner } from "@/components/sections/WaterproofingBanner";
+import { RelatedProjects } from "@/components/sections/RelatedProjects";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { NextStepCTA } from "@/components/sections/NextStepCTA";
+import { Eyebrow } from "@/components/ui/SectionHeading";
 import { CheckIcon } from "@/components/ui/icons";
 import { trustStats } from "@/lib/site-config";
 import { absoluteUrl } from "@/lib/seo";
@@ -77,6 +80,32 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <section className="bg-warm-100 py-20 sm:py-28">
+        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <Eyebrow>The Crew</Eyebrow>
+            <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] text-charcoal-950 sm:text-4xl">
+              The same people who plan it, build it.
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
+              There&rsquo;s no rotating cast of subcontractors on an Elite Bathrooms project. The
+              crew that walks your space during the consultation is accountable for how it gets
+              built, from demolition through the final walkthrough.
+            </p>
+          </Reveal>
+          <Reveal mask delay={100} className="aspect-[4/3] rounded-panel">
+            <ImageSlot
+              cover
+              src="/images/team/elite-team-portrait.jpg"
+              alt="Elite Bathrooms crew portrait"
+              label="/images/team/elite-team-portrait.jpg"
+            />
+          </Reveal>
+        </Container>
+      </section>
+
+      <RelatedProjects />
+      <Testimonials />
       <WaterproofingBanner />
       <NextStepCTA variant="banner" />
     </main>

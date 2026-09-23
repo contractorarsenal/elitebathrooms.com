@@ -27,10 +27,28 @@ export default function ProjectsPage() {
 
       <section className="bg-charcoal-950 py-20 sm:py-28">
         <Container>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, i) => (
-              <ProjectCard key={project.slug} project={project} delay={(i % 3) * 70} />
-            ))}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-65 lg:grid-flow-dense">
+            {projects.map((project, i) => {
+              const pattern: { size: "large" | "tall" | "small"; minimal: boolean }[] = [
+                { size: "large", minimal: false },
+                { size: "small", minimal: true },
+                { size: "small", minimal: false },
+                { size: "tall", minimal: true },
+                { size: "small", minimal: false },
+                { size: "large", minimal: false },
+                { size: "small", minimal: true },
+              ];
+              const { size, minimal } = pattern[i % pattern.length];
+              return (
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  size={size}
+                  minimal={minimal}
+                  delay={(i % 3) * 70}
+                />
+              );
+            })}
           </div>
         </Container>
       </section>

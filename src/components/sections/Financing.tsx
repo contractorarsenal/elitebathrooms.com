@@ -9,10 +9,10 @@ export function Financing() {
         <Reveal className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-warm-50/80">
-              Financing Available
+              Planning a Larger Remodel?
             </span>
             <h2 className="mt-2 text-2xl font-extrabold leading-tight text-warm-50 sm:text-3xl">
-              Bathroom projects made easier to plan for.
+              Financing is available for qualifying projects.
             </h2>
           </div>
           <Button href="/financing" variant="secondary" className="shrink-0">
