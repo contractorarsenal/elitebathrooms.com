@@ -59,14 +59,14 @@ export function BeforeAfter() {
   return (
     <section className="bg-warm-50 py-20 sm:py-28">
       <Container>
-        <Reveal className="mb-8">
+        <Reveal className="mb-10">
           <Eyebrow>Transformations</Eyebrow>
-          <h2 className="mt-2 text-2xl font-extrabold text-charcoal-950 sm:text-3xl">
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.02] tracking-tight text-charcoal-950 sm:text-5xl">
             Drag to compare.
           </h2>
         </Reveal>
 
-        <Reveal mask className="aspect-[4/3] rounded-panel sm:aspect-[21/9]">
+        <Reveal mask className="aspect-[4/5] rounded-panel sm:aspect-[16/8]">
           <CompareSlider />
         </Reveal>
       </Container>

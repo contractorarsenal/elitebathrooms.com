@@ -26,7 +26,8 @@ export default function BlogPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "Blog" }]}
         title="Bathroom Remodeling Resources"
         description="Straight answers about planning, waterproofing, and what different projects actually involve."
-        imageLabel="/images/elite-process-planning.jpg"
+        imageSrc="/images/process/elite-process-planning.jpg"
+        imageLabel="/images/process/elite-process-planning.jpg"
         imageAlt="Bathroom remodeling plans and material selections"
       />
 
@@ -47,10 +48,10 @@ export default function BlogPage() {
                   </span>
                 </div>
                 <div className="lg:col-start-1 lg:row-start-2">
-                  <h2 className="text-2xl font-extrabold leading-tight text-charcoal-950 sm:text-3xl">
+                  <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-charcoal-950 sm:text-4xl">
                     {featured.title}
                   </h2>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
+                  <p className="mt-3 max-w-md text-base leading-relaxed text-ink-muted sm:text-lg">
                     {featured.excerpt}
                   </p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-bronze-600">

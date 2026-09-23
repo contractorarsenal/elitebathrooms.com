@@ -19,7 +19,8 @@ export default function FinancingPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "Financing" }]}
         title="Financing Available"
         description="Bathroom projects made easier to plan for."
-        imageLabel="/images/elite-design-consultation.jpg"
+        imageSrc="/images/process/elite-design-consultation.jpg"
+        imageLabel="/images/process/elite-design-consultation.jpg"
         imageAlt="Elite Bathrooms designer consulting with a homeowner"
       />
 

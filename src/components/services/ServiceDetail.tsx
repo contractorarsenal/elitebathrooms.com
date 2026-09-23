@@ -33,6 +33,7 @@ export function ServiceDetail({
         ]}
         title={service.name}
         description={service.positioning ?? service.summary}
+        imageSrc={service.heroImage}
         imageLabel={service.heroImage}
         imageAlt={`${service.name} by Elite Bathrooms`}
       />
@@ -53,7 +54,7 @@ export function ServiceDetail({
             </ul>
           </Reveal>
           <Reveal mask className="min-h-[360px] rounded-panel">
-            <ImageSlot cover alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} />
+            <ImageSlot cover src={service.cardImage} alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} />
           </Reveal>
         </Container>
       </section>

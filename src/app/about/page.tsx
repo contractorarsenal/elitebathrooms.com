@@ -30,17 +30,19 @@ export default function AboutPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "About" }]}
         title="We don't try to do everything."
         description="We do bathrooms, and we do them right."
-        imageLabel="/images/elite-team-hero.jpg"
+        imageSrc="/images/team/elite-crew-vans.jpg"
+        imageLabel="/images/team/elite-crew-vans.jpg"
         imageAlt="Elite Bathrooms crew and work vans, Tacoma"
       />
 
       <section className="bg-warm-50 py-20 sm:py-28">
         <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal mask className="aspect-[4/5] rounded-panel lg:aspect-auto lg:h-full lg:min-h-[520px]">
             <ImageSlot
+              cover
+              src="/images/team/elite-crew-planning.jpg"
               alt="Elite Bathrooms crew reviewing project plans"
-              aspectRatio="4/3"
-              label="/images/elite-crew-planning.jpg"
+              label="/images/team/elite-crew-planning.jpg"
             />
           </Reveal>
 

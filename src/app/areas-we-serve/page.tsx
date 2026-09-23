@@ -19,7 +19,8 @@ export default function AreasWeServePage() {
       <PageHero
         crumbs={[{ name: "Home", href: "/" }, { name: "Areas We Serve" }]}
         title="Tacoma-based. Working across the South Sound and greater Seattle."
-        imageLabel="/images/elite-team-hero.jpg"
+        imageSrc="/images/team/elite-team-hero.jpg"
+        imageLabel="/images/team/elite-team-hero.jpg"
         imageAlt="Elite Bathrooms crew and work vans"
       />
 

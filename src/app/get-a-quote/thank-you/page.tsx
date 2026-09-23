@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
   return (
-    <main className="flex min-h-[70vh] items-center bg-warm-50 pb-14 pt-24 lg:pb-0 lg:pt-20">
+    <main className="flex min-h-[70vh] items-center bg-warm-50 pb-14 pt-24 lg:pb-0 lg:pt-24">
       <Container className="max-w-xl text-center">
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-bronze-500">
           Request Received

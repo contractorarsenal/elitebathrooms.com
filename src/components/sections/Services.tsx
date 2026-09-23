@@ -9,13 +9,14 @@ import type { Service } from "@/data/services";
 
 function LargeServiceCell({ service }: { service: Service }) {
   return (
-    <Reveal scale className="lg:row-span-2 lg:col-span-2">
+    <Reveal scale className="h-full">
       <Link
         href={`/services/${service.slug}`}
-        className="group relative flex h-full min-h-[360px] flex-col justify-end overflow-hidden rounded-panel"
+        className="group relative flex h-full min-h-[420px] flex-col justify-end overflow-hidden rounded-panel"
       >
         <ImageSlot
           cover
+          src={service.cardImage}
           alt={`${service.name} by Elite Bathrooms`}
           label={service.cardImage}
           className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
@@ -43,13 +44,14 @@ function LargeServiceCell({ service }: { service: Service }) {
 
 function ServiceCell({ service, delay = 0 }: { service: Service; delay?: number }) {
   return (
-    <Reveal scale delay={delay}>
+    <Reveal scale delay={delay} className="h-full">
       <Link
         href={`/services/${service.slug}`}
-        className="group relative flex h-full min-h-[172px] flex-col justify-end overflow-hidden rounded-card"
+        className="group relative flex h-full min-h-[140px] flex-col justify-end overflow-hidden rounded-card"
       >
         <ImageSlot
           cover
+          src={service.cardImage}
           alt={`${service.name} by Elite Bathrooms`}
           label={service.cardImage}
           className="transition-transform duration-500 ease-out group-hover:scale-[1.04]"
@@ -80,12 +82,16 @@ export function Services() {
             description="Five ways we work, all backed by the same waterproofing standard and coordinated as one project."
           />
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-4 lg:grid-rows-2">
+        <div className="mt-10 grid gap-4 lg:min-h-[640px] lg:grid-cols-[1.35fr,1fr]">
           <LargeServiceCell service={full} />
-          <ServiceCell service={shower} delay={60} />
-          <ServiceCell service={bathtub} delay={120} />
-          <ServiceCell service={tubToShower} delay={180} />
-          <ServiceCell service={oneDay} delay={240} />
+          <div className="grid gap-4 lg:grid-rows-[1.15fr,0.85fr,0.8fr]">
+            <ServiceCell service={shower} delay={60} />
+            <ServiceCell service={tubToShower} delay={120} />
+            <div className="grid grid-cols-2 gap-4">
+              <ServiceCell service={bathtub} delay={180} />
+              <ServiceCell service={oneDay} delay={240} />
+            </div>
+          </div>
         </div>
       </Container>
     </section>

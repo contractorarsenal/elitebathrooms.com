@@ -1,6 +1,0 @@
-<svg width="280" height="64" viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Elite Bathrooms">
-  <rect x="2" y="8" width="48" height="48" rx="10" fill="none" stroke="#C79B67" stroke-width="2.5"/>
-  <path d="M17 34 L24 41 L37 24" fill="none" stroke="#C79B67" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="64" y="30" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="20" letter-spacing="0.5" fill="#F7F5F0">ELITE</text>
-  <text x="64" y="52" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" letter-spacing="2" fill="#C79B67">BATHROOMS</text>
-</svg>

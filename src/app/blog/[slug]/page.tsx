@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params }: Props) {
   const showToc = post.sections.length > 3;
 
   return (
-    <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-20">
+    <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-24">
       <div className="border-b border-line py-10 sm:py-14">
         <Container className="max-w-3xl">
           <Breadcrumbs

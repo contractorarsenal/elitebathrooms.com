@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 
 function LargeCell({ service }: { service: Service }) {
   return (
-    <Reveal scale className="lg:col-span-2 lg:row-span-2">
+    <Reveal scale className="h-full">
       <Link
         href={`/services/${service.slug}`}
-        className="group relative flex h-full min-h-[380px] flex-col justify-end overflow-hidden rounded-panel"
+        className="group relative flex h-full min-h-[420px] flex-col justify-end overflow-hidden rounded-panel"
       >
-        <ImageSlot cover alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} className="transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
+        <ImageSlot cover src={service.cardImage} alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} className="transition-transform duration-500 ease-out group-hover:scale-[1.03]" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/92 via-charcoal-950/35 to-transparent" />
         <div className="relative z-10 p-7 sm:p-9">
           <span className="text-xs font-bold uppercase tracking-[0.14em] text-bronze-400">Primary Service</span>
@@ -43,9 +43,9 @@ function LargeCell({ service }: { service: Service }) {
 
 function Cell({ service, delay = 0 }: { service: Service; delay?: number }) {
   return (
-    <Reveal scale delay={delay}>
-      <Link href={`/services/${service.slug}`} className="group relative flex h-full min-h-[180px] flex-col justify-end overflow-hidden rounded-card">
-        <ImageSlot cover alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} className="transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
+    <Reveal scale delay={delay} className="h-full">
+      <Link href={`/services/${service.slug}`} className="group relative flex h-full min-h-[140px] flex-col justify-end overflow-hidden rounded-card">
+        <ImageSlot cover src={service.cardImage} alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} className="transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/25 to-transparent" />
         <div className="relative z-10 p-5">
           <h3 className="text-base font-extrabold leading-tight text-warm-50">{service.name}</h3>
@@ -67,18 +67,23 @@ export default function ServicesPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "Services" }]}
         title="Bathroom Remodeling Services"
         description="Five ways we work, all backed by the same waterproofing standard and coordinated as one project."
-        imageLabel="/images/services-hero.jpg"
+        imageSrc="/images/services/elite-glass-shower.jpg"
+        imageLabel="/images/services/elite-glass-shower.jpg"
         imageAlt="Elite Bathrooms crew at work on a bathroom remodel"
       />
 
       <section className="bg-warm-50 py-20 sm:py-28">
         <Container>
-          <div className="grid gap-4 lg:grid-cols-4 lg:grid-rows-2">
+          <div className="grid gap-4 lg:min-h-[640px] lg:grid-cols-[1.35fr,1fr]">
             <LargeCell service={full} />
-            <Cell service={shower} delay={60} />
-            <Cell service={bathtub} delay={120} />
-            <Cell service={tubToShower} delay={180} />
-            <Cell service={oneDay} delay={240} />
+            <div className="grid gap-4 lg:grid-rows-[1.15fr,0.85fr,0.8fr]">
+              <Cell service={shower} delay={60} />
+              <Cell service={tubToShower} delay={120} />
+              <div className="grid grid-cols-2 gap-4">
+                <Cell service={bathtub} delay={180} />
+                <Cell service={oneDay} delay={240} />
+              </div>
+            </div>
           </div>
         </Container>
       </section>

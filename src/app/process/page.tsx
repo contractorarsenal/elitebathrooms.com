@@ -21,7 +21,8 @@ export default function ProcessPage() {
       <PageHero
         crumbs={[{ name: "Home", href: "/" }, { name: "Process" }]}
         title="Step-by-step, from idea to finished bathroom."
-        imageLabel="/images/elite-process-planning.jpg"
+        imageSrc="/images/process/elite-process-planning.jpg"
+        imageLabel="/images/process/elite-process-planning.jpg"
         imageAlt="Bathroom plans and material selections laid out for review"
       />
 
@@ -38,10 +39,10 @@ export default function ProcessPage() {
               >
                 {useMask ? (
                   <Reveal mask className="aspect-[4/3] rounded-panel">
-                    <ImageSlot cover alt={step.alt} label={step.image} />
+                    <ImageSlot cover src={step.image} alt={step.alt} label={step.image} />
                   </Reveal>
                 ) : (
-                  <ImageSlot alt={step.alt} aspectRatio="4/3" label={step.image} className="rounded-panel" />
+                  <ImageSlot src={step.image} alt={step.alt} aspectRatio="4/3" label={step.image} className="rounded-panel" />
                 )}
                 <div>
                   <span className="font-heading text-sm font-extrabold text-bronze-500">

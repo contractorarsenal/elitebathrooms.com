@@ -74,6 +74,7 @@ export default function FullBathroomRemodelPage() {
         ]}
         title="Full Bathroom Remodel"
         description={service.summary}
+        imageSrc={service.heroImage}
         imageLabel={service.heroImage}
         imageAlt="Full bathroom remodel by Elite Bathrooms"
       />
@@ -148,7 +149,12 @@ export default function FullBathroomRemodelPage() {
       <section className="bg-warm-50 pb-20 sm:pb-28">
         <Container>
           <Reveal mask className="min-h-[320px] rounded-panel sm:min-h-[440px]">
-            <ImageSlot cover alt="Completed full bathroom remodel by Elite Bathrooms" label="/images/project-bathroom-01.jpg" />
+            <ImageSlot
+              cover
+              src="/images/projects/luxury-full-bathroom-remodel-03.jpg"
+              alt="Completed full bathroom remodel by Elite Bathrooms"
+              label="/images/projects/luxury-full-bathroom-remodel-03.jpg"
+            />
           </Reveal>
         </Container>
       </section>
@@ -180,7 +186,12 @@ export default function FullBathroomRemodelPage() {
       <section className="bg-warm-50 py-20 sm:py-28">
         <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal mask className="min-h-[320px] rounded-panel lg:order-2">
-            <ImageSlot cover alt="Design and material selection for a bathroom remodel" label="/images/elite-design-consultation.jpg" />
+            <ImageSlot
+              cover
+              src="/images/process/elite-design-consultation.jpg"
+              alt="Design and material selection for a bathroom remodel"
+              label="/images/process/elite-design-consultation.jpg"
+            />
           </Reveal>
           <Reveal className="lg:order-1">
             <Eyebrow>Design &amp; Material Planning</Eyebrow>

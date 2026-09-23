@@ -20,7 +20,8 @@ export default function ProjectsPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "Projects" }]}
         title="Bathrooms we've actually built."
         description="No stock photography, no AI renders. Every project here is a completed Elite Bathrooms job."
-        imageLabel="/images/projects-hero.jpg"
+        imageSrc="/images/projects/luxury-bathroom-renovation-01.jpg"
+        imageLabel="/images/projects/luxury-bathroom-renovation-01.jpg"
         imageAlt="Completed Elite Bathrooms project"
       />
 

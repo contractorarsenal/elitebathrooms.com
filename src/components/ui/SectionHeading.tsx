@@ -28,6 +28,9 @@ export function Eyebrow({
  * description each fade/rise in on their own stagger, driven by a single
  * IntersectionObserver (see useReveal). Callers should NOT wrap this in an
  * outer <Reveal> — that would double-animate it.
+ *
+ * The headline is intentionally NOT width-constrained (large type needs
+ * room to breathe); only the description gets a readable measure.
  */
 export function SectionHeading({
   eyebrow,
@@ -48,10 +51,7 @@ export function SectionHeading({
   const inAttr = shown ? "in" : undefined;
 
   return (
-    <div
-      ref={ref}
-      className={`${align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"} ${className}`}
-    >
+    <div ref={ref} className={`${align === "center" ? "mx-auto text-center" : ""} ${className}`}>
       {eyebrow && (
         <div data-reveal={inAttr}>
           <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
@@ -60,9 +60,9 @@ export function SectionHeading({
       <h2
         data-reveal={inAttr}
         style={{ "--reveal-delay": "80ms" } as CSSProperties}
-        className={`mt-3 text-3xl font-extrabold leading-[1.05] sm:text-4xl md:text-[2.75rem] ${
-          tone === "dark" ? "text-warm-50" : "text-charcoal-950"
-        }`}
+        className={`mt-3 max-w-3xl text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl ${
+          align === "center" ? "mx-auto" : ""
+        } ${tone === "dark" ? "text-warm-50" : "text-charcoal-950"}`}
       >
         {title}
       </h2>
@@ -70,9 +70,9 @@ export function SectionHeading({
         <p
           data-reveal={inAttr}
           style={{ "--reveal-delay": "160ms" } as CSSProperties}
-          className={`mt-4 text-base leading-relaxed sm:text-lg ${
-            tone === "dark" ? "text-ink-on-dark-muted" : "text-ink-muted"
-          }`}
+          className={`mt-4 max-w-[38rem] text-lg leading-relaxed sm:text-xl ${
+            align === "center" ? "mx-auto" : ""
+          } ${tone === "dark" ? "text-ink-on-dark-muted" : "text-ink-muted"}`}
         >
           {description}
         </p>

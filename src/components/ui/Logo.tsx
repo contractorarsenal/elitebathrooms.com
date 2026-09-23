@@ -1,21 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// TODO: swap to the real PNG once supplied: /images/brand/elite-bathrooms-logo.png
-const LOGO_SRC = "/images/brand/elite-bathrooms-logo-placeholder.svg";
+// Real Elite Bathrooms logomark, migrated from elitebathrooms.com. This is
+// the icon only (no wordmark baked in), so it's paired with a text label
+// rather than recreating the whole brand mark in CSS. Swap ICON_SRC for a
+// full lockup PNG if the client supplies one later.
+const ICON_SRC = "/images/brand/elite-logomark.png";
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <Link href="/" aria-label="Elite Bathrooms home" className={`block ${className}`}>
+    <Link
+      href="/"
+      aria-label="Elite Bathrooms home"
+      className={`flex shrink-0 items-center gap-2.5 ${className}`}
+    >
       <Image
-        src={LOGO_SRC}
-        alt="Elite Bathrooms"
-        width={200}
-        height={46}
-        className="h-9 w-auto sm:h-10"
+        src={ICON_SRC}
+        alt=""
+        width={700}
+        height={716}
         priority
-        unoptimized
+        className="h-10 w-auto sm:h-12"
       />
+      <span className="font-heading text-lg font-extrabold uppercase leading-none tracking-tight text-warm-50 sm:text-xl">
+        Elite
+        <br />
+        <span className="text-bronze-400">Bathrooms</span>
+      </span>
     </Link>
   );
 }

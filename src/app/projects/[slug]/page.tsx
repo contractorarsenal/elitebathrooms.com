@@ -41,12 +41,6 @@ export default async function ProjectPage({ params }: Props) {
   const index = projects.findIndex((p) => p.slug === project.slug);
   const nextProject = projects[(index + 1) % projects.length];
 
-  // Additional angles are reserved gallery slots, not a claim that these
-  // exact photos exist yet — see PHOTOGRAPHY SYSTEM in the build spec.
-  const galleryLabels = [1, 2, 3].map(
-    (n) => `/images/${project.slug}-${String(n).padStart(2, "0")}.jpg`
-  );
-
   return (
     <main>
       <PageHero
@@ -56,6 +50,7 @@ export default async function ProjectPage({ params }: Props) {
           { name: project.title },
         ]}
         title={project.title}
+        imageSrc={project.image}
         imageLabel={project.image}
         imageAlt={`${project.title}: completed Elite Bathrooms project`}
       />
@@ -84,9 +79,9 @@ export default async function ProjectPage({ params }: Props) {
       <section className="bg-warm-50 pb-20 sm:pb-28">
         <Container>
           <div className="grid gap-4 sm:grid-cols-3">
-            {galleryLabels.map((label, i) => (
-              <Reveal key={label} mask delay={i * 100} className="aspect-[4/5] rounded-card">
-                <ImageSlot cover alt={`${project.title}: additional photo`} label={label} />
+            {project.gallery.map((src, i) => (
+              <Reveal key={src} mask delay={i * 100} className="aspect-[4/5] rounded-card">
+                <ImageSlot cover src={src} alt={`${project.title}: additional photo`} label={src} />
               </Reveal>
             ))}
           </div>

@@ -59,9 +59,9 @@ export function Testimonials() {
           </Reveal>
         ) : (
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            <Reveal className="flex flex-col justify-center gap-5 rounded-panel border border-line bg-warm-50 p-8 sm:p-10">
+            <Reveal className="flex flex-col justify-center gap-6 rounded-panel border border-line bg-warm-50 p-9 sm:p-12">
               <Stars rating={featured.rating} />
-              <blockquote className="text-xl font-semibold leading-snug text-charcoal-950 sm:text-2xl">
+              <blockquote className="text-2xl font-semibold leading-snug tracking-tight text-charcoal-950 sm:text-[2rem]">
                 &ldquo;{featured.quote}&rdquo;
               </blockquote>
               <span className="text-sm font-bold uppercase tracking-[0.06em] text-ink-muted">

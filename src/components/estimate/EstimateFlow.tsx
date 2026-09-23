@@ -29,9 +29,9 @@ function StepShell({
 }) {
   return (
     <div key={title} className="step-transition">
-      <h2 className="text-2xl font-extrabold text-charcoal-950 sm:text-3xl">{title}</h2>
-      {description && <p className="mt-2 text-sm text-ink-muted sm:text-base">{description}</p>}
-      <div className="mt-6">{children}</div>
+      <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-charcoal-950 sm:text-4xl">{title}</h2>
+      {description && <p className="mt-3 text-base text-ink-muted sm:text-lg">{description}</p>}
+      <div className="mt-8">{children}</div>
     </div>
   );
 }
@@ -134,7 +134,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
     "min-h-11 rounded-btn border border-line bg-warm-50 px-4 text-sm text-ink placeholder:text-ink-muted focus:border-bronze-500 focus:outline-none";
 
   return (
-    <div className="mx-auto max-w-xl rounded-panel border border-line bg-warm-100 p-6 sm:p-10">
+    <div className="mx-auto max-w-2xl rounded-panel border border-line bg-warm-100 p-7 sm:p-12">
       <Stepper step={step} />
 
       {step === 0 && (

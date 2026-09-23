@@ -23,7 +23,8 @@ export function AreaDetail({ area }: { area: Area }) {
         ]}
         title={`Bathroom Remodeling in ${area.name}, WA`}
         description={area.blurb}
-        imageLabel="/images/elite-crew-planning.jpg"
+        imageSrc="/images/team/elite-crew-planning.jpg"
+        imageLabel="/images/team/elite-crew-planning.jpg"
         imageAlt={`Elite Bathrooms crew serving ${area.name}, WA`}
       />
 

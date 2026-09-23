@@ -24,6 +24,7 @@ export function ProjectCard({
           <Reveal mask className="aspect-[16/11]">
             <ImageSlot
               cover
+              src={project.image}
               alt={`${project.title}: completed Elite Bathrooms project`}
               label={project.image}
               className="transition-transform duration-500 ease-out group-hover:scale-[1.025]"
@@ -33,6 +34,7 @@ export function ProjectCard({
           <div className="relative aspect-[16/10] overflow-hidden">
             <ImageSlot
               cover
+              src={project.image}
               alt={`${project.title}: completed Elite Bathrooms project`}
               label={project.image}
               className="transition-transform duration-500 ease-out group-hover:scale-[1.025]"

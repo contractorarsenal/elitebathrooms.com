@@ -29,15 +29,16 @@ export function EstimateTeaser() {
       <Container>
         <Reveal className="grid items-center gap-10 overflow-hidden rounded-panel border border-line bg-warm-100 p-6 sm:p-10 lg:grid-cols-[0.9fr,1.1fr] lg:gap-16 lg:p-12">
           <ImageSlot
+            src="/images/team/elite-team-portrait.jpg"
             alt="Elite Bathrooms team member ready to help with your estimate"
             aspectRatio="4/5"
-            label="/images/elite-contact-team-member.jpg"
+            label="/images/team/elite-team-portrait.jpg"
             className="rounded-card"
           />
 
           <div>
             <Eyebrow>Get Started</Eyebrow>
-            <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] text-charcoal-950 sm:text-4xl">
+            <h2 className="mt-3 text-4xl font-extrabold leading-[1.03] tracking-tight text-charcoal-950 sm:text-5xl">
               Let&rsquo;s talk about your bathroom.
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">

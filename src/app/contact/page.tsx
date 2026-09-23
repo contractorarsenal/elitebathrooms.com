@@ -19,22 +19,23 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-20">
+    <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-24">
       <JsonLd data={localBusinessSchema()} />
 
       <div className="border-b border-line bg-charcoal-950 py-14 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[1fr,1.2fr] lg:items-center lg:gap-16">
-          <Reveal>
+          <Reveal mask className="aspect-[4/5] rounded-panel">
             <ImageSlot
+              cover
+              src="/images/team/elite-consultation-alt.jpg"
               alt="Elite Bathrooms team member ready to help"
-              aspectRatio="4/5"
-              label="/images/elite-contact-team-member.jpg"
+              label="/images/team/elite-consultation-alt.jpg"
             />
           </Reveal>
 
           <Reveal>
             <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Contact" }]} tone="dark" />
-            <h1 className="mt-4 max-w-md text-3xl font-extrabold leading-[1.05] text-warm-50 sm:text-5xl">
+            <h1 className="mt-4 max-w-md text-4xl font-extrabold leading-[1.02] tracking-tight text-warm-50 sm:text-6xl">
               Let&rsquo;s talk about your bathroom.
             </h1>
 

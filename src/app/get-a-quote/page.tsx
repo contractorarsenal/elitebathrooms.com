@@ -30,7 +30,7 @@ export default async function GetAQuotePage({ searchParams }: Props) {
   };
 
   return (
-    <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-20">
+    <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-24">
       <JsonLd data={localBusinessSchema()} />
       <div className="border-b border-line bg-charcoal-950 py-14 sm:py-20">
         <Container>
@@ -38,10 +38,10 @@ export default async function GetAQuotePage({ searchParams }: Props) {
             items={[{ name: "Home", href: "/" }, { name: "Get a Quote" }]}
             tone="dark"
           />
-          <h1 className="mt-4 max-w-xl text-3xl font-extrabold leading-[1.05] text-warm-50 sm:text-5xl">
+          <h1 className="mt-4 max-w-xl text-4xl font-extrabold leading-[1.02] tracking-tight text-warm-50 sm:text-6xl">
             Request Your Estimate
           </h1>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-on-dark-muted sm:text-base">
+          <p className="mt-4 max-w-md text-base leading-relaxed text-ink-on-dark-muted sm:text-lg">
             Five quick questions, then we&rsquo;ll follow up to schedule your consultation.
           </p>
         </Container>

@@ -21,7 +21,7 @@ export function OptionGrid<T extends string>({
             type="button"
             onClick={() => onChange(option.value)}
             aria-pressed={active}
-            className={`flex min-h-14 items-center justify-between gap-2 rounded-card border px-4 py-3 text-left text-sm font-semibold transition-all duration-150 ${
+            className={`flex min-h-16 items-center justify-between gap-2 rounded-card border px-5 py-4 text-left text-base font-semibold transition-all duration-150 ${
               active
                 ? "border-bronze-500 bg-bronze-500/10 text-charcoal-950 shadow-[0_2px_10px_-2px_rgba(175,124,69,0.35)]"
                 : "border-line bg-warm-50 text-ink hover:border-charcoal-950/30"

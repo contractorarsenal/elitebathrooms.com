@@ -59,7 +59,8 @@ export default function TacomaPage() {
         crumbs={[{ name: "Home", href: "/" }, { name: "Areas We Serve", href: "/areas-we-serve" }, { name: "Tacoma" }]}
         title="Bathroom Remodeling in Tacoma, WA"
         description="Tacoma-based bathroom remodeling specialists: full remodels, shower remodels, and tub-to-shower conversions."
-        imageLabel="/images/elite-team-hero.jpg"
+        imageSrc="/images/team/elite-team-hero.jpg"
+        imageLabel="/images/team/elite-team-hero.jpg"
         imageAlt="Elite Bathrooms crew and work vans, Tacoma"
       />
 
@@ -80,7 +81,12 @@ export default function TacomaPage() {
             </p>
           </Reveal>
           <Reveal delay={80} mask className="min-h-[320px] rounded-panel">
-            <ImageSlot cover alt="Elite Bathrooms crew reviewing project plans" label="/images/elite-crew-planning.jpg" />
+            <ImageSlot
+              cover
+              src="/images/team/elite-crew-planning.jpg"
+              alt="Elite Bathrooms crew reviewing project plans"
+              label="/images/team/elite-crew-planning.jpg"
+            />
           </Reveal>
         </Container>
       </section>
