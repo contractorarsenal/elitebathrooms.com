@@ -16,7 +16,7 @@ export const processSteps = [
   {
     number: "03",
     title: "Construction",
-    description: "Demolition, waterproofing, tile, plumbing, and electrical — one crew, start to finish.",
+    description: "Demolition, waterproofing, tile, plumbing, and electrical: one crew, start to finish.",
     image: "/images/elite-installation.jpg",
     alt: "Elite Bathrooms installer at work on a bathroom wall",
   },

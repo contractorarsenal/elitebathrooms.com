@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
-import { CtaBanner } from "@/components/sections/CtaBanner";
+import { NextStepCTA } from "@/components/sections/NextStepCTA";
 import { areas } from "@/data/areas";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -47,7 +47,7 @@ export default function AreasWeServePage() {
         </Container>
       </section>
 
-      <CtaBanner />
+      <NextStepCTA variant="banner" />
     </main>
   );
 }

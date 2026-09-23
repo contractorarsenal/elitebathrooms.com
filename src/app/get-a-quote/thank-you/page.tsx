@@ -16,7 +16,7 @@ export default function ThankYouPage() {
           Request Received
         </span>
         <h1 className="mt-3 text-3xl font-extrabold text-charcoal-950 sm:text-4xl">
-          Thanks — we&rsquo;ll be in touch shortly.
+          Thanks. We&rsquo;ll be in touch shortly.
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink-muted">
           A member of our Tacoma team will follow up to schedule your consultation. If it&rsquo;s

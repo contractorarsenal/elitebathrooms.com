@@ -34,19 +34,24 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-transparent to-transparent" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 pb-14 pt-36 sm:px-8 sm:pb-20 lg:pb-24">
-        <Reveal>
+        <Reveal duration={600}>
           <span className="text-xs font-bold uppercase tracking-[0.18em] text-bronze-400">
             Tacoma &amp; Puget Sound Bathroom Specialists
           </span>
+        </Reveal>
+        <Reveal duration={600} delay={90}>
           <h1 className="mt-4 max-w-xl text-[2.5rem] font-extrabold leading-[1.02] text-warm-50 sm:text-6xl lg:text-[4rem]">
             Bathroom remodeling <span className="text-bronze-400">built right.</span>
           </h1>
+        </Reveal>
+        <Reveal duration={600} delay={180}>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-ink-on-dark-muted sm:text-lg">
-            Elite Bathrooms specializes exclusively in bathrooms — design, waterproofing, tile,
+            Elite Bathrooms specializes exclusively in bathrooms: design, waterproofing, tile,
             plumbing, electrical, and finish work, coordinated as one project from first
             consultation to final walkthrough.
           </p>
-
+        </Reveal>
+        <Reveal duration={600} delay={270}>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/get-a-quote" variant="primary">
               Request Estimate
@@ -55,7 +60,8 @@ export function Hero() {
               View Projects
             </Button>
           </div>
-
+        </Reveal>
+        <Reveal duration={600} delay={360}>
           <ul className="mt-9 flex flex-col gap-3 border-t border-warm-50/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
             {trust.map((item) => (
               <li key={item.label} className="flex items-center gap-2 text-sm font-semibold text-warm-50/90">

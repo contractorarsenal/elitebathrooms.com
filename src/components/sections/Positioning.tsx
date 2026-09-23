@@ -5,14 +5,14 @@ import { CheckIcon, CompassIcon, DropletIcon, GridIcon, BoltIcon, PaneIcon } fro
 
 const points = [
   "Design, waterproofing, tile, plumbing, electrical, and finish work coordinated as one project",
-  "No hand-off gaps — the people who plan the project stay accountable for how it's built",
+  "No hand-off gaps: the people who plan the project stay accountable for how it's built",
   "Every bathroom backed by a 10-year waterproofing warranty",
 ];
 
 const capabilities = [
   { icon: CompassIcon, label: "Design", description: "Layout, materials, and fixtures planned before demolition starts." },
   { icon: DropletIcon, label: "Waterproofing", description: "Every wet area gets a fully sealed pan and wall assembly." },
-  { icon: GridIcon, label: "Tile", description: "Floors, walls, showers, and niches — set true, sealed right." },
+  { icon: GridIcon, label: "Tile", description: "Floors, walls, showers, and niches, set true, sealed right." },
   { icon: BoltIcon, label: "Plumbing & Electrical", description: "Rough-in and finish work coordinated within the same project." },
   { icon: PaneIcon, label: "Glass & Finishes", description: "Custom glass, vanities, and lighting to complete the room." },
 ];
@@ -21,7 +21,7 @@ export function Positioning() {
   return (
     <section id="about" className="bg-warm-50 py-20 sm:py-28">
       <Container className="grid gap-5 lg:grid-cols-5">
-        <Reveal className="flex flex-col justify-center rounded-panel border border-line bg-warm-100 p-8 lg:col-span-2 lg:p-10">
+        <Reveal scale className="flex flex-col justify-center rounded-panel border border-line bg-warm-100 p-8 lg:col-span-2 lg:p-10">
           <Eyebrow>Why Elite</Eyebrow>
           <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] text-charcoal-950 sm:text-4xl">
             We don&rsquo;t remodel everything.
@@ -48,6 +48,7 @@ export function Positioning() {
           {capabilities.map((cap, i) => (
             <Reveal
               key={cap.label}
+              scale
               delay={i * 70}
               className={i === capabilities.length - 1 ? "col-span-2" : ""}
             >

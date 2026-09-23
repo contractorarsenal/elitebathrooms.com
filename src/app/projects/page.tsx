@@ -9,7 +9,7 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Bathroom Remodeling Projects",
   description:
-    "Completed bathroom remodeling projects from Elite Bathrooms — full remodels, shower remodels, and conversions in Tacoma and the greater Seattle area.",
+    "Completed bathroom remodeling projects from Elite Bathrooms: full remodels, shower remodels, and conversions in Tacoma and the greater Seattle area.",
   alternates: { canonical: absoluteUrl("/projects") },
 };
 
@@ -19,7 +19,7 @@ export default function ProjectsPage() {
       <PageHero
         crumbs={[{ name: "Home", href: "/" }, { name: "Projects" }]}
         title="Bathrooms we've actually built."
-        description="No stock photography, no AI renders — every project here is a completed Elite Bathrooms job."
+        description="No stock photography, no AI renders. Every project here is a completed Elite Bathrooms job."
         imageLabel="/images/projects-hero.jpg"
         imageAlt="Completed Elite Bathrooms project"
       />

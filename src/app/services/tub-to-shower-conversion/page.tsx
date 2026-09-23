@@ -8,7 +8,7 @@ const service = getServiceBySlug("tub-to-shower-conversion")!;
 export const metadata: Metadata = {
   title: "Tub-to-Shower Conversion in Tacoma",
   description:
-    "Fast, clean tub-to-shower conversions in Tacoma and the greater Seattle area — properly waterproofed, without a full gut remodel.",
+    "Fast, clean tub-to-shower conversions in Tacoma and the greater Seattle area, properly waterproofed, without a full gut remodel.",
   alternates: { canonical: absoluteUrl("/services/tub-to-shower-conversion") },
 };
 

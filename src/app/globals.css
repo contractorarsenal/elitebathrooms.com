@@ -79,17 +79,92 @@ h1, h2, h3, h4 {
 }
 
 /* Entrance animation: opacity + 12px translateY, runs once, respects reduced motion.
-   --reveal-delay lets callers stagger a group (Bento grids) without a JS timeline. */
+   --reveal-delay/--reveal-duration let callers stagger a group (Bento grids, a
+   staggered hero) without a JS timeline. .reveal-scale adds a very slight
+   .985→1 scale-in, reserved for Bento tiles. */
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal] {
     opacity: 0;
     transform: translateY(12px);
-    transition: opacity 450ms ease-out, transform 450ms ease-out;
+    transition: opacity var(--reveal-duration, 450ms) ease-out, transform var(--reveal-duration, 450ms) ease-out;
     transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal].reveal-scale {
+    transform: translateY(12px) scale(0.985);
   }
   [data-reveal="in"] {
     opacity: 1;
     transform: translateY(0);
+  }
+  [data-reveal="in"].reveal-scale {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header settles in subtly on initial load only (root layout keeps Header
+   mounted across client-side navigation, so this never replays on route change). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes header-settle {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .header-settle {
+    animation: header-settle 500ms ease-out;
+  }
+}
+
+/* Sequential child reveal: mark descendants of a single [data-reveal] block
+   as .stagger-item to fade/rise them independently once the shared ancestor
+   observer fires — used for Process steps so they reveal one after another
+   without needing a separate observer per item. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] .stagger-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 450ms ease-out, transform 450ms ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal="in"] .stagger-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Draw-in accent lines (process connectors, number underlines). Placed as a
+   child of a [data-reveal] block so the same IntersectionObserver trigger
+   drives both. Default state is already fully drawn for reduced-motion. */
+.draw-line {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.draw-line-y {
+  transform: scaleY(1);
+  transform-origin: top;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .draw-line,
+  .draw-line-y {
+    transform: scaleX(0);
+  }
+  .draw-line-y {
+    transform: scaleY(0);
+  }
+  [data-reveal="in"] .draw-line,
+  [data-reveal="in"] .draw-line-y {
+    transition: transform 650ms ease-out;
+    transition-delay: calc(var(--reveal-delay, 0ms) + 150ms);
+  }
+  [data-reveal="in"] .draw-line {
+    transform: scaleX(1);
+  }
+  [data-reveal="in"] .draw-line-y {
+    transform: scaleY(1);
   }
 }
 
@@ -107,6 +182,23 @@ h1, h2, h3, h4 {
   }
   .mask-panel[data-mask="in"] {
     transform: scaleX(0);
+  }
+}
+
+/* Before/after handle hint — nudges 8px and returns, once, the first time the
+   slider scrolls into view (driven by the same ancestor [data-reveal="in"]). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes handle-hint {
+    0%,
+    100% {
+      transform: translate(-50%, -50%);
+    }
+    50% {
+      transform: translate(calc(-50% + 8px), -50%);
+    }
+  }
+  [data-reveal="in"] .handle-hint {
+    animation: handle-hint 900ms ease-in-out 700ms 1;
   }
 }
 
@@ -132,7 +224,7 @@ h1, h2, h3, h4 {
   opacity: 0;
   transform: translateY(6px);
   pointer-events: none;
-  transition: opacity 160ms ease-out, transform 160ms ease-out;
+  transition: opacity 280ms ease-out, transform 280ms ease-out;
 }
 .group:hover .nav-dropdown,
 .group:focus-within .nav-dropdown {

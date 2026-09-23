@@ -12,7 +12,7 @@ function DevPlaceholder() {
       data-dev-placeholder="testimonials"
     >
       <p className="text-sm font-bold uppercase tracking-[0.1em] text-charcoal-950/50">
-        Developer placeholder — not for production
+        Developer placeholder: not for production
       </p>
       <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-ink-muted">
         Real reviews exist on Google, but exact verbatim text hasn&rsquo;t been collected yet.
@@ -39,16 +39,19 @@ export function Testimonials() {
   return (
     <section className="bg-warm-100 py-20 sm:py-28">
       <Container>
-        <Reveal className="flex flex-col items-center gap-3 text-center">
+        <div className="flex flex-col items-center gap-3 text-center">
           <SectionHeading eyebrow="Reviews" title="What homeowners say." align="center" />
-          <div className="flex items-center gap-2">
-            <Stars rating={5} />
-            <span className="text-sm font-bold text-charcoal-950">
-              {siteConfig.reviews.rating.toFixed(1)} on {siteConfig.reviews.source}
-            </span>
-            <span className="text-sm text-ink-muted">({siteConfig.reviews.count} reviews)</span>
-          </div>
-        </Reveal>
+          <Reveal delay={220} className="flex flex-col items-center gap-2">
+            <div className="flex items-center gap-2">
+              <Stars rating={5} />
+              <span className="text-sm font-bold text-charcoal-950">
+                {siteConfig.reviews.rating.toFixed(1)} on {siteConfig.reviews.source}
+              </span>
+              <span className="text-sm text-ink-muted">({siteConfig.reviews.count} reviews)</span>
+            </div>
+            <span className="draw-line h-px w-16 bg-bronze-400" aria-hidden="true" />
+          </Reveal>
+        </div>
 
         {testimonials.length === 0 ? (
           <Reveal className="mt-10">

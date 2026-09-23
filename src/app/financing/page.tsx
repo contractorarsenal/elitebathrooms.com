@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/sections/PageHero";
-import { CtaBanner } from "@/components/sections/CtaBanner";
+import { NextStepCTA } from "@/components/sections/NextStepCTA";
 import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -28,8 +28,8 @@ export default function FinancingPage() {
           <Reveal>
             <p className="text-lg leading-relaxed text-ink-muted">
               We offer financing options for qualifying bathroom remodeling projects. Every
-              household&rsquo;s situation is different, so the specifics — rates, terms, and
-              qualification — are best discussed directly during your consultation rather than
+              household&rsquo;s situation is different, so the specifics (rates, terms, and
+              qualification) are best discussed directly during your consultation rather than
               quoted generically here.
             </p>
             <Button href="/get-a-quote" variant="primary" className="mt-8">
@@ -39,10 +39,7 @@ export default function FinancingPage() {
         </Container>
       </section>
 
-      <CtaBanner
-        title="Ready to talk through your options?"
-        description="Tell us about your project and we'll cover financing as part of your consultation."
-      />
+      <NextStepCTA variant="compact" heading="Ready to talk through your options?" />
     </main>
   );
 }

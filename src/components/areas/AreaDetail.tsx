@@ -7,7 +7,7 @@ import { PageHero } from "../sections/PageHero";
 import { WaterproofingBanner } from "../sections/WaterproofingBanner";
 import { FaqAccordion } from "../sections/FaqAccordion";
 import { ServiceAreaLinks } from "../sections/ServiceAreaLinks";
-import { CtaBanner } from "../sections/CtaBanner";
+import { NextStepCTA } from "../sections/NextStepCTA";
 import { services } from "@/data/services";
 import { areaFaqs, type Area } from "@/data/areas";
 import { siteConfig } from "@/lib/site-config";
@@ -36,7 +36,7 @@ export function AreaDetail({ area }: { area: Area }) {
               </span>
               <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
                 Our office is at {siteConfig.address.street}, {siteConfig.address.city},{" "}
-                {siteConfig.address.state} {siteConfig.address.zip} — most projects, and most of
+                {siteConfig.address.state} {siteConfig.address.zip}. Most projects, and most of
                 our crews, start their day here.
               </p>
             </Reveal>
@@ -46,12 +46,10 @@ export function AreaDetail({ area }: { area: Area }) {
 
       <section className="bg-warm-50 py-20 sm:py-28">
         <Container>
-          <Reveal>
-            <SectionHeading
+          <SectionHeading
               eyebrow="Services"
               title={`Bathroom services available in ${area.name}`}
             />
-          </Reveal>
           <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <Link
@@ -76,10 +74,7 @@ export function AreaDetail({ area }: { area: Area }) {
       <WaterproofingBanner />
       <FaqAccordion faqs={areaFaqs} title={`${area.name} Bathroom Remodeling FAQ`} />
       <ServiceAreaLinks exceptSlug={area.slug} />
-      <CtaBanner
-        title={`Ready to start your ${area.name} bathroom project?`}
-        description="Tell us about your project and we'll follow up to schedule a consultation."
-      />
+      <NextStepCTA variant="split" heading={`Ready to start your ${area.name} bathroom project?`} />
     </main>
   );
 }

@@ -22,6 +22,6 @@ export async function submitLead(payload: Lead): Promise<SubmitResult> {
 
     return { ok: true };
   } catch {
-    return { ok: false, error: "Network error — please check your connection and try again." };
+    return { ok: false, error: "Network error. Please check your connection and try again." };
   }
 }

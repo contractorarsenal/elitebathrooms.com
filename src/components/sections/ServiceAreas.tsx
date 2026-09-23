@@ -11,13 +11,11 @@ export function ServiceAreas() {
   return (
     <section id="areas" className="bg-charcoal-950 py-20 sm:py-28">
       <Container>
-        <Reveal>
-          <SectionHeading
+        <SectionHeading
             eyebrow="Service Areas"
             title="Tacoma-based. Working across the South Sound and greater Seattle."
             tone="dark"
           />
-        </Reveal>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
           <Reveal className="lg:col-span-1">

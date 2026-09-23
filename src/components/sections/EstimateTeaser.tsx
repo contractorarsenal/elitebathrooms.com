@@ -42,7 +42,7 @@ export function EstimateTeaser() {
             </h2>
             <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
               Tell us a little about your project and we&rsquo;ll follow up to schedule a
-              consultation — no pressure, no obligation.
+              consultation. No pressure, no obligation.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 grid gap-4 sm:grid-cols-2">

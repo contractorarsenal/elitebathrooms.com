@@ -13,7 +13,7 @@ export const areas: Area[] = [
     name: "Tacoma",
     primary: true,
     blurb:
-      "Tacoma is home base — our office is at 415 St Helens Ave, and it's where most of our crews start their day.",
+      "Tacoma is home base. Our office is at 415 St Helens Ave, and it's where most of our crews start their day.",
   },
   {
     slug: "seattle",
@@ -61,12 +61,12 @@ export const areaFaqs = [
   {
     question: "Do you handle permits?",
     answer:
-      "Yes — permitting requirements vary by city and by scope of work, and we handle that as part of the project rather than leaving it to the homeowner.",
+      "Yes. Permitting requirements vary by city and by scope of work, and we handle that as part of the project rather than leaving it to the homeowner.",
   },
   {
     question: "How long does a bathroom remodel take?",
     answer:
-      "It depends on scope — a tub-to-shower conversion moves much faster than a full gut remodel. We'll give you a realistic timeline during your consultation once we know what the project actually involves.",
+      "It depends on scope. A tub-to-shower conversion moves much faster than a full gut remodel. We'll give you a realistic timeline during your consultation once we know what the project actually involves.",
   },
   {
     question: "Do I need to move out during the project?",

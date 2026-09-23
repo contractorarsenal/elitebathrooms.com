@@ -14,13 +14,13 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Bathroom Remodeling Services",
   description:
-    "Full bathroom remodels, shower remodels, bathtub remodels, tub-to-shower conversions, and one-day renovations — Tacoma-based, backed by a 10-year waterproofing warranty.",
+    "Full bathroom remodels, shower remodels, bathtub remodels, tub-to-shower conversions, and one-day renovations. Tacoma-based, backed by a 10-year waterproofing warranty.",
   alternates: { canonical: absoluteUrl("/services") },
 };
 
 function LargeCell({ service }: { service: Service }) {
   return (
-    <Reveal className="lg:col-span-2 lg:row-span-2">
+    <Reveal scale className="lg:col-span-2 lg:row-span-2">
       <Link
         href={`/services/${service.slug}`}
         className="group relative flex h-full min-h-[380px] flex-col justify-end overflow-hidden rounded-panel"
@@ -43,7 +43,7 @@ function LargeCell({ service }: { service: Service }) {
 
 function Cell({ service, delay = 0 }: { service: Service; delay?: number }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal scale delay={delay}>
       <Link href={`/services/${service.slug}`} className="group relative flex h-full min-h-[180px] flex-col justify-end overflow-hidden rounded-card">
         <ImageSlot cover alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} className="transition-transform duration-500 ease-out group-hover:scale-[1.04]" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/25 to-transparent" />

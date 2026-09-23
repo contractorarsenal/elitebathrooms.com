@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { ImageSlot } from "@/components/ui/ImageSlot";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
@@ -18,14 +20,14 @@ const service = getServiceBySlug("full-bathroom-remodel")!;
 export const metadata: Metadata = {
   title: "Full Bathroom Remodeling in Tacoma",
   description:
-    "Elite Bathrooms builds full bathroom remodels in Tacoma and the greater Seattle area from the studs out — design, waterproofing, tile, plumbing, electrical, and finish work, backed by a 10-year waterproofing warranty.",
+    "Elite Bathrooms builds full bathroom remodels in Tacoma and the greater Seattle area from the studs out: design, waterproofing, tile, plumbing, electrical, and finish work, backed by a 10-year waterproofing warranty.",
   alternates: { canonical: absoluteUrl("/services/full-bathroom-remodel") },
 };
 
 const capabilities = [
   { icon: CompassIcon, label: "Design", description: "Layout, materials, and fixtures planned before demolition starts." },
   { icon: DropletIcon, label: "Waterproofing", description: "Every wet area gets a fully sealed pan and wall assembly." },
-  { icon: GridIcon, label: "Tile", description: "Floors, walls, showers, and niches — set true, sealed right." },
+  { icon: GridIcon, label: "Tile", description: "Floors, walls, showers, and niches, set true, sealed right." },
   { icon: BoltIcon, label: "Plumbing & Electrical", description: "Rough-in and finish work coordinated within the same project." },
   { icon: PaneIcon, label: "Glass & Finishes", description: "Custom glass, vanities, and lighting to complete the room." },
 ];
@@ -43,16 +45,16 @@ const faqs = [
   {
     question: "What does a full bathroom remodel in Tacoma typically involve?",
     answer:
-      "A full remodel means rebuilding the room from the studs out — demolition, waterproofing, tile, plumbing, electrical, and finish work — rather than working around what's already there. Scope varies by project, which is why we start with a consultation.",
+      "A full remodel means rebuilding the room from the studs out: demolition, waterproofing, tile, plumbing, electrical, and finish work, rather than working around what's already there. Scope varies by project, which is why we start with a consultation.",
   },
   {
     question: "How much does a full bathroom remodel cost?",
     answer:
-      "It depends on scope, materials, and layout changes. Our estimate process qualifies projects into ranges — $10K–$20K, $20K–$35K, $35K–$50K, and $50K+ — so you get a realistic starting point before a full consultation.",
+      "It depends on scope, materials, and layout changes. Our estimate process qualifies projects into ranges ($10K to $20K, $20K to $35K, $35K to $50K, and $50K+), so you get a realistic starting point before a full consultation.",
   },
   {
     question: "Is the waterproofing warranty included?",
-    answer: "Yes — every full bathroom remodel is backed by our 10-year waterproofing warranty against leaks.",
+    answer: "Yes, every full bathroom remodel is backed by our 10-year waterproofing warranty against leaks.",
   },
   {
     question: "Do you handle permits for a full remodel?",
@@ -84,6 +86,38 @@ export default function FullBathroomRemodelPage() {
               {s}
             </span>
           ))}
+        </Container>
+      </section>
+
+      {/* Is this right for you? */}
+      <section className="bg-charcoal-950 py-16 sm:py-20">
+        <Container className="grid gap-8 lg:grid-cols-[1fr,auto] lg:items-center lg:gap-16">
+          <Reveal>
+            <Eyebrow tone="dark">Is This Right For You?</Eyebrow>
+            <h2 className="mt-3 text-2xl font-extrabold leading-tight text-warm-50 sm:text-3xl">
+              Is a full bathroom remodel right for you?
+            </h2>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                "Your layout no longer works",
+                "You want to replace most or all finishes",
+                "Plumbing or electrical upgrades are part of the project",
+                "You want a fully coordinated renovation",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-sm text-ink-on-dark-muted sm:text-base">
+                  <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-bronze-400" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal delay={120} className="shrink-0 border-t border-charcoal-700 pt-6 lg:border-t-0 lg:border-l lg:pl-10 lg:pt-0">
+            <p className="text-sm font-semibold text-ink-on-dark-muted">Not sure?</p>
+            <p className="mt-1 text-sm text-ink-on-dark-muted">Talk to our team.</p>
+            <Button href="/get-a-quote" variant="primary" className="mt-4">
+              Request an Estimate
+            </Button>
+          </Reveal>
         </Container>
       </section>
 
@@ -122,12 +156,14 @@ export default function FullBathroomRemodelPage() {
       {/* 5. Bento capabilities grid */}
       <section className="bg-warm-100 py-20 sm:py-28">
         <Container>
-          <Reveal>
-            <SectionHeading eyebrow="Capabilities" title="One project, every trade." align="center" />
-          </Reveal>
+          <SectionHeading eyebrow="Capabilities" title="One project, every trade." align="center" />
           <Reveal className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {capabilities.map((cap, i) => (
-              <div key={cap.label} className="flex flex-col gap-3 rounded-card border border-line bg-warm-50 p-6" style={i ? { transitionDelay: `${i * 60}ms` } : undefined}>
+              <div
+                key={cap.label}
+                className="stagger-item flex flex-col gap-3 rounded-card border border-line bg-warm-50 p-6"
+                style={{ "--reveal-delay": `${i * 70}ms` } as CSSProperties}
+              >
                 <cap.icon className="h-6 w-6 text-bronze-500" />
                 <h3 className="font-heading text-sm font-extrabold text-charcoal-950">{cap.label}</h3>
                 <p className="text-sm leading-relaxed text-ink-muted">{cap.description}</p>
@@ -152,7 +188,7 @@ export default function FullBathroomRemodelPage() {
               Decided before demolition, not during it.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-muted">
-              Layout, tile, fixtures, and glass get finalized during design — so once demolition
+              Layout, tile, fixtures, and glass get finalized during design, so once demolition
               starts, the plan is already set. That&rsquo;s what keeps a full remodel on schedule.
             </p>
           </Reveal>
@@ -162,16 +198,18 @@ export default function FullBathroomRemodelPage() {
       {/* 8. Process */}
       <section className="bg-warm-100 py-20 sm:py-28">
         <Container>
-          <Reveal>
-            <SectionHeading
+          <SectionHeading
               eyebrow="How It Works"
               title="Six steps, one project, start to finish."
-              description="No hand-off gaps — the people who plan your remodel stay accountable for how it's built."
+              description="No hand-off gaps: the people who plan your remodel stay accountable for how it's built."
             />
-          </Reveal>
           <Reveal className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {processSteps.map((step, i) => (
-              <div key={step.title} className="rounded-card border border-line bg-warm-50 p-6">
+              <div
+                key={step.title}
+                className="stagger-item rounded-card border border-line bg-warm-50 p-6"
+                style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties}
+              >
                 <span className="font-heading text-sm font-extrabold text-bronze-500">
                   {String(i + 1).padStart(2, "0")}
                 </span>

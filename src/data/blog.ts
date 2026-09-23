@@ -35,21 +35,21 @@ export const blogPosts: BlogPost[] = [
         heading: "What a Tub-to-Shower Conversion Actually Changes",
         paragraphs: [
           "A tub-to-shower conversion replaces an existing tub with a properly waterproofed walk-in shower, without touching the rest of the room. The layout, vanity, flooring, and everything outside the tub area generally stay as they are.",
-          "It's the right call when the tub itself is the problem — a household that no longer needs it, or wants a walk-in shower instead — and the rest of the bathroom still works fine.",
+          "It's the right call when the tub itself is the problem: a household that no longer needs it, or wants a walk-in shower instead, and the rest of the bathroom still works fine.",
         ],
       },
       {
         heading: "What a Full Bathroom Remodel Actually Changes",
         paragraphs: [
           "A full remodel rebuilds the room from the studs out: layout, waterproofing, tile, plumbing, electrical, and finish work, all coordinated as one project.",
-          "It's the right call when more than one thing in the room needs to change — layout, storage, dated plumbing, or multiple fixtures at once — or when what's happening behind the walls needs to be addressed, not just what's visible.",
+          "It's the right call when more than one thing in the room needs to change (layout, storage, dated plumbing, or multiple fixtures at once), or when what's happening behind the walls needs to be addressed, not just what's visible.",
         ],
       },
       {
         heading: "How to Tell Which One You Need",
         paragraphs: [
           "If the honest answer to \"what's wrong with this bathroom\" is just the tub, a conversion probably covers it. If the answer involves the layout, the vanity, the flooring, or something you suspect is wrong underneath the surface, that points toward a full remodel.",
-          "We don't guess at this over the phone — a consultation is where we look at the actual space and give you a straight answer about which project fits.",
+          "We don't guess at this over the phone. A consultation is where we look at the actual space and give you a straight answer about which project fits.",
         ],
       },
       {
@@ -72,25 +72,25 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Tile Isn't What Keeps Water Out",
         paragraphs: [
-          "Grout lines aren't watertight, and tile alone was never designed to be a waterproofing layer. The actual barrier — the membrane and assembly underneath — is what determines whether water stays inside the shower or finds its way into the wall and subfloor.",
+          "Grout lines aren't watertight, and tile alone was never designed to be a waterproofing layer. The actual barrier, the membrane and assembly underneath, is what determines whether water stays inside the shower or finds its way into the wall and subfloor.",
         ],
       },
       {
         heading: "What Proper Waterproofing Actually Involves",
         paragraphs: [
-          "It starts with substrate preparation before a single tile is set, followed by a fully sealed pan, wall assembly, and niches — built to handle daily use, not just pass inspection on installation day.",
+          "It starts with substrate preparation before a single tile is set, followed by a fully sealed pan, wall assembly, and niches, built to handle daily use, not just pass inspection on installation day.",
         ],
       },
       {
         heading: "What Happens When It's Done Wrong",
         paragraphs: [
-          "Water finds the smallest gap over time. When waterproofing is skipped or rushed, the failure usually isn't visible until there's already damage behind the wall or under the floor — which is a far more expensive problem than the tile job itself.",
+          "Water finds the smallest gap over time. When waterproofing is skipped or rushed, the failure usually isn't visible until there's already damage behind the wall or under the floor, which is a far more expensive problem than the tile job itself.",
         ],
       },
       {
         heading: "Why We Back It With a 10-Year Warranty",
         paragraphs: [
-          "Every bathroom we build — full remodels, shower remodels, and conversions alike — is backed by a 10-year waterproofing warranty against leaks. It's the part of the job you'll never see, which is exactly why we treat it as the part that matters most.",
+          "Every bathroom we build (full remodels, shower remodels, and conversions alike) is backed by a 10-year waterproofing warranty against leaks. It's the part of the job you'll never see, which is exactly why we treat it as the part that matters most.",
         ],
       },
     ],
@@ -100,20 +100,20 @@ export const blogPosts: BlogPost[] = [
     title: "One-Day Bathroom Remodel: What It Includes and What It Doesn't",
     category: "Services",
     excerpt:
-      "Fast, focused, and low-disruption — but not a fit for every bathroom. Here's exactly what's in scope.",
+      "Fast, focused, and low-disruption, but not a fit for every bathroom. Here's exactly what's in scope.",
     relatedServiceSlug: "one-day-bathroom-renovation",
     status: "published",
     sections: [
       {
         heading: "What It Is",
         paragraphs: [
-          "A one-day bathroom renovation is a streamlined renovation focused on key upgrades — tub or shower replacement, wall systems, fixtures, and finishing work. It relies on pre-planning, precise measurement, and prefabricated materials so the installation itself is fast and efficient.",
+          "A one-day bathroom renovation is a streamlined renovation focused on key upgrades: tub or shower replacement, wall systems, fixtures, and finishing work. It relies on pre-planning, precise measurement, and prefabricated materials so the installation itself is fast and efficient.",
         ],
       },
       {
         heading: "What It Includes",
         paragraphs: [
-          "Tub or shower replacement, prefabricated wall systems, fixture replacement, and finishing work — all planned and measured in advance so installation day moves quickly.",
+          "Tub or shower replacement, prefabricated wall systems, fixture replacement, and finishing work, all planned and measured in advance so installation day moves quickly.",
         ],
       },
       {
@@ -125,7 +125,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Fast, Focused, Low-Disruption",
         paragraphs: [
-          "The point of a one-day renovation isn't that it's the cheapest option — it's that it's fast and focused, with far less disruption to the rest of the house than a full remodel. Whether it fits your bathroom is something we can tell you directly during a consultation.",
+          "The point of a one-day renovation isn't that it's the cheapest option. It's that it's fast and focused, with far less disruption to the rest of the house than a full remodel. Whether it fits your bathroom is something we can tell you directly during a consultation.",
         ],
       },
     ],
@@ -135,7 +135,7 @@ export const blogPosts: BlogPost[] = [
     title: "How Long Does a Bathroom Remodel Take?",
     category: "Planning",
     excerpt:
-      "There's no universal number — but there are real factors that determine your project's actual timeline.",
+      "There's no universal number, but there are real factors that determine your project's actual timeline.",
     relatedServiceSlug: "full-bathroom-remodel",
     relatedAreaSlug: "tacoma",
     status: "published",
@@ -149,7 +149,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "What Actually Affects Duration",
         paragraphs: [
-          "Scope of work, material lead times (especially custom tile or glass), permitting requirements for your city, and anything discovered behind the walls once demolition begins — all of these affect the schedule more than the size of the room does.",
+          "Scope of work, material lead times (especially custom tile or glass), permitting requirements for your city, and anything discovered behind the walls once demolition begins. All of these affect the schedule more than the size of the room does.",
         ],
       },
       {

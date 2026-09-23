@@ -11,9 +11,7 @@ export function RelatedServices({ exceptSlug }: { exceptSlug: string }) {
   return (
     <section className="bg-warm-50 py-20 sm:py-28">
       <Container>
-        <Reveal>
-          <SectionHeading eyebrow="Other Services" title="Other ways we work." />
-        </Reveal>
+        <SectionHeading eyebrow="Other Services" title="Other ways we work." />
         <Reveal className="mt-10 grid gap-4 sm:grid-cols-3">
           {others.map((service) => (
             <Link

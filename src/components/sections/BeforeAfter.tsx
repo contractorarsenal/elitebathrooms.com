@@ -17,7 +17,7 @@ function CompareSlider() {
   const [value, setValue] = useState(50);
 
   return (
-    <div className="relative aspect-[4/3] overflow-hidden rounded-panel sm:aspect-[21/9]">
+    <>
       <ImageSlot cover alt="After: finished bathroom" label={pair.afterLabel} />
 
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - value}% 0 0)` }}>
@@ -35,7 +35,7 @@ function CompareSlider() {
         className="pointer-events-none absolute inset-y-0 w-0.5 -translate-x-1/2 bg-warm-50"
         style={{ left: `${value}%` }}
       >
-        <span className="absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-warm-50 bg-charcoal-950/60 text-warm-50">
+        <span className="handle-hint absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-warm-50 bg-charcoal-950/60 text-warm-50">
           <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4" aria-hidden="true">
             <path d="M7 6l-4 4 4 4M13 6l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -49,9 +49,9 @@ function CompareSlider() {
         value={value}
         onChange={(e) => setValue(Number(e.target.value))}
         aria-label="Drag to compare before and after"
-        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze-400"
       />
-    </div>
+    </>
   );
 }
 
@@ -66,7 +66,7 @@ export function BeforeAfter() {
           </h2>
         </Reveal>
 
-        <Reveal>
+        <Reveal mask className="aspect-[4/3] rounded-panel sm:aspect-[21/9]">
           <CompareSlider />
         </Reveal>
       </Container>

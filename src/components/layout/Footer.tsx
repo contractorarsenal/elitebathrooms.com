@@ -12,7 +12,7 @@ export function Footer() {
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-on-dark-muted">
             Tacoma-based bathroom specialists. Design, waterproofing, tile, plumbing, and finish
-            work — one crew, start to finish.
+            work: one crew, start to finish.
           </p>
           <div className="mt-5 flex gap-4 text-ink-on-dark-muted">
             <a href={siteConfig.social.facebook} aria-label="Elite Bathrooms on Facebook" className="hover:text-bronze-400">

@@ -194,7 +194,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
       )}
 
       {step === 4 && (
-        <StepShell title="Last step — how do we reach you?">
+        <StepShell title="Last step: how do we reach you?">
           <div className="grid gap-4 sm:grid-cols-2">
             <input
               type="text"

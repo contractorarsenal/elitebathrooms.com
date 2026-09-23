@@ -65,17 +65,17 @@ export const projectTypeOptions: { value: ProjectType; label: string }[] = [
 ];
 
 export const budgetOptions: { value: Budget; label: string }[] = [
-  { value: "10-20k", label: "$10K – $20K" },
-  { value: "20-35k", label: "$20K – $35K" },
-  { value: "35-50k", label: "$35K – $50K" },
+  { value: "10-20k", label: "$10K to $20K" },
+  { value: "20-35k", label: "$20K to $35K" },
+  { value: "35-50k", label: "$35K to $50K" },
   { value: "50k-plus", label: "$50K+" },
   { value: "not-sure", label: "Not Sure Yet" },
 ];
 
 export const timelineOptions: { value: Timeline; label: string }[] = [
   { value: "asap", label: "As soon as possible" },
-  { value: "1-3-months", label: "1–3 months" },
-  { value: "3-6-months", label: "3–6 months" },
+  { value: "1-3-months", label: "1 to 3 months" },
+  { value: "3-6-months", label: "3 to 6 months" },
   { value: "just-exploring", label: "Just exploring" },
 ];
 

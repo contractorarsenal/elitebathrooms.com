@@ -11,7 +11,7 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Bathroom Remodeling Resources",
   description:
-    "Straight answers about bathroom remodeling, waterproofing, and planning a project — from Elite Bathrooms, Tacoma's bathroom-only specialists.",
+    "Straight answers about bathroom remodeling, waterproofing, and planning a project, from Elite Bathrooms, Tacoma's bathroom-only specialists.",
   alternates: { canonical: absoluteUrl("/blog") },
 };
 

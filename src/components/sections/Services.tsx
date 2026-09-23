@@ -9,7 +9,7 @@ import type { Service } from "@/data/services";
 
 function LargeServiceCell({ service }: { service: Service }) {
   return (
-    <Reveal className="lg:row-span-2 lg:col-span-2">
+    <Reveal scale className="lg:row-span-2 lg:col-span-2">
       <Link
         href={`/services/${service.slug}`}
         className="group relative flex h-full min-h-[360px] flex-col justify-end overflow-hidden rounded-panel"
@@ -43,7 +43,7 @@ function LargeServiceCell({ service }: { service: Service }) {
 
 function ServiceCell({ service, delay = 0 }: { service: Service; delay?: number }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal scale delay={delay}>
       <Link
         href={`/services/${service.slug}`}
         className="group relative flex h-full min-h-[172px] flex-col justify-end overflow-hidden rounded-card"
@@ -74,13 +74,11 @@ export function Services() {
   return (
     <section className="bg-warm-50 py-20 sm:py-28">
       <Container>
-        <Reveal>
-          <SectionHeading
+        <SectionHeading
             eyebrow="Services"
-            title="Bathroom renovations designed around your needs."
+            title="Full remodels, showers, tubs, and conversions."
             description="Five ways we work, all backed by the same waterproofing standard and coordinated as one project."
           />
-        </Reveal>
 
         <div className="mt-10 grid gap-4 lg:grid-cols-4 lg:grid-rows-2">
           <LargeServiceCell service={full} />

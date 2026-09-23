@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { ImageSlot } from "@/components/ui/ImageSlot";
@@ -6,6 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { CompassIcon, DropletIcon, GridIcon, PhoneIcon } from "@/components/ui/icons";
 import { PageHero } from "@/components/sections/PageHero";
+import { WaterproofingBanner } from "@/components/sections/WaterproofingBanner";
 import { RelatedProjects } from "@/components/sections/RelatedProjects";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
@@ -20,7 +22,7 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Bathroom Remodeling in Tacoma, WA",
   description:
-    "Elite Bathrooms is a Tacoma-based bathroom remodeling contractor — full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
+    "Elite Bathrooms is a Tacoma-based bathroom remodeling contractor: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   alternates: { canonical: absoluteUrl("/areas-we-serve/tacoma") },
 };
 
@@ -38,7 +40,7 @@ const whyElite = [
   {
     icon: GridIcon,
     title: "Bathroom-Only Focus",
-    description: "We don't spread across kitchens or additions — bathrooms are the only thing we build.",
+    description: "We don't spread across kitchens or additions. Bathrooms are the only thing we build.",
   },
   {
     icon: PhoneIcon,
@@ -56,7 +58,7 @@ export default function TacomaPage() {
       <PageHero
         crumbs={[{ name: "Home", href: "/" }, { name: "Areas We Serve", href: "/areas-we-serve" }, { name: "Tacoma" }]}
         title="Bathroom Remodeling in Tacoma, WA"
-        description="Tacoma-based bathroom remodeling specialists — full remodels, shower remodels, and tub-to-shower conversions."
+        description="Tacoma-based bathroom remodeling specialists: full remodels, shower remodels, and tub-to-shower conversions."
         imageLabel="/images/elite-team-hero.jpg"
         imageAlt="Elite Bathrooms crew and work vans, Tacoma"
       />
@@ -70,7 +72,7 @@ export default function TacomaPage() {
               A bathroom remodeling contractor based right here in Tacoma.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-muted">
-              Elite Bathrooms is headquartered at {siteConfig.address.street} in Tacoma — this is
+              Elite Bathrooms is headquartered at {siteConfig.address.street} in Tacoma. This is
               where most of our crews start their day. We specialize exclusively in bathrooms:
               full bathroom remodels, shower remodels, bathtub remodels, tub-to-shower
               conversions, and one-day renovations, all backed by the same 10-year waterproofing
@@ -86,9 +88,7 @@ export default function TacomaPage() {
       {/* SERVICES IN TACOMA */}
       <section className="bg-warm-100 py-20 sm:py-28">
         <Container>
-          <Reveal>
-            <SectionHeading eyebrow="Services in Tacoma" title="Every bathroom service, in one place." />
-          </Reveal>
+          <SectionHeading eyebrow="Services in Tacoma" title="Every bathroom service, in one place." />
           <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {services.map((service) => (
               <Link
@@ -101,22 +101,32 @@ export default function TacomaPage() {
               </Link>
             ))}
           </Reveal>
+          <Reveal delay={280} className="mt-8">
+            <Link
+              href="/services/full-bathroom-remodel"
+              className="text-sm font-bold uppercase tracking-[0.06em] text-bronze-600 hover:text-bronze-500"
+            >
+              Explore Bathroom Remodeling ↓
+            </Link>
+          </Reveal>
         </Container>
       </section>
 
       {/* WHY TACOMA HOMEOWNERS CHOOSE ELITE */}
       <section className="bg-charcoal-950 py-20 sm:py-28">
         <Container>
-          <Reveal>
-            <SectionHeading
+          <SectionHeading
               eyebrow="Why Elite"
               title="Why Tacoma homeowners choose Elite."
               tone="dark"
             />
-          </Reveal>
           <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {whyElite.map((item, i) => (
-              <div key={item.title} className="flex flex-col gap-3 rounded-card border border-charcoal-700 bg-charcoal-900 p-6" style={i ? { transitionDelay: `${i * 60}ms` } : undefined}>
+              <div
+                key={item.title}
+                className="stagger-item flex flex-col gap-3 rounded-card border border-charcoal-700 bg-charcoal-900 p-6"
+                style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties}
+              >
                 <item.icon className="h-6 w-6 text-bronze-400" />
                 <h3 className="text-base font-extrabold text-warm-50">{item.title}</h3>
                 <p className="text-sm leading-relaxed text-ink-on-dark-muted">{item.description}</p>
@@ -125,6 +135,8 @@ export default function TacomaPage() {
           </Reveal>
         </Container>
       </section>
+
+      <WaterproofingBanner />
 
       {/* TACOMA HOME TYPES / REMODELING CONSIDERATIONS */}
       <section className="bg-warm-50 py-20 sm:py-28">
@@ -138,16 +150,24 @@ export default function TacomaPage() {
           <Reveal delay={80} className="mt-6 space-y-4 text-base leading-relaxed text-ink-muted">
             <p>
               Tacoma has a wide mix of home ages and styles, which means bathrooms often carry
-              layouts, plumbing, and waterproofing from whenever the home was last updated —
+              layouts, plumbing, and waterproofing from whenever the home was last updated,
               sometimes decades ago. That&rsquo;s usually the biggest factor in scoping a remodel: not
               just what the room looks like, but what&rsquo;s actually behind the walls and under the
               floor.
             </p>
             <p>
-              A consultation is where we figure that out — whether a straightforward tub-to-shower
+              A consultation is where we figure that out: whether a straightforward tub-to-shower
               conversion covers what you need, or whether the plumbing, layout, or moisture damage
               underneath means a full remodel is the more realistic path.
             </p>
+          </Reveal>
+          <Reveal delay={160} className="mt-6">
+            <Link
+              href="/projects"
+              className="text-sm font-bold uppercase tracking-[0.06em] text-charcoal-950 underline-offset-4 hover:text-bronze-600 hover:underline"
+            >
+              View Projects ↓
+            </Link>
           </Reveal>
         </Container>
       </section>

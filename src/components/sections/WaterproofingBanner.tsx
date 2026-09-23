@@ -19,7 +19,7 @@ export function WaterproofingBanner() {
               Built Behind the Tile
             </span>
             <p className="mt-2 max-w-lg text-lg font-extrabold leading-snug text-warm-50 sm:text-xl">
-              The part you can&rsquo;t see matters the most — which is why every bathroom is backed
+              The part you can&rsquo;t see matters the most. That&rsquo;s why every bathroom is backed
               by a 10-year waterproofing warranty against leaks.
             </p>
           </div>

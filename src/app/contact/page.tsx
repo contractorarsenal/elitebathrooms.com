@@ -13,7 +13,7 @@ import { absoluteUrl } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Elite Bathrooms — Tacoma-based bathroom remodeling specialists. Call, email, or request an estimate online.",
+    "Get in touch with Elite Bathrooms, Tacoma-based bathroom remodeling specialists. Call, email, or request an estimate online.",
   alternates: { canonical: absoluteUrl("/contact") },
 };
 

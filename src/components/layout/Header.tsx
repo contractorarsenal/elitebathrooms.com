@@ -2,15 +2,22 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { primaryNav, siteConfig } from "@/lib/site-config";
 import { Button } from "../ui/Button";
 import { Logo } from "../ui/Logo";
 import { ChevronDownIcon, MenuIcon, PhoneIcon } from "../ui/icons";
 import { MobileNav } from "./MobileNav";
 
+function useIsActive(pathname: string) {
+  return (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+}
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isActive = useIsActive(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -32,32 +39,48 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
-        solid ? "bg-charcoal-950 shadow-[0_1px_0_0_rgba(255,255,255,0.08)]" : "bg-transparent"
+      className={`header-settle fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 ${
+        solid
+          ? "border-b border-charcoal-800 bg-charcoal-950 shadow-[0_2px_12px_rgba(0,0,0,0.18)]"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-5 sm:px-8 lg:h-20">
+      <div className="mx-auto grid h-16 max-w-[1360px] grid-cols-[auto_1fr_auto] items-center gap-4 px-5 sm:px-8 lg:h-20">
         <Logo />
 
-        <nav className="hidden items-center gap-7 lg:flex">
-          {primaryNav.map((item) =>
-            item.children ? (
+        <nav className="hidden items-center justify-center gap-5 lg:flex lg:gap-6 xl:gap-8">
+          {primaryNav.map((item) => {
+            const active = isActive(item.href);
+            return item.children ? (
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 text-sm font-semibold uppercase tracking-[0.04em] text-warm-50/90 transition-colors hover:text-bronze-400"
+                  className={`relative flex items-center gap-1 py-2 text-sm font-semibold uppercase tracking-[0.04em] transition-colors ${
+                    active ? "text-bronze-400" : "text-warm-50/90 hover:text-bronze-400"
+                  }`}
                 >
                   {item.label}
-                  <ChevronDownIcon className="h-3 w-3 transition-transform group-hover:rotate-180" />
+                  <ChevronDownIcon className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
+                  <span
+                    className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full bg-bronze-400 transition-all duration-200 ${
+                      active ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                    aria-hidden="true"
+                  />
                 </Link>
-                <div className="nav-dropdown absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-card border border-charcoal-700 bg-charcoal-950 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
+                <div className="nav-dropdown absolute left-1/2 top-full mt-3 w-80 -translate-x-1/2 rounded-card border border-charcoal-700 bg-charcoal-950 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
                   {item.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block rounded-[10px] px-4 py-3 text-sm font-semibold text-warm-50/90 transition-colors hover:bg-charcoal-800 hover:text-bronze-400"
+                      className="block rounded-[10px] px-4 py-3 transition-colors hover:bg-charcoal-800"
                     >
-                      {child.label}
+                      <span className="block text-xs font-bold uppercase tracking-[0.06em] text-warm-50">
+                        {child.label}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-ink-on-dark-muted">
+                        {child.description}
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -66,21 +89,30 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm font-semibold uppercase tracking-[0.04em] text-warm-50/90 transition-colors hover:text-bronze-400"
+                className={`relative py-2 text-sm font-semibold uppercase tracking-[0.04em] transition-colors ${
+                  active ? "text-bronze-400" : "text-warm-50/90 hover:text-bronze-400"
+                }`}
               >
                 {item.label}
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full bg-bronze-400 transition-all duration-200 ${
+                    active ? "w-full" : "w-0"
+                  }`}
+                  aria-hidden="true"
+                />
               </Link>
-            )
-          )}
+            );
+          })}
         </nav>
 
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-5">
           <a
             href={siteConfig.phone.href}
-            className="flex items-center gap-2 text-sm font-semibold text-warm-50/90 transition-colors hover:text-bronze-400"
+            aria-label={`Call ${siteConfig.phone.display}`}
+            className="flex items-center gap-2 text-sm font-semibold text-warm-50/80 transition-colors hover:text-bronze-400"
           >
             <PhoneIcon />
-            {siteConfig.phone.display}
+            <span className="hidden xl:inline">{siteConfig.phone.display}</span>
           </a>
           <Button href="/get-a-quote" variant="primary">
             Request Estimate

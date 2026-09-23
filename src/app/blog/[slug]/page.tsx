@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/SectionHeading";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { NextStepCTA } from "@/components/sections/NextStepCTA";
@@ -35,7 +36,9 @@ export default async function BlogPostPage({ params }: Props) {
 
   const relatedService = post.relatedServiceSlug ? getServiceBySlug(post.relatedServiceSlug) : undefined;
   const relatedArea = post.relatedAreaSlug ? getAreaBySlug(post.relatedAreaSlug) : undefined;
-  const otherPosts = getPublishedPosts().filter((p) => p.slug !== post.slug).slice(0, 2);
+  const published = getPublishedPosts();
+  const postIndex = published.findIndex((p) => p.slug === post.slug);
+  const nextPost = published[(postIndex + 1) % published.length];
   const showToc = post.sections.length > 3;
 
   return (
@@ -90,49 +93,46 @@ export default async function BlogPostPage({ params }: Props) {
           ))}
         </article>
 
-        {(relatedService || relatedArea) && (
-          <div className="mt-12 flex flex-wrap gap-3 border-t border-line pt-8">
-            {relatedService && (
-              <Link
-                href={`/services/${relatedService.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-bronze-400 px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-bronze-600 hover:bg-bronze-500/10"
-              >
-                See {relatedService.name}
-                <ArrowRightIcon className="h-3.5 w-3.5" />
-              </Link>
-            )}
-            {relatedArea && (
-              <Link
-                href={`/areas-we-serve/${relatedArea.slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-charcoal-950 hover:border-charcoal-950/40"
-              >
-                Bathroom Remodeling in {relatedArea.name}
-                <ArrowRightIcon className="h-3.5 w-3.5" />
-              </Link>
-            )}
+        {relatedArea && (
+          <div className="mt-12 border-t border-line pt-8">
+            <Link
+              href={`/areas-we-serve/${relatedArea.slug}`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-charcoal-950 hover:border-charcoal-950/40"
+            >
+              Bathroom Remodeling in {relatedArea.name}
+              <ArrowRightIcon className="h-3.5 w-3.5" />
+            </Link>
           </div>
         )}
 
-        {otherPosts.length > 0 && (
-          <div className="mt-14 border-t border-line pt-10">
-            <span className="text-xs font-bold uppercase tracking-[0.1em] text-ink-muted">Related Articles</span>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {otherPosts.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/blog/${p.slug}`}
-                  className="group rounded-card border border-line bg-warm-100 p-5 hover:border-bronze-400"
-                >
-                  <h3 className="text-sm font-extrabold text-charcoal-950">{p.title}</h3>
-                  <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.06em] text-bronze-600">
-                    Read Article
-                    <ArrowRightIcon className="h-3 w-3 transition-transform group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              ))}
+        <div className={`grid gap-4 sm:grid-cols-2 ${relatedArea ? "mt-4" : "mt-14 border-t border-line pt-10"}`}>
+          {relatedService && (
+            <Link
+              href={`/services/${relatedService.slug}`}
+              className="group flex items-center justify-between rounded-card border border-line bg-warm-100 p-5 hover:border-bronze-400"
+            >
+              <div>
+                <Eyebrow className="text-[11px]">Related Service</Eyebrow>
+                <span className="mt-1 block text-base font-extrabold text-charcoal-950">
+                  {relatedService.name}
+                </span>
+              </div>
+              <ArrowRightIcon className="h-4 w-4 shrink-0 text-bronze-500 transition-transform group-hover:translate-x-1" />
+            </Link>
+          )}
+          <Link
+            href={`/blog/${nextPost.slug}`}
+            className="group flex items-center justify-between rounded-card border border-line bg-warm-100 p-5 hover:border-bronze-400"
+          >
+            <div>
+              <Eyebrow className="text-[11px]">Next Article</Eyebrow>
+              <span className="mt-1 block text-base font-extrabold text-charcoal-950">
+                {nextPost.title}
+              </span>
             </div>
-          </div>
-        )}
+            <ArrowRightIcon className="h-4 w-4 shrink-0 text-bronze-500 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
       </Container>
 
       <NextStepCTA variant="compact" heading="Ready to talk about your bathroom?" />

@@ -32,23 +32,43 @@ export const siteConfig = {
 export const primaryNav: {
   label: string;
   href: string;
-  children?: { label: string; href: string }[];
+  children?: { label: string; href: string; description: string }[];
 }[] = [
   {
     label: "Services",
     href: "/services",
     children: [
-      { label: "Full Bathroom Remodel", href: "/services/full-bathroom-remodel" },
-      { label: "Shower Remodel", href: "/services/shower-remodel" },
-      { label: "Bathtub Remodel", href: "/services/bathtub-remodel" },
-      { label: "Tub-to-Shower Conversion", href: "/services/tub-to-shower-conversion" },
-      { label: "One-Day Bathroom Renovation", href: "/services/one-day-bathroom-renovation" },
+      {
+        label: "Full Bathroom Remodel",
+        href: "/services/full-bathroom-remodel",
+        description: "Complete bathroom renovation",
+      },
+      {
+        label: "Shower Remodel",
+        href: "/services/shower-remodel",
+        description: "Custom showers and replacements",
+      },
+      {
+        label: "Bathtub Remodel",
+        href: "/services/bathtub-remodel",
+        description: "Tub replacement and surrounding upgrades",
+      },
+      {
+        label: "Tub-to-Shower",
+        href: "/services/tub-to-shower-conversion",
+        description: "Convert an unused tub into a practical shower",
+      },
+      {
+        label: "One-Day Renovation",
+        href: "/services/one-day-bathroom-renovation",
+        description: "Fast, focused bathroom upgrades",
+      },
     ],
   },
   { label: "Projects", href: "/projects" },
   { label: "Areas We Serve", href: "/areas-we-serve" },
-  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
 ];
 
 export const trustStats = [

@@ -8,7 +8,7 @@ const service = getServiceBySlug("shower-remodel")!;
 export const metadata: Metadata = {
   title: "Shower Remodeling in Tacoma",
   description:
-    "Frameless glass, large-format tile, and properly waterproofed shower pans and walls — Tacoma-based shower remodels backed by a 10-year waterproofing warranty.",
+    "Frameless glass, large-format tile, and properly waterproofed shower pans and walls. Tacoma-based shower remodels backed by a 10-year waterproofing warranty.",
   alternates: { canonical: absoluteUrl("/services/shower-remodel") },
 };
 

@@ -37,7 +37,7 @@ export function Waterproofing() {
             />
           </Reveal>
 
-          <Reveal delay={80} className="flex flex-col justify-center rounded-panel border border-charcoal-700 bg-charcoal-900 p-8 sm:p-10">
+          <Reveal scale delay={80} className="flex flex-col justify-center rounded-panel border border-charcoal-700 bg-charcoal-900 p-8 sm:p-10">
             <div className="flex items-end gap-4">
               <span className="font-heading text-6xl font-extrabold leading-none text-bronze-400 sm:text-7xl">
                 10
@@ -46,12 +46,13 @@ export function Waterproofing() {
                 Years
               </span>
             </div>
-            <p className="mt-2 text-sm font-semibold uppercase tracking-[0.08em] text-ink-on-dark-muted">
+            <span className="draw-line mt-3 h-px w-12 bg-bronze-500" aria-hidden="true" />
+            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.08em] text-ink-on-dark-muted">
               Waterproofing warranty against leaks
             </p>
           </Reveal>
 
-          <Reveal delay={160} className="rounded-panel border border-charcoal-700 bg-charcoal-900 p-8 sm:p-10">
+          <Reveal scale delay={160} className="rounded-panel border border-charcoal-700 bg-charcoal-900 p-8 sm:p-10">
             <ul className="space-y-4">
               {details.map((detail) => (
                 <li key={detail} className="flex items-start gap-3">

@@ -21,9 +21,7 @@ export function FaqAccordion({ faqs, title = "Common Questions" }: { faqs: Faq[]
     <section className="bg-warm-50 py-20 sm:py-28">
       <JsonLd data={schema} />
       <Container className="max-w-2xl">
-        <Reveal>
-          <SectionHeading eyebrow="FAQ" title={title} />
-        </Reveal>
+        <SectionHeading eyebrow="FAQ" title={title} />
         <Reveal className="mt-8 divide-y divide-line border-t border-line">
           {faqs.map((faq) => (
             <details key={faq.question} className="group py-5">

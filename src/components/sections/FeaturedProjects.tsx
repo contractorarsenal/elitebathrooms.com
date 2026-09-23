@@ -20,14 +20,25 @@ export function ProjectCard({
   return (
     <Reveal delay={delay} className={large ? "lg:row-span-2" : ""}>
       <Link href={`/projects/${project.slug}`} className="group flex h-full flex-col overflow-hidden rounded-panel border border-charcoal-800 bg-charcoal-900 transition-colors hover:border-bronze-500/50">
-        <div className={`relative overflow-hidden ${large ? "aspect-[16/11]" : "aspect-[16/10]"}`}>
-          <ImageSlot
-            cover
-            alt={`${project.title} — completed Elite Bathrooms project`}
-            label={project.image}
-            className="transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-          />
-        </div>
+        {large ? (
+          <Reveal mask className="aspect-[16/11]">
+            <ImageSlot
+              cover
+              alt={`${project.title}: completed Elite Bathrooms project`}
+              label={project.image}
+              className="transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+            />
+          </Reveal>
+        ) : (
+          <div className="relative aspect-[16/10] overflow-hidden">
+            <ImageSlot
+              cover
+              alt={`${project.title}: completed Elite Bathrooms project`}
+              label={project.image}
+              className="transition-transform duration-500 ease-out group-hover:scale-[1.025]"
+            />
+          </div>
+        )}
 
         <div className={`flex flex-1 flex-col gap-3 p-6 ${large ? "sm:p-8" : ""}`}>
           <div>
@@ -70,17 +81,19 @@ export function FeaturedProjects() {
   return (
     <section id="projects" className="bg-charcoal-950 py-20 sm:py-28">
       <Container>
-        <Reveal className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             eyebrow="Real Projects"
             title="Bathrooms we've actually built."
-            description="No stock photography, no AI renders — every project here is a completed Elite Bathrooms job."
+            description="No stock photography, no AI renders. Every project here is a completed Elite Bathrooms job."
             tone="dark"
           />
-          <Button href="/projects" variant="outline-light" className="self-start sm:self-auto">
-            View All Projects
-          </Button>
-        </Reveal>
+          <Reveal delay={200}>
+            <Button href="/projects" variant="outline-light" className="self-start sm:self-auto">
+              View All Projects
+            </Button>
+          </Reveal>
+        </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
           <div className="lg:col-span-2 lg:row-span-2">
