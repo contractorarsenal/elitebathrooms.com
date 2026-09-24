@@ -37,7 +37,7 @@ export default function BlogPage() {
             <Reveal>
               <Link
                 href={`/blog/${featured.slug}`}
-                className="group grid gap-6 overflow-hidden rounded-panel border border-line bg-warm-100 p-7 sm:p-10 lg:grid-cols-[1fr,1.4fr] lg:items-center"
+                className="group grid gap-6 overflow-hidden rounded-panel border border-line bg-warm-100 p-7 sm:p-10 lg:grid-cols-[1fr_1.4fr] lg:items-center"
               >
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-bronze-600">

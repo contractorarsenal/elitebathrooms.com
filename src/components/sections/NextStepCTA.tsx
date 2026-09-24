@@ -48,10 +48,10 @@ export function NextStepCTA({
             <div className="flex flex-wrap items-center gap-4">
               <a href={siteConfig.phone.href} className="flex items-center gap-2 text-sm font-semibold text-warm-50/80 hover:text-bronze-400">
                 <PhoneIcon className="h-4 w-4" />
-                {siteConfig.phone.display}
+                Call Now
               </a>
               <Button href="/get-a-quote" variant="primary">
-                Request an Estimate
+                Request Estimate
               </Button>
             </div>
           </Reveal>
@@ -70,14 +70,14 @@ export function NextStepCTA({
             </h2>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button href="/get-a-quote" variant="primary">
-                Request an Estimate
+                Request Estimate
               </Button>
               <a
                 href={siteConfig.phone.href}
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-btn border border-charcoal-950/20 px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-charcoal-950 hover:bg-charcoal-950/5"
               >
                 <PhoneIcon className="h-4 w-4" />
-                Call {siteConfig.phone.display}
+                Call Now
               </a>
             </div>
           </Reveal>
@@ -102,21 +102,21 @@ export function NextStepCTA({
   return (
     <section className="bg-charcoal-950 py-20 sm:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1.2fr,1fr] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <Reveal>
             <h2 className="text-3xl font-extrabold leading-tight text-warm-50 sm:text-4xl">
               {heading}
             </h2>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Button href="/get-a-quote" variant="primary">
-                Request an Estimate
+                Request Estimate
               </Button>
               <a
                 href={siteConfig.phone.href}
                 className="inline-flex min-h-11 items-center gap-2 text-sm font-bold uppercase tracking-[0.06em] text-warm-50/80 hover:text-warm-50"
               >
                 <PhoneIcon className="h-4 w-4" />
-                Call {siteConfig.phone.display}
+                Call Now
               </a>
             </div>
           </Reveal>

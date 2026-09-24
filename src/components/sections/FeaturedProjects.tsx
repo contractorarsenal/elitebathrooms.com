@@ -104,7 +104,7 @@ export function ProjectCard({
 }
 
 export function FeaturedProjects() {
-  const [featured, second, third] = projects;
+  const [first, second, third] = projects;
 
   return (
     <section id="projects" className="bg-charcoal-950 py-20 sm:py-28">
@@ -123,10 +123,8 @@ export function FeaturedProjects() {
           </Reveal>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
-          <div className="lg:col-span-2 lg:row-span-2">
-            <ProjectCard project={featured} size="large" />
-          </div>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <ProjectCard project={first} />
           <ProjectCard project={second} delay={80} />
           <ProjectCard project={third} delay={160} />
         </div>

@@ -19,12 +19,15 @@ export function Header() {
   const pathname = usePathname();
   const isActive = useIsActive(pathname);
 
+  const isHome = pathname === "/";
+
   useEffect(() => {
+    if (!isHome) return;
     const onScroll = () => setScrolled(window.scrollY > 32);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -33,9 +36,11 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  // Transparent-over-hero → solid charcoal on scroll. Plain color-transition,
-  // no backdrop-filter, so this stays cheap to paint on every frame.
-  const solid = scrolled || menuOpen;
+  // Transparent-over-hero only applies on the homepage, and only before the
+  // user scrolls past it. Every interior page starts solid immediately —
+  // there's no dark hero photo behind the header to justify transparency,
+  // and waiting for scroll left white nav text unreadable on light pages.
+  const solid = !isHome || scrolled || menuOpen;
 
   return (
     <header
@@ -68,26 +73,36 @@ export function Header() {
                     aria-hidden="true"
                   />
                 </Link>
-                <div className="nav-dropdown absolute left-1/2 top-full mt-4 w-[22rem] -translate-x-1/2 rounded-card border border-charcoal-700 bg-charcoal-950 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
-                  {item.children.map((child, i) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className={`flex items-center justify-between gap-3 rounded-[10px] px-4 py-3.5 transition-colors hover:bg-charcoal-800 ${
-                        i === 0 ? "bg-charcoal-900/60" : ""
-                      }`}
-                    >
-                      <span>
-                        <span className="block text-sm font-bold uppercase tracking-[0.04em] text-warm-50">
-                          {child.label}
+                {/*
+                  The bridge wrapper sits flush against the trigger (top-full,
+                  no margin) so there is never a dead hover gap between them —
+                  the visual gap is `pt-4` padding *inside* this hoverable box
+                  instead of a margin outside it. A margin-based gap breaks
+                  `.group:hover` mid-transit because the cursor briefly leaves
+                  every descendant of `.group` while crossing it.
+                */}
+                <div className="nav-dropdown absolute left-1/2 top-full w-[22rem] -translate-x-1/2 pt-4">
+                  <div className="rounded-card border border-charcoal-700 bg-charcoal-950 p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.4)]">
+                    {item.children.map((child, i) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={`flex items-center justify-between gap-3 rounded-[10px] px-4 py-3.5 transition-colors hover:bg-charcoal-800 ${
+                          i === 0 ? "bg-charcoal-900/60" : ""
+                        }`}
+                      >
+                        <span>
+                          <span className="block text-sm font-bold uppercase tracking-[0.04em] text-warm-50">
+                            {child.label}
+                          </span>
+                          <span className="mt-0.5 block text-[0.8rem] text-ink-on-dark-muted">
+                            {child.description}
+                          </span>
                         </span>
-                        <span className="mt-0.5 block text-[0.8rem] text-ink-on-dark-muted">
-                          {child.description}
-                        </span>
-                      </span>
-                      <ArrowRightIcon className="h-3.5 w-3.5 shrink-0 text-bronze-400" />
-                    </Link>
-                  ))}
+                        <ArrowRightIcon className="h-3.5 w-3.5 shrink-0 text-bronze-400" />
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
@@ -113,11 +128,11 @@ export function Header() {
         <div className="hidden items-center gap-5 lg:flex xl:gap-6">
           <a
             href={siteConfig.phone.href}
-            aria-label={`Call ${siteConfig.phone.display}`}
+            aria-label={`Call ${siteConfig.name}`}
             className="flex items-center gap-2 text-[0.9rem] font-bold text-warm-50/90 transition-colors hover:text-bronze-400"
           >
             <PhoneIcon className="h-[1.1rem] w-[1.1rem]" />
-            <span className="hidden xl:inline">{siteConfig.phone.display}</span>
+            <span className="hidden xl:inline">Call Now</span>
           </a>
           <Button href="/get-a-quote" variant="primary">
             Request Estimate

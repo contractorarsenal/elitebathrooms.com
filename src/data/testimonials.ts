@@ -5,10 +5,31 @@ export type Testimonial = {
   quote: string;
 };
 
-// Intentionally empty. We have real review data on the live site, but not
-// the exact verbatim text — the research pass only produced paraphrases,
-// and a paraphrase attributed to a real customer's name is a fabricated
-// quote even if the sentiment is accurate. Add entries here only with
-// exact, copy-pasted review text. Until then Testimonials.tsx renders an
-// explicit developer-only placeholder instead of fake-looking cards.
-export const testimonials: Testimonial[] = [];
+// Exact, verbatim excerpts copied directly from real Google reviews on
+// elitebathrooms.com's live review widget (source-verified, not
+// paraphrased). Each excerpt is a continuous run of the reviewer's own
+// text, not a splice. No dates are included because the widget didn't
+// expose stable, verifiable posting dates.
+export const testimonials: Testimonial[] = [
+  {
+    name: "Rebecca De Angelis",
+    rating: 5,
+    source: "Google",
+    quote:
+      "We had such a great experience with Elite Bathrooms! From start to finish, the entire process was smooth, professional, and stress-free. Their communication was excellent, they showed up when they said they would, and the quality of their work exceeded our expectations.",
+  },
+  {
+    name: "Aurel Balan",
+    rating: 5,
+    source: "Google",
+    quote:
+      "Elite Bathroom exceeded my expectations from start to finish. Their pricing was very fair and competitive, especially considering the outstanding quality of the work.",
+  },
+  {
+    name: "Maribeth Spencer",
+    rating: 5,
+    source: "Google",
+    quote:
+      "Gheorghe and his crew remodeled my small bathroom and the results are beautiful and functional. They gave me a very competitive bid, showed up on time, worked very fast, and Gheorghe did his best to communicate clearly with me throughout the process.",
+  },
+];

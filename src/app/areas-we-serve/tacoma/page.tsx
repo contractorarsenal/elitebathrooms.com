@@ -5,6 +5,7 @@ import { ImageSlot } from "@/components/ui/ImageSlot";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { ArrowRightIcon } from "@/components/ui/icons";
+import { Button } from "@/components/ui/Button";
 import { PageHero } from "@/components/sections/PageHero";
 import { WaterproofingBanner } from "@/components/sections/WaterproofingBanner";
 import { RelatedProjects } from "@/components/sections/RelatedProjects";
@@ -13,10 +14,13 @@ import { FaqAccordion } from "@/components/sections/FaqAccordion";
 import { NextStepCTA } from "@/components/sections/NextStepCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { services } from "@/data/services";
-import { areaFaqs, areas } from "@/data/areas";
+import { areaFaqs, areas, getAreaBySlug } from "@/data/areas";
 import { siteConfig } from "@/lib/site-config";
 import { localBusinessSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
+
+const tacomaArea = getAreaBySlug("tacoma")!;
+const tacomaFaqs = [...areaFaqs, ...(tacomaArea.faq ?? [])];
 
 export const metadata: Metadata = {
   title: "Bathroom Remodeling in Tacoma, WA",
@@ -53,14 +57,20 @@ export default function TacomaPage() {
           <Reveal>
             <Eyebrow>Tacoma-Based</Eyebrow>
             <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] text-charcoal-950 sm:text-4xl">
-              A bathroom remodeling contractor based right here in Tacoma.
+              A bathroom remodeler based right here in Tacoma.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-ink-muted">
               Elite Bathrooms is headquartered at {siteConfig.address.street} in Tacoma. This is
-              where most of our crews start their day. We specialize exclusively in bathrooms:
-              full bathroom remodels, shower remodels, bathtub remodels, tub-to-shower
-              conversions, and one-day renovations, all backed by the same 10-year waterproofing
-              warranty.
+              where most of our crews start their day, and where most of our bathroom remodel
+              projects begin. We specialize exclusively in bathrooms: full bathroom remodels,
+              shower remodel and bathtub remodel work, tub-to-shower conversions, and one-day
+              renovations, all backed by the same 10-year waterproofing warranty.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-ink-muted">
+              Whether you already know you want a full bathroom renovation or you&rsquo;re still
+              deciding between a shower remodel and a conversion, a Tacoma-based bathroom
+              contractor means shorter travel for consultations and faster follow-up once the
+              project is done.
             </p>
           </Reveal>
           <Reveal delay={80} mask className="min-h-[320px] rounded-panel">
@@ -190,8 +200,27 @@ export default function TacomaPage() {
         </Container>
       </section>
 
+      {/* FINANCING */}
+      <section className="bg-bronze-500 py-14">
+        <Container>
+          <Reveal className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.18em] text-warm-50/80">
+                Planning a Larger Remodel?
+              </span>
+              <h2 className="mt-2 text-2xl font-extrabold leading-tight text-warm-50 sm:text-3xl">
+                Financing is available for qualifying projects.
+              </h2>
+            </div>
+            <Button href="/financing" variant="secondary" className="shrink-0">
+              Learn About Financing
+            </Button>
+          </Reveal>
+        </Container>
+      </section>
+
       {/* FAQ */}
-      <FaqAccordion faqs={areaFaqs} title="Tacoma Bathroom Remodeling FAQ" />
+      <FaqAccordion faqs={tacomaFaqs} title="Tacoma Bathroom Remodeling FAQ" />
 
       {/* NEXT STEP */}
       <NextStepCTA heading="Ready to start your Tacoma bathroom project?" variant="banner" />

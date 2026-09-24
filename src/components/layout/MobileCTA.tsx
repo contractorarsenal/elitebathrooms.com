@@ -16,7 +16,7 @@ export function MobileCTA() {
         className="flex min-h-14 flex-1 items-center justify-center gap-2 border-r border-charcoal-700 text-sm font-bold uppercase tracking-wide text-warm-50"
       >
         <PhoneIcon className="h-5 w-5" />
-        Call
+        Call Now
       </a>
       <a
         href="/get-a-quote"

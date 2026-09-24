@@ -20,15 +20,20 @@ export default function ThankYouPage() {
         </h1>
         <p className="mt-4 text-base leading-relaxed text-ink-muted">
           A member of our Tacoma team will follow up to schedule your consultation. If it&rsquo;s
-          urgent, call us at{" "}
+          urgent,{" "}
           <a href={siteConfig.phone.href} className="font-semibold text-bronze-600">
-            {siteConfig.phone.display}
+            call now
           </a>
           .
         </p>
-        <Button href="/" variant="secondary" className="mt-8">
-          Back to Home
-        </Button>
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <Button href={siteConfig.phone.href} variant="primary">
+            Call Now
+          </Button>
+          <Button href="/" variant="secondary">
+            Back to Home
+          </Button>
+        </div>
       </Container>
     </main>
   );

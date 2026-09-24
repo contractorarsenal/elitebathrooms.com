@@ -58,7 +58,7 @@ export function Testimonials() {
             <DevPlaceholder />
           </Reveal>
         ) : (
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
             <Reveal className="flex flex-col justify-center gap-6 rounded-panel border border-line bg-warm-50 p-9 sm:p-12">
               <Stars rating={featured.rating} />
               <blockquote className="text-2xl font-semibold leading-snug tracking-tight text-charcoal-950 sm:text-[2rem]">
@@ -69,12 +69,12 @@ export function Testimonials() {
               </span>
             </Reveal>
 
-            <div className="grid gap-5">
+            <div className="grid gap-6">
               {rest.slice(0, 2).map((t, i) => (
                 <Reveal
                   key={t.name}
                   delay={(i + 1) * 80}
-                  className="flex flex-col gap-3 rounded-card border border-line bg-warm-50 p-6"
+                  className="flex flex-col gap-3 rounded-card border border-line bg-warm-50 p-7"
                 >
                   <Stars rating={t.rating} />
                   <blockquote className="text-sm leading-relaxed text-ink-muted">

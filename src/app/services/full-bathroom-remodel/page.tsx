@@ -120,7 +120,7 @@ export default function FullBathroomRemodelPage() {
 
       {/* Is this right for you? */}
       <section className="bg-charcoal-950 py-16 sm:py-20">
-        <Container className="grid gap-8 lg:grid-cols-[1fr,auto] lg:items-center lg:gap-16">
+        <Container className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
           <Reveal>
             <Eyebrow tone="dark">Is This Right For You?</Eyebrow>
             <h2 className="mt-3 text-2xl font-extrabold leading-tight text-warm-50 sm:text-3xl">
@@ -144,7 +144,7 @@ export default function FullBathroomRemodelPage() {
             <p className="text-sm font-semibold text-ink-on-dark-muted">Not sure?</p>
             <p className="mt-1 text-sm text-ink-on-dark-muted">Talk to our team.</p>
             <Button href="/get-a-quote" variant="primary" className="mt-4">
-              Request an Estimate
+              Request Estimate
             </Button>
           </Reveal>
         </Container>

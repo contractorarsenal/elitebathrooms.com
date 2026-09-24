@@ -118,7 +118,7 @@ export function ServiceDetail({
                 <p className="text-sm font-semibold text-ink-on-dark-muted">Not sure?</p>
                 <p className="mt-1 text-sm text-ink-on-dark-muted">Talk to our team.</p>
                 <Button href="/get-a-quote" variant="primary" className="mt-4">
-                  Request an Estimate
+                  Request Estimate
                 </Button>
               </Reveal>
             )}

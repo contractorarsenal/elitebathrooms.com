@@ -25,7 +25,7 @@ export function BlogTeaser() {
           </Reveal>
         </div>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr,1fr] lg:gap-14">
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:gap-14">
           <Reveal>
             <Link href={`/blog/${featured.slug}`} className="group block">
               <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-bronze-600">

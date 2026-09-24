@@ -12,6 +12,10 @@ export const siteConfig = {
     state: "WA",
     zip: "98402",
   },
+  hours: [
+    { days: "Monday to Saturday", time: "8 AM to 6 PM" },
+    { days: "Sunday", time: "Closed" },
+  ],
   // Verified by inspecting the live elitebathrooms.com footer directly.
   social: {
     facebook: "https://www.facebook.com/Elitetile.remodel/",

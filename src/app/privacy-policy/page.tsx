@@ -15,8 +15,11 @@ export default function PrivacyPolicyPage() {
       <Container className="max-w-2xl">
         <h1 className="text-3xl font-extrabold text-charcoal-950 sm:text-4xl">Privacy Policy</h1>
         <p className="mt-4 text-sm text-ink-muted">
-          This page is a placeholder pending legal review. Contact {siteConfig.email} with
-          questions about how your information is handled.
+          This page is a placeholder pending legal review.{" "}
+          <a href={`mailto:${siteConfig.email}`} className="font-semibold text-bronze-600">
+            Email us
+          </a>{" "}
+          with questions about how your information is handled.
         </p>
       </Container>
     </main>

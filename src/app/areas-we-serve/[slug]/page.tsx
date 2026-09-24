@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `Bathroom Remodeling in ${area.name}, WA`,
-    description: area.blurb,
+    description: area.metadataDescription,
     alternates: { canonical: absoluteUrl(`/areas-we-serve/${area.slug}`) },
   };
 }
