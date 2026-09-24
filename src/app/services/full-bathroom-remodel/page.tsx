@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: "Do you handle permits for a full remodel?",
-    answer: "Yes, permitting is handled as part of the project based on your city's requirements.",
+    answer: "Permitting requirements vary by city and scope of work. Ask us during your consultation whether your project needs a permit and how that's handled.",
   },
 ];
 

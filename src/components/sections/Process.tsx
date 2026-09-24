@@ -58,12 +58,12 @@ export function Process() {
                     className="stagger-item relative flex gap-6 py-5 first:pt-0 last:pb-0"
                     style={{ "--reveal-delay": `${150 + i * 110}ms` } as CSSProperties}
                   >
-                    <span className="relative z-10 shrink-0 font-heading text-3xl font-extrabold leading-none text-bronze-500 sm:text-4xl">
+                    <span className="relative z-10 shrink-0 font-heading text-4xl font-extrabold leading-none text-bronze-500 sm:text-5xl">
                       {step.number}
                     </span>
-                    <div className="pt-1">
-                      <h3 className="text-lg font-extrabold text-charcoal-950 sm:text-xl">{step.title}</h3>
-                      <p className="mt-1.5 max-w-sm text-sm leading-relaxed text-ink-muted sm:text-base">
+                    <div className="pt-1.5">
+                      <h3 className="text-xl font-extrabold text-charcoal-950 sm:text-2xl">{step.title}</h3>
+                      <p className="mt-2 max-w-sm text-base leading-relaxed text-ink-muted sm:text-lg">
                         {step.description}
                       </p>
                     </div>

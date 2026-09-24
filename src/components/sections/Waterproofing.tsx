@@ -59,7 +59,7 @@ export function Waterproofing() {
               {details.map((detail) => (
                 <li key={detail} className="flex items-start gap-3">
                   <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-bronze-400" />
-                  <span className="text-sm leading-relaxed text-ink-on-dark-muted sm:text-base">
+                  <span className="text-base leading-relaxed text-ink-on-dark-muted sm:text-lg">
                     {detail}
                   </span>
                 </li>

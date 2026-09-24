@@ -72,7 +72,7 @@ export function ProjectCard({
               <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-bronze-400">
                 {project.type}
               </span>
-              <h3 className={`mt-1 font-extrabold leading-tight text-warm-50 ${large ? "text-2xl sm:text-3xl" : "text-lg"}`}>
+              <h3 className={`mt-1 font-extrabold leading-tight text-warm-50 ${large ? "text-2xl sm:text-3xl" : "text-xl"}`}>
                 {project.title}
               </h3>
             </div>
@@ -88,7 +88,7 @@ export function ProjectCard({
               ))}
             </div>
 
-            <p className={`text-sm leading-relaxed text-ink-on-dark-muted ${large ? "sm:text-base" : ""}`}>
+            <p className="text-base leading-relaxed text-ink-on-dark-muted">
               {project.description}
             </p>
 

@@ -99,7 +99,7 @@ export const services: Service[] = [
       "Matched tile and finish work",
     ],
     heroImage: "/images/services/elite-curbless-shower.jpg",
-    cardImage: "/images/projects/old-bathroom-shower-upgrade-01.jpg",
+    cardImage: "/images/projects/old-bathroom-shower-upgrade-03.jpg",
     projectType: "Shower Remodel",
   },
   {

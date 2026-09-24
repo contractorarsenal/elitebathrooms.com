@@ -27,12 +27,12 @@ function ServiceCard({ slug, delay }: { slug: string; delay: number }) {
             className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
           />
         </div>
-        <h3 className="mt-5 text-xl font-extrabold text-charcoal-950">{service.name}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-ink-muted">{service.summary}</p>
-        <ul className="mt-4 space-y-2">
+        <h3 className="mt-5 text-xl font-extrabold text-charcoal-950 sm:text-2xl">{service.name}</h3>
+        <p className="mt-2.5 text-base leading-relaxed text-ink-muted">{service.summary}</p>
+        <ul className="mt-4 space-y-2.5">
           {scope[service.slug].map((item) => (
-            <li key={item} className="flex items-start gap-2 text-xs font-semibold text-ink-muted sm:text-sm">
-              <CheckIcon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-bronze-500" />
+            <li key={item} className="flex items-start gap-2 text-sm font-semibold text-ink-muted">
+              <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-bronze-500" />
               {item}
             </li>
           ))}

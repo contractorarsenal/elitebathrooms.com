@@ -1,15 +1,6 @@
 import Image from "next/image";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
-import { StarIcon } from "../ui/icons";
-import { siteConfig } from "@/lib/site-config";
-
-const trust = [
-  { label: `${siteConfig.reviews.rating.toFixed(1)} Google Rating`, star: true },
-  { label: `${siteConfig.reviews.count} Reviews` },
-  { label: "10-Year Waterproofing Warranty" },
-  { label: "Financing Available" },
-];
 
 export function Hero() {
   return (
@@ -59,16 +50,6 @@ export function Hero() {
                 View Projects
               </Button>
             </div>
-          </Reveal>
-          <Reveal duration={600} delay={360}>
-            <ul className="mt-10 flex flex-col gap-3 border-t border-warm-50/15 pt-6 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
-              {trust.map((item) => (
-                <li key={item.label} className="flex items-center gap-2 text-sm font-semibold text-warm-50/90">
-                  {item.star && <StarIcon className="h-4 w-4 shrink-0 text-bronze-400" />}
-                  {item.label}
-                </li>
-              ))}
-            </ul>
           </Reveal>
         </div>
       </div>

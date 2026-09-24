@@ -3,6 +3,7 @@ import { Container } from "../ui/Container";
 import { ImageSlot } from "../ui/ImageSlot";
 import { Eyebrow } from "../ui/SectionHeading";
 import { Reveal } from "../ui/Reveal";
+import { DropletIcon, CheckIcon } from "../ui/icons";
 
 const reasons = [
   {
@@ -56,8 +57,8 @@ export function WhyElite() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="text-lg font-extrabold text-charcoal-950">{reason.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-ink-muted sm:text-base">
+                    <h3 className="text-lg font-extrabold text-charcoal-950 sm:text-xl">{reason.title}</h3>
+                    <p className="mt-1.5 text-base leading-relaxed text-ink-muted sm:text-lg">
                       {reason.description}
                     </p>
                   </div>
@@ -66,10 +67,16 @@ export function WhyElite() {
             </ol>
           </Reveal>
 
-          <div className="mt-9 flex flex-wrap gap-x-8 gap-y-2 border-t border-line pt-6">
-            <span className="text-sm font-bold text-charcoal-950">10-Year Waterproofing Warranty</span>
-            <span className="text-sm font-bold text-charcoal-950">Financing Available</span>
-          </div>
+          <Reveal delay={200} className="mt-10 grid gap-4 border-t border-line pt-8 sm:grid-cols-2">
+            <div className="flex items-center gap-3 rounded-card border border-line bg-warm-100 px-5 py-4">
+              <DropletIcon className="h-6 w-6 shrink-0 text-bronze-500" />
+              <span className="text-base font-extrabold text-charcoal-950">10-Year Waterproofing Warranty</span>
+            </div>
+            <div className="flex items-center gap-3 rounded-card border border-line bg-warm-100 px-5 py-4">
+              <CheckIcon className="h-6 w-6 shrink-0 text-bronze-500" />
+              <span className="text-base font-extrabold text-charcoal-950">Financing Available</span>
+            </div>
+          </Reveal>
         </div>
       </Container>
     </section>

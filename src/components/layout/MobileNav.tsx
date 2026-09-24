@@ -18,13 +18,25 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
         {primaryNav.map((item) =>
           item.children ? (
             <details key={item.label} className="group border-b border-charcoal-700 py-1">
+              {/*
+                The whole row is the accordion toggle, full stop — no Link
+                inside it. Nesting a Link inside <summary> made one tap do
+                two conflicting things (navigate vs. expand) depending on
+                exactly where the tap landed. "View All Services" below is
+                the only way to navigate to /services from here now.
+              */}
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between py-3 text-lg font-semibold uppercase tracking-wide text-warm-50 marker:content-none">
-                <Link href={item.href} onClick={onClose}>
-                  {item.label}
-                </Link>
+                {item.label}
                 <ChevronDownIcon className="h-4 w-4 shrink-0 text-warm-50/60 transition-transform group-open:rotate-180" />
               </summary>
               <div className="flex flex-col gap-0.5 pb-3 pl-4">
+                <Link
+                  href={item.href}
+                  onClick={onClose}
+                  className="min-h-11 py-2 text-sm font-bold uppercase tracking-wide text-bronze-400"
+                >
+                  View All Services
+                </Link>
                 {item.children.map((child) => (
                   <Link
                     key={child.href}

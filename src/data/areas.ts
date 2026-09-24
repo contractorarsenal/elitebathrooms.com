@@ -135,7 +135,7 @@ export const areaFaqs = [
   {
     question: "Do you handle permits?",
     answer:
-      "Yes. Permitting requirements vary by city and by scope of work, and we handle that as part of the project rather than leaving it to the homeowner.",
+      "Permitting requirements vary by city and by scope of work. Ask us during your consultation whether your project needs a permit and how that's handled.",
   },
   {
     question: "How long does a bathroom remodel take?",
