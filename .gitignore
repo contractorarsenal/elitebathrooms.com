@@ -42,3 +42,10 @@ next-env.d.ts
 /dist/
 .vinext/
 .wrangler/
+
+# WordPress migration archive: large reference binaries, not source.
+# reports/, data/, pages/, forms/, tracking/, seo/, scripts/, README.md stay tracked.
+/wordpress-archive/html/
+/wordpress-archive/media/
+/wordpress-archive/screenshots/
+/wordpress-archive/css/litespeed-combined/

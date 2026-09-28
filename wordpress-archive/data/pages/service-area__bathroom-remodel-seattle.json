@@ -1,0 +1,1221 @@
+{
+  "url": "https://elitebathrooms.com/service-area/bathroom-remodel-seattle/",
+  "type": "service-area",
+  "slug": "service-area__bathroom-remodel-seattle",
+  "status": 200,
+  "x_robots_tag": null,
+  "content_type": "text/html; charset=UTF-8",
+  "title": "Bathroom Remodel Seattle - Top Bathroom Renovation Solutions",
+  "meta": {
+    "viewport": "width=device-width, initial-scale=1.0",
+    "description": "Bathroom remodel Seattle experts provide full-service renovations, including tile installation, modern layouts, and personalized bathroom remodels for your home",
+    "generator": "Elementor 4.2.4; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap",
+    "ti-site-data": "eyJyIjoiMTowITc6MCEzMDowIiwibyI6Imh0dHBzOlwvXC9lbGl0ZWJhdGhyb29tcy5jb20/dGktb25saW5lLXVzZXJzLWdvb2dsZT0xJmFtcDtwPSUyRnNlcnZpY2UtYXJlYSUyRmJhdGhyb29tLXJlbW9kZWwtc2VhdHRsZSUyRiZhbXA7X3dwbm9uY2U9YmE5OGQ3MDBiZiJ9",
+    "msapplication-TileImage": "https://elitebathrooms.com/wp-content/uploads/2026/02/elite_logomark_copper.png"
+  },
+  "og": {
+    "og:locale": "en_US",
+    "og:type": "article",
+    "og:title": "Bathroom Remodel Seattle - Top Bathroom Renovation Solutions",
+    "og:description": "Bathroom remodel Seattle experts provide full-service renovations, including tile installation, modern layouts, and personalized bathroom remodels for your home",
+    "og:url": "https://elitebathrooms.com/service-area/bathroom-remodel-seattle/",
+    "og:site_name": "Elite Bathrooms",
+    "og:updated_time": "2026-06-16T08:53:09-07:00",
+    "og:image": "https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle.jpg",
+    "og:image:secure_url": "https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle.jpg",
+    "og:image:width": "1024",
+    "og:image:height": "1024",
+    "og:image:alt": "bathroom remodel Seattle",
+    "og:image:type": "image/jpeg"
+  },
+  "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Bathroom Remodel Seattle - Top Bathroom Renovation Solutions",
+    "twitter:description": "Bathroom remodel Seattle experts provide full-service renovations, including tile installation, modern layouts, and personalized bathroom remodels for your home",
+    "twitter:image": "https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle.jpg"
+  },
+  "canonical": "https://elitebathrooms.com/service-area/bathroom-remodel-seattle/",
+  "robots_meta": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "jsonld_types": [
+    null,
+    "LocalBusiness",
+    "FAQPage"
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://elitebathrooms.com/service-area/bathroom-remodel-seattle/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": "1",
+              "item": {
+                "@id": "https://elitebathrooms.com",
+                "name": "Home"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": "2",
+              "item": {
+                "@id": "https://elitebathrooms.com/service-area/bathroom-remodel-seattle/",
+                "name": "Bathroom Remodel Seattle &#8211; Top Bathroom Renovation Solutions"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Your Business Name",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "closes": "00:00",
+          "opens": "00:00"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is included in a full bathroom remodel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A full bathroom remodel usually includes planning, demolition, preparation, wet-area work, fixture updates, surface installation, and finishing details. The final scope depends on whether the project focuses on finishes only or also changes layout, storage, and function."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need permits for a bathroom remodel in Seattle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Possibly. Permit needs depend on the scope of work. Some remodels may require construction permits, some smaller work may be handled differently, and certain minor repairs may fall under exceptions, so it is best to review this early.\u00a0"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a shower remodel enough, or do I need a full bathroom renovation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That depends on what is not working. If the main issue is the shower itself, a targeted remodel may be enough. If layout, storage, surfaces, and movement all need improvement, a full renovation often makes more sense."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I prioritize first in a master bathroom remodel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start with how the room needs to function every day. Layout, shower usability, storage, lighting, and movement usually matter most because they shape comfort and convenience long before decorative choices start to matter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I make a small bathroom feel more functional?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A small bathroom usually benefits from smarter layout choices, better vanity storage, cleaner fixture placement, and a shower design that uses space efficiently. The goal is to make the room easier to move through without making it feel crowded."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I expect from bathroom remodeling contractors before construction starts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Before construction starts, contractors should help clarify scope, layout direction, finish selections, site conditions, and the sequence of work. You should understand what is being changed, what decisions matter most, and how the project will be organized."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I compare bathroom remodelers in Seattle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compare bathroom remodelers by how clearly they define scope, explain process, understand layout challenges, and communicate decisions. A strong company should sound organized, practical, and focused on how the finished bathroom will function every day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I plan a bathroom remodel that balances daily comfort and long-term value?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Begin with the daily frustrations you want to solve, then prioritize durable materials, practical layout improvements, and comfort upgrades that will keep performing over time. The best value usually comes from choices that improve both use and longevity."
+          }
+        }
+      ]
+    }
+  ],
+  "headings": [
+    [
+      "h1",
+      "Bathroom Remodel Seattle \u2013 Top Bathroom Renovation Solutions"
+    ],
+    [
+      "h3",
+      "Business Hours"
+    ],
+    [
+      "h3",
+      "Counties and Cities Near You in Seattle"
+    ],
+    [
+      "h3",
+      "King County, WA"
+    ],
+    [
+      "h3",
+      "Kitsap County, WA"
+    ],
+    [
+      "h3",
+      "Pierce County, WA"
+    ],
+    [
+      "h3",
+      "Snohomish County, WA"
+    ],
+    [
+      "h2",
+      "Why a Bathroom Remodel Seattle, WA Should Improve More Than Appearance"
+    ],
+    [
+      "h3",
+      "What Many Seattle Homes Need From a Smarter Bathroom Remodel"
+    ],
+    [
+      "h3",
+      "Premium Features That Improve Comfort, Durability, and Everyday Use"
+    ],
+    [
+      "h2",
+      "High-Quality Bathroom Remodeling Services in Seattle Designed Around You"
+    ],
+    [
+      "h3",
+      "Bathtub Remodel"
+    ],
+    [
+      "h3",
+      "Shower Remodel"
+    ],
+    [
+      "h3",
+      "Full Bathroom Remodel"
+    ],
+    [
+      "h2",
+      "Bathroom Financing Available For Seattle Area Homeowners"
+    ],
+    [
+      "h2",
+      "Seattle, WA Bathroom Remodel Offers & Discounts"
+    ],
+    [
+      "h3",
+      "Complete Bathroom Remodel"
+    ],
+    [
+      "h3",
+      "One-Day Bathroom Conversion"
+    ],
+    [
+      "h2",
+      "4 Simple Steps Process for any Bathroom Remodeling Seattle"
+    ],
+    [
+      "h2",
+      "Bathroom Remodel Projects"
+    ],
+    [
+      "h3",
+      "Luxury Full Bathroom Remodel"
+    ],
+    [
+      "h3",
+      "Double Vanity Upgrade"
+    ],
+    [
+      "h3",
+      "Bathroom Update With Glossy Tile"
+    ],
+    [
+      "h3",
+      "Old Bathroom Shower Upgrade"
+    ],
+    [
+      "h3",
+      "Green Tile Shower Remodel"
+    ],
+    [
+      "h3",
+      "Heated Floor Bathroom Remodel"
+    ],
+    [
+      "h2",
+      "Seattle Bathroom Remodeling Guide & FAQs"
+    ],
+    [
+      "h2",
+      "Ready to Transform Your Bathroom? Get a Free Quote"
+    ],
+    [
+      "h2",
+      "Check out our  Google Reviews"
+    ],
+    [
+      "h2",
+      "Take Advantage of Our One-Day Bathroom Conversion"
+    ],
+    [
+      "h2",
+      "Check out our  Thumbtack Reviews"
+    ],
+    [
+      "h3",
+      "Professional Warranty Protection From Elite bathrooms"
+    ]
+  ],
+  "links_internal": [
+    "https://elitebathrooms.com/",
+    "https://elitebathrooms.com/bathroom-remodel-company-seattle/",
+    "https://elitebathrooms.com/bathroom-remodel-services/",
+    "https://elitebathrooms.com/bathroom-remodeling-seattle/",
+    "https://elitebathrooms.com/contact-us/",
+    "https://elitebathrooms.com/cookie-policy/",
+    "https://elitebathrooms.com/get-a-quote/",
+    "https://elitebathrooms.com/privacy-policy/",
+    "https://elitebathrooms.com/projects/",
+    "https://elitebathrooms.com/projects/bathtub-area-renovation-project/",
+    "https://elitebathrooms.com/projects/double-vanity-upgrade/",
+    "https://elitebathrooms.com/projects/glass-shower-remodel/",
+    "https://elitebathrooms.com/projects/heated-floor-bathroom/",
+    "https://elitebathrooms.com/projects/luxury-full-bathroom-remodel/",
+    "https://elitebathrooms.com/projects/old-bathroom-shower-upgrade/",
+    "https://elitebathrooms.com/service-area/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-auburn/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-bainbridge-island/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-bellevue/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-black-diamond/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-bothel/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-burien/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-covington/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-des-moines/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-edmonds/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-enumclaw/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-everett/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-federal-way/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-issaquah/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-kenmore/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-kent/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-kirkland/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-lake-forest-park/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-lynnwood/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-maple-valley/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-mercer-island/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-mill-creek/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-mountlake-terrace/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-mukilteo/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-newcastle/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-poulsbo/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-puyallup/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-redmond/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-renton/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-sammamish/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-seatac/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-seattle/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-shoreline/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-snoqualmie/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-tacoma/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-tukwila/",
+    "https://elitebathrooms.com/service-area/bathroom-remodel-woodinville/",
+    "https://elitebathrooms.com/services/bathtub-remodel/",
+    "https://elitebathrooms.com/services/full-bathroom-remodel/",
+    "https://elitebathrooms.com/services/one-day-bathroom-renovation/",
+    "https://elitebathrooms.com/services/shower-remodel/",
+    "https://elitebathrooms.com/thank-you/"
+  ],
+  "links_external": [
+    "http://www.instagram.com/elitebathroomswa/",
+    "https://cookiedatabase.org/tcf/purposes/",
+    "https://dasweb.ca/",
+    "https://maps.app.goo.gl/bCd9uR5xpyB9NkXq8",
+    "https://maps.app.goo.gl/zWVHpkA3vDkNVWKZ7",
+    "https://www.facebook.com/Elitetile.remodel/",
+    "https://www.instagram.com/17841456096174758/",
+    "https://www.thumbtack.com/wa/auburn/wiring-installation/elite-tile-remodel/service/424653393339777048"
+  ],
+  "images": [
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "default-logo"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5ODAiIGhlaWdodD0iOTgwIiB2aWV3Qm94PSIwIDAgOTgwIDk4MCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle.jpg 1024w, https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle-300x300.jpg 300w, https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle-150x150.jpg 150w, https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle-768x768.jpg 768w, https://elitebathrooms.com/wp-content/uploads/2026/05/bathroom-remodel-seattle-629x629.jpg 629w",
+      "alt": "bathroom remodel seattle bathroom remodel Seattle"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NDkiIGhlaWdodD0iMzA0IiB2aWV3Qm94PSIwIDAgNDQ5IDMwNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2025/07/pricing-banner-2.png 449w, https://elitebathrooms.com/wp-content/uploads/2025/07/pricing-banner-2-300x203.png 300w",
+      "alt": "pricing banner 2 bathroom remodel Seattle"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NDkiIGhlaWdodD0iMzA0IiB2aWV3Qm94PSIwIDAgNDQ5IDMwNCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2025/07/pricing-banner-2.png 449w, https://elitebathrooms.com/wp-content/uploads/2025/07/pricing-banner-2-300x203.png 300w",
+      "alt": "pricing banner 2 bathroom remodel Seattle"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjMyIiBoZWlnaHQ9IjY5MCIgdmlld0JveD0iMCAwIDEyMzIgNjkwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojY2ZkNGRiO2ZpbGwtb3BhY2l0eTogMC4xOyIvPjwvc3ZnPg==",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2025/06/h1-bg02.png 1232w, https://elitebathrooms.com/wp-content/uploads/2025/06/h1-bg02-300x168.png 300w, https://elitebathrooms.com/wp-content/uploads/2025/06/h1-bg02-1024x574.png 1024w, https://elitebathrooms.com/wp-content/uploads/2025/06/h1-bg02-768x430.png 768w, https://elitebathrooms.com/wp-content/uploads/2025/06/h1-bg02-860x482.png 860w",
+      "alt": "h1 bg02 bathroom remodel Seattle"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "image"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "image"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "image"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "image"
+    },
+    {
+      "src": "https://elitebathrooms.com/wp-content/uploads/2026/05/project-32-01.jpg",
+      "srcset": null,
+      "alt": "(css background-image)"
+    },
+    {
+      "src": "https://elitebathrooms.com/wp-content/uploads/2026/05/project-20-04.jpg",
+      "srcset": null,
+      "alt": "(css background-image)"
+    },
+    {
+      "src": "https://elitebathrooms.com/wp-content/uploads/2026/05/project-38-05.jpg",
+      "srcset": null,
+      "alt": "(css background-image)"
+    },
+    {
+      "src": "https://elitebathrooms.com/wp-content/uploads/2026/05/project-49-13.jpg",
+      "srcset": null,
+      "alt": "(css background-image)"
+    },
+    {
+      "src": "https://elitebathrooms.com/wp-content/uploads/2026/05/project-31-12.jpg",
+      "srcset": null,
+      "alt": "(css background-image)"
+    },
+    {
+      "src": "https://elitebathrooms.com/wp-content/uploads/2026/05/project-29-02.jpg",
+      "srcset": null,
+      "alt": "(css background-image)"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojY2ZkNGRiO2ZpbGwtb3BhY2l0eTogMC4xOyIvPjwvc3ZnPg==",
+      "srcset": null,
+      "alt": "Image for choice number 1"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2OCIgaGVpZ2h0PSI3OSIgdmlld0JveD0iMCAwIDY4IDc5Ij48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojY2ZkNGRiO2ZpbGwtb3BhY2l0eTogMC4xOyIvPjwvc3ZnPg==",
+      "srcset": null,
+      "alt": "Image for choice number 2"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBzdHlsZT0iZmlsbDojY2ZkNGRiO2ZpbGwtb3BhY2l0eTogMC4xOyIvPjwvc3ZnPg==",
+      "srcset": null,
+      "alt": "Image for choice number 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/e.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/e.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg 2x",
+      "alt": "Samyol L. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-01.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-01.svg 2x",
+      "alt": "James C. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-05.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-05.svg 2x",
+      "alt": "Mike G. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg 2x",
+      "alt": "Pam K. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg 2x",
+      "alt": "Chris C. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg 2x",
+      "alt": "Andrea H. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-06.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-06.svg 2x",
+      "alt": "Suryn D. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg 2x",
+      "alt": "Martha W. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-07.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-07.svg 2x",
+      "alt": "Grace C. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-03.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-03.svg 2x",
+      "alt": "Annie L. profile picture"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAxIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": null,
+      "alt": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "logo_color_white"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMzMiIGhlaWdodD0iMTA4IiB2aWV3Qm94PSIwIDAgMzMzIDEwOCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2025/06/thumbtack-elite-pro.png 333w, https://elitebathrooms.com/wp-content/uploads/2025/06/thumbtack-elite-pro-300x97.png 300w",
+      "alt": "thumbtack elite pro"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "default-logo"
+    }
+  ],
+  "forms": [
+    {
+      "action": "/service-area/bathroom-remodel-seattle/",
+      "method": "post",
+      "id": "gform_1",
+      "class": "quotation-form",
+      "fields": [
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_1",
+          "id": "choice_1_1_0",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_1",
+          "id": "choice_1_1_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_1",
+          "id": "choice_1_1_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_7.1",
+          "id": "choice_1_7_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_7.2",
+          "id": "choice_1_7_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_7.3",
+          "id": "choice_1_7_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_7.4",
+          "id": "choice_1_7_4",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_4.1",
+          "id": "choice_1_4_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_4.2",
+          "id": "choice_1_4_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_4.3",
+          "id": "choice_1_4_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_4.4",
+          "id": "choice_1_4_4",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_8.1",
+          "id": "choice_1_8_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_8.2",
+          "id": "choice_1_8_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_8.3",
+          "id": "choice_1_8_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_8.4",
+          "id": "choice_1_8_4",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_1_9_0",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_1_9_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_1_9_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "button",
+          "name": null,
+          "id": "gform_next_button_1_20",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_10.3",
+          "id": "input_1_10_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_10.6",
+          "id": "input_1_10_6",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "tel",
+          "name": "input_11",
+          "id": "input_1_11",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "email",
+          "name": "input_12",
+          "id": "input_1_12",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_13.1",
+          "id": "input_1_13_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_13.3",
+          "id": "input_1_13_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "select",
+          "type": "select",
+          "name": "input_13.4",
+          "id": "input_1_13_4",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_13.5",
+          "id": "input_1_13_5",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "input_13.6",
+          "id": "input_1_13_6",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "textarea",
+          "type": "textarea",
+          "name": "input_17",
+          "id": "input_1_17",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_18.1",
+          "id": "input_1_18_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "input_18.2",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "input_18.3",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "name": null,
+          "id": "gform_previous_button_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "name": null,
+          "id": "gform_submit_button_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_ajax",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_submission_method",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_theme",
+          "id": "gform_theme_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_style_settings",
+          "id": "gform_style_settings_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "is_submit_1",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_submit",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_currency",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_unique_id",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "state_1",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_target_page_number_1",
+          "id": "gform_target_page_number_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_source_page_number_1",
+          "id": "gform_source_page_number_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_field_values",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_uploaded_files",
+          "id": "gform_uploaded_files_1",
+          "required": false,
+          "placeholder": null
+        }
+      ]
+    }
+  ]
+}

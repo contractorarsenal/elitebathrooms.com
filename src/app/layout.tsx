@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Inter } from "next/font/google";
+import { Figtree, Roboto } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -8,15 +8,19 @@ import { AttributionCapture } from "@/components/analytics/AttributionCapture";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema } from "@/lib/schema";
 
-const archivo = Archivo({
+// Figtree/Roboto match the live WordPress site's Elementor global kit
+// (Secondary/Heading = Figtree, Primary/body = Roboto) — see
+// docs/migration/rebuild-reconciliation.md for how this was confirmed.
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-archivo",
+  variable: "--font-figtree",
   weight: ["600", "700", "800"],
 });
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-roboto",
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -37,12 +41,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#121316",
+  themeColor: "#25272E",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${figtree.variable} ${roboto.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-warm-50">
         <JsonLd data={organizationSchema()} />
         <AttributionCapture />

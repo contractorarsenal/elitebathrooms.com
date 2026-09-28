@@ -1,0 +1,222 @@
+{
+  "form_id": "gform_2",
+  "found_on": "https://elitebathrooms.com/bathroom-remodeling-seattle/",
+  "action": "/bathroom-remodeling-seattle/",
+  "method": "post",
+  "class": "quotation-form",
+  "fields": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_10.3",
+      "id": "input_2_10_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_10.6",
+      "id": "input_2_10_6",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "tel",
+      "name": "input_11",
+      "id": "input_2_11",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "email",
+      "name": "input_12",
+      "id": "input_2_12",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "textarea",
+      "type": "textarea",
+      "name": "input_17",
+      "id": "input_2_17",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_2_9_0",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_2_9_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_2_9_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_2_9_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_18.1",
+      "id": "input_2_18_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "input_18.2",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "input_18.3",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "submit",
+      "name": null,
+      "id": "gform_submit_button_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_ajax",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_submission_method",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_theme",
+      "id": "gform_theme_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_style_settings",
+      "id": "gform_style_settings_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "is_submit_2",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_submit",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_currency",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_unique_id",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "state_2",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_target_page_number_2",
+      "id": "gform_target_page_number_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_source_page_number_2",
+      "id": "gform_source_page_number_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_field_values",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    }
+  ],
+  "labels": {
+    "input_2_10_3": "First",
+    "input_2_10_6": "Last",
+    "input_2_11": "Phone",
+    "input_2_12": "Email",
+    "input_2_17": "Subject",
+    "choice_2_9_0": "Immediately",
+    "choice_2_9_1": "Morning (9am-12pm)",
+    "choice_2_9_2": "Afternoon (1pm-5pm)",
+    "choice_2_9_3": "Evening (5pm-9pm)",
+    "input_2_18_1": "By checking this box, you agree to receive emails and text messages from Elite Tile Bathrooms, including non-marketing updates, schedule updates, and service notifications. Message frequency varies. Message and data rates may apply. You may opt out at any time by replying STOP or get help by replying HELP. View our Privacy Policy.",
+    "input_2_19": "Are you human?"
+  }
+}

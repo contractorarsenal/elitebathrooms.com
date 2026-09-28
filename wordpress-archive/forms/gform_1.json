@@ -1,0 +1,417 @@
+{
+  "form_id": "gform_1",
+  "found_on": "https://elitebathrooms.com/get-a-quote/",
+  "action": "/get-a-quote/",
+  "method": "post",
+  "class": "quotation-form",
+  "fields": [
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_1",
+      "id": "choice_1_1_0",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_1",
+      "id": "choice_1_1_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_1",
+      "id": "choice_1_1_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_7.1",
+      "id": "choice_1_7_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_7.2",
+      "id": "choice_1_7_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_7.3",
+      "id": "choice_1_7_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_7.4",
+      "id": "choice_1_7_4",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_4.1",
+      "id": "choice_1_4_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_4.2",
+      "id": "choice_1_4_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_4.3",
+      "id": "choice_1_4_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_4.4",
+      "id": "choice_1_4_4",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_8.1",
+      "id": "choice_1_8_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_8.2",
+      "id": "choice_1_8_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_8.3",
+      "id": "choice_1_8_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_8.4",
+      "id": "choice_1_8_4",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_1_9_0",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_1_9_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "radio",
+      "name": "input_9",
+      "id": "choice_1_9_2",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "button",
+      "name": null,
+      "id": "gform_next_button_1_20",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_10.3",
+      "id": "input_1_10_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_10.6",
+      "id": "input_1_10_6",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "tel",
+      "name": "input_11",
+      "id": "input_1_11",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "email",
+      "name": "input_12",
+      "id": "input_1_12",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_13.1",
+      "id": "input_1_13_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_13.3",
+      "id": "input_1_13_3",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "select",
+      "type": "select",
+      "name": "input_13.4",
+      "id": "input_1_13_4",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "input_13.5",
+      "id": "input_1_13_5",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "input_13.6",
+      "id": "input_1_13_6",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "textarea",
+      "type": "textarea",
+      "name": "input_17",
+      "id": "input_1_17",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "checkbox",
+      "name": "input_18.1",
+      "id": "input_1_18_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "input_18.2",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "input_18.3",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "submit",
+      "name": null,
+      "id": "gform_previous_button_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "submit",
+      "name": null,
+      "id": "gform_submit_button_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_ajax",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_submission_method",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_theme",
+      "id": "gform_theme_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_style_settings",
+      "id": "gform_style_settings_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "is_submit_1",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_submit",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_currency",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_unique_id",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "state_1",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_target_page_number_1",
+      "id": "gform_target_page_number_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_source_page_number_1",
+      "id": "gform_source_page_number_1",
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_field_values",
+      "id": null,
+      "required": false,
+      "placeholder": null
+    },
+    {
+      "tag": "input",
+      "type": "hidden",
+      "name": "gform_uploaded_files",
+      "id": "gform_uploaded_files_1",
+      "required": false,
+      "placeholder": null
+    }
+  ],
+  "labels": {
+    "choice_1_1_0": "Bathtub Remodel",
+    "choice_1_1_1": "Shower Remodel",
+    "choice_1_1_2": "Full Bathroom Remodel",
+    "choice_1_7_1": "Easier Access/Safety",
+    "choice_1_7_2": "Modernize Style",
+    "choice_1_7_3": "Easier to Clean",
+    "choice_1_7_4": "Increase Home Value",
+    "choice_1_4_1": "Master Bathroom",
+    "choice_1_4_2": "Guest/Hall Bathroom",
+    "choice_1_4_3": "Powder Room",
+    "choice_1_4_4": "Other",
+    "choice_1_8_1": "Under 10 years",
+    "choice_1_8_2": "10\u201325 years",
+    "choice_1_8_3": "25\u201350 years",
+    "choice_1_8_4": "50+ years (Historic)",
+    "choice_1_9_0": "Immediately",
+    "choice_1_9_1": "Within 3 months",
+    "choice_1_9_2": "6+ months",
+    "input_1_10_3": "First",
+    "input_1_10_6": "Last",
+    "input_1_11": "Phone",
+    "input_1_12": "Email",
+    "input_1_13_1": "Street Address",
+    "input_1_13_3": "City",
+    "input_1_13_4": "State",
+    "input_1_13_5": "ZIP Code",
+    "input_1_17": "Additional Information",
+    "gform_browse_button_1_21": "Add pictures, plans, drafts",
+    "input_1_18_1": "By checking this box, you agree to receive emails and text messages from Elite Bathrooms, including non-marketing updates, schedule updates, and service notifications. Message frequency varies. Message and data rates may apply. You may opt out at any time by replying STOP or get help by replying HELP. View our Privacy Policy.",
+    "input_1_19": "Are you human?"
+  }
+}

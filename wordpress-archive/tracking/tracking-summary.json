@@ -1,0 +1,29 @@
+{
+  "gtm_containers": [
+    "GTM-KMB5XPJH",
+    "GTM-MCGRC63R"
+  ],
+  "gtag_direct_load_ids": [
+    "GT-PLWH3KWF"
+  ],
+  "ga4_measurement_id_in_source": null,
+  "meta_pixel_found": false,
+  "microsoft_clarity_found": false,
+  "google_ads_conversion_id_found": false,
+  "third_party_widgets": [
+    "trustindex (cdn.trustindex.io) - Google + Thumbtack review widgets"
+  ],
+  "plugin_namespaces_from_wp_json": [
+    "litespeed",
+    "rankmath",
+    "elementor",
+    "elementor-pro",
+    "elementor-ai",
+    "hfe",
+    "complianz",
+    "trustindex",
+    "ai1wm",
+    "google-site-kit",
+    "nps-survey"
+  ]
+}

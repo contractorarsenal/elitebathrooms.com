@@ -1,0 +1,779 @@
+{
+  "url": "https://elitebathrooms.com/contact-us/",
+  "type": "page",
+  "slug": "contact-us",
+  "status": 200,
+  "x_robots_tag": null,
+  "content_type": "text/html; charset=UTF-8",
+  "title": "Contact Elite Bathrooms - Talk to Our Support Experts",
+  "meta": {
+    "viewport": "width=device-width, initial-scale=1.0",
+    "description": "Have questions about your project? Call (206) 369-2688 or visit our Seattle location. We are ready to help with your kitchen, bath, or full home remodel.",
+    "generator": "Elementor 4.2.4; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap",
+    "ti-site-data": "eyJyIjoiMTowITc6MCEzMDowIiwibyI6Imh0dHBzOlwvXC9lbGl0ZWJhdGhyb29tcy5jb20/dGktb25saW5lLXVzZXJzLWdvb2dsZT0xJmFtcDtwPSUyRmNvbnRhY3QtdXMlMkYmYW1wO193cG5vbmNlPWJhOThkNzAwYmYifQ==",
+    "msapplication-TileImage": "https://elitebathrooms.com/wp-content/uploads/2026/02/elite_logomark_copper.png"
+  },
+  "og": {
+    "og:locale": "en_US",
+    "og:type": "article",
+    "og:title": "Contact Elite Bathrooms - Talk to Our Support Experts",
+    "og:description": "Have questions about your project? Call (206) 369-2688 or visit our Seattle location. We are ready to help with your kitchen, bath, or full home remodel.",
+    "og:url": "https://elitebathrooms.com/contact-us/",
+    "og:site_name": "Elite Bathrooms",
+    "og:updated_time": "2026-07-23T00:02:14-07:00",
+    "og:image": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg",
+    "og:image:secure_url": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg",
+    "og:image:width": "768",
+    "og:image:height": "768",
+    "og:image:alt": "Contact Elite Bathroom",
+    "og:image:type": "image/jpeg"
+  },
+  "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Contact Elite Bathrooms - Talk to Our Support Experts",
+    "twitter:description": "Have questions about your project? Call (206) 369-2688 or visit our Seattle location. We are ready to help with your kitchen, bath, or full home remodel.",
+    "twitter:image": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg",
+    "twitter:label1": "Time to read",
+    "twitter:data1": "Less than a minute"
+  },
+  "canonical": "https://elitebathrooms.com/contact-us/",
+  "robots_meta": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large",
+  "jsonld_types": [
+    null
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://elitebathrooms.com/#organization",
+          "name": "Elite Bathrooms",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://elitebathrooms.com/#logo",
+            "url": "https://elitebathrooms.com/wp-content/uploads/2026/02/logo_color_white.svg",
+            "contentUrl": "https://elitebathrooms.com/wp-content/uploads/2026/02/logo_color_white.svg",
+            "caption": "Elite Bathrooms",
+            "inLanguage": "en-US",
+            "width": "227",
+            "height": "76"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://elitebathrooms.com/#website",
+          "url": "https://elitebathrooms.com",
+          "name": "Elite Bathrooms",
+          "alternateName": "Elite Bathrooms",
+          "publisher": {
+            "@id": "https://elitebathrooms.com/#organization"
+          },
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "ImageObject",
+          "@id": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg",
+          "url": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg",
+          "width": "200",
+          "height": "200",
+          "inLanguage": "en-US"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://elitebathrooms.com/contact-us/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": "1",
+              "item": {
+                "@id": "https://elitebathrooms.com",
+                "name": "Home"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": "2",
+              "item": {
+                "@id": "https://elitebathrooms.com/contact-us/",
+                "name": "Contact Elite Bathrooms"
+              }
+            }
+          ]
+        },
+        {
+          "@type": "ContactPage",
+          "@id": "https://elitebathrooms.com/contact-us/#webpage",
+          "url": "https://elitebathrooms.com/contact-us/",
+          "name": "Contact Elite Bathrooms - Talk to Our Support Experts",
+          "datePublished": "2025-06-02T03:15:27-07:00",
+          "dateModified": "2026-07-23T00:02:14-07:00",
+          "isPartOf": {
+            "@id": "https://elitebathrooms.com/#website"
+          },
+          "primaryImageOfPage": {
+            "@id": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg"
+          },
+          "inLanguage": "en-US",
+          "breadcrumb": {
+            "@id": "https://elitebathrooms.com/contact-us/#breadcrumb"
+          }
+        }
+      ]
+    }
+  ],
+  "headings": [
+    [
+      "h1",
+      "Contact Elite Bathrooms Team - Talk to Our Sales Experts"
+    ],
+    [
+      "h2",
+      "Contact Us and get support from our team"
+    ],
+    [
+      "h2",
+      "Talk to Our Bathroom Remodeling Experts"
+    ],
+    [
+      "h2",
+      "Check out our  Google Reviews"
+    ],
+    [
+      "h2",
+      "Take Advantage of Our One-Day Bathroom Conversion"
+    ],
+    [
+      "h2",
+      "Check out our  Thumbtack Reviews"
+    ],
+    [
+      "h3",
+      "Professional Warranty Protection From Elite bathrooms"
+    ]
+  ],
+  "links_internal": [
+    "https://elitebathrooms.com/",
+    "https://elitebathrooms.com/bathroom-remodel-company-seattle/",
+    "https://elitebathrooms.com/bathroom-remodel-services/",
+    "https://elitebathrooms.com/bathroom-remodeling-seattle/",
+    "https://elitebathrooms.com/contact-us/",
+    "https://elitebathrooms.com/cookie-policy/",
+    "https://elitebathrooms.com/get-a-quote/",
+    "https://elitebathrooms.com/privacy-policy/",
+    "https://elitebathrooms.com/projects/",
+    "https://elitebathrooms.com/service-area/",
+    "https://elitebathrooms.com/services/bathtub-remodel/",
+    "https://elitebathrooms.com/services/full-bathroom-remodel/",
+    "https://elitebathrooms.com/services/one-day-bathroom-renovation/",
+    "https://elitebathrooms.com/services/shower-remodel/",
+    "https://elitebathrooms.com/thank-you/",
+    "mailto:info@elitebathrooms.com"
+  ],
+  "links_external": [
+    "http://www.instagram.com/elitebathroomswa/",
+    "https://cookiedatabase.org/tcf/purposes/",
+    "https://dasweb.ca/",
+    "https://maps.app.goo.gl/UwPJhWdeXkn8kQHD7",
+    "https://maps.app.goo.gl/bCd9uR5xpyB9NkXq8",
+    "https://maps.app.goo.gl/zWVHpkA3vDkNVWKZ7",
+    "https://www.facebook.com/Elitetile.remodel/",
+    "https://www.instagram.com/17841456096174758/",
+    "https://www.instagram.com/elitetile.remodel/?hl=en",
+    "https://www.thumbtack.com/wa/auburn/wiring-installation/elite-tile-remodel/service/424653393339777048",
+    "https://www.tiktok.com/@elitetile.remodel",
+    "https://www.youtube.com/@EliteTileRemodel"
+  ],
+  "images": [
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "default-logo"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3NjgiIGhlaWdodD0iNzY4IiB2aWV3Qm94PSIwIDAgNzY4IDc2OCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01.jpg 768w, https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01-300x300.jpg 300w, https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01-150x150.jpg 150w, https://elitebathrooms.com/wp-content/uploads/2026/06/contact-elite-bathrooms-01-629x629.jpg 629w",
+      "alt": "contact elite bathrooms 01 Contact Elite Bathroom"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/e.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/e.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg 2x",
+      "alt": "Samyol L. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-01.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-01.svg 2x",
+      "alt": "James C. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-05.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-05.svg 2x",
+      "alt": "Mike G. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg 2x",
+      "alt": "Pam K. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg 2x",
+      "alt": "Chris C. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-10.svg 2x",
+      "alt": "Andrea H. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-06.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-06.svg 2x",
+      "alt": "Suryn D. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-08.svg 2x",
+      "alt": "Martha W. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-07.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-07.svg 2x",
+      "alt": "Grace C. profile picture"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 1"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 2"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 3"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 4"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/star/f.svg",
+      "srcset": null,
+      "alt": "Thumbtack star 5"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/platform/Thumbtack/icon.svg",
+      "srcset": null,
+      "alt": "Thumbtack"
+    },
+    {
+      "src": "https://cdn.trustindex.io/assets/default-avatar/noprofile-03.svg",
+      "srcset": "https://cdn.trustindex.io/assets/default-avatar/noprofile-03.svg 2x",
+      "alt": "Annie L. profile picture"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDEiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAxIDEwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": null,
+      "alt": ""
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "logo_color_white"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMzMiIGhlaWdodD0iMTA4IiB2aWV3Qm94PSIwIDAgMzMzIDEwOCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgc3R5bGU9ImZpbGw6I2NmZDRkYjtmaWxsLW9wYWNpdHk6IDAuMTsiLz48L3N2Zz4=",
+      "srcset": "https://elitebathrooms.com/wp-content/uploads/2025/06/thumbtack-elite-pro.png 333w, https://elitebathrooms.com/wp-content/uploads/2025/06/thumbtack-elite-pro-300x97.png 300w",
+      "alt": "thumbtack elite pro"
+    },
+    {
+      "src": "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=",
+      "srcset": null,
+      "alt": "default-logo"
+    }
+  ],
+  "forms": [
+    {
+      "action": "/contact-us/",
+      "method": "post",
+      "id": "gform_2",
+      "class": "quotation-form",
+      "fields": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_10.3",
+          "id": "input_2_10_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "input_10.6",
+          "id": "input_2_10_6",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "tel",
+          "name": "input_11",
+          "id": "input_2_11",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "email",
+          "name": "input_12",
+          "id": "input_2_12",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "textarea",
+          "type": "textarea",
+          "name": "input_17",
+          "id": "input_2_17",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_2_9_0",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_2_9_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_2_9_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "name": "input_9",
+          "id": "choice_2_9_3",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "name": "input_18.1",
+          "id": "input_2_18_1",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "input_18.2",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "input_18.3",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "submit",
+          "name": null,
+          "id": "gform_submit_button_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_ajax",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_submission_method",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_theme",
+          "id": "gform_theme_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_style_settings",
+          "id": "gform_style_settings_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "is_submit_2",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_submit",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_currency",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_unique_id",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "state_2",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_target_page_number_2",
+          "id": "gform_target_page_number_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_source_page_number_2",
+          "id": "gform_source_page_number_2",
+          "required": false,
+          "placeholder": null
+        },
+        {
+          "tag": "input",
+          "type": "hidden",
+          "name": "gform_field_values",
+          "id": null,
+          "required": false,
+          "placeholder": null
+        }
+      ]
+    }
+  ]
+}

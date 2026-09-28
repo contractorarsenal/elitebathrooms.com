@@ -2,34 +2,40 @@
 
 /*
   Elite Bathrooms design tokens.
-  Charcoal / warm white / bronze system — see spec for rationale.
-  Explicit tokens only; no automatic OS dark-mode remap (this is a
-  brand palette, not a light/dark UI mode).
+  Charcoal / warm white / bronze system, values aligned to the live
+  WordPress site's actual Elementor global kit (read via MCP + confirmed
+  independently from the site's own combined CSS — see
+  docs/migration/rebuild-reconciliation.md). No automatic OS dark-mode
+  remap (this is a brand palette, not a light/dark UI mode).
 */
 :root {
-  --color-charcoal-950: #121316;
-  --color-charcoal-900: #1a1c20;
-  --color-charcoal-800: #24272c;
-  --color-charcoal-700: #34383f;
-  --color-charcoal-600: #565b63;
+  /* Anchor: WordPress "secondary" token #25272E */
+  --color-charcoal-950: #25272e;
+  --color-charcoal-900: #3b3d43;
+  --color-charcoal-800: #55575c;
+  --color-charcoal-700: #78797d;
+  --color-charcoal-600: #9d9ea1;
 
-  --color-warm-50: #f7f5f0;
-  --color-warm-100: #fbfaf7;
-  --color-line: #e4e0d8;
-  --color-line-dark: #34383f;
+  /* Anchor: WordPress "background-field" token #F1F0F5 */
+  --color-warm-50: #f1f0f5;
+  --color-warm-100: #f8f7fa;
+  /* Anchor: WordPress "border" token #E3E3E8 */
+  --color-line: #e3e3e8;
+  --color-line-dark: #3b3d43;
 
-  --color-ink: #1d1f22;
+  --color-ink: #000000;
   --color-ink-muted: #5b5e63;
-  --color-ink-on-dark: #f7f5f0;
+  --color-ink-on-dark: #f1f0f5;
   --color-ink-on-dark-muted: #a3a7ad;
 
-  --color-bronze-300: #d9bd97;
-  --color-bronze-400: #c79b67;
-  --color-bronze-500: #af7c45;
-  --color-bronze-600: #8c6134;
+  /* Anchor: WordPress "primary" token #B98A64 (bronze-500) */
+  --color-bronze-300: #cead92;
+  --color-bronze-400: #c19877;
+  --color-bronze-500: #b98a64;
+  --color-bronze-600: #987152;
 
-  --font-heading: var(--font-archivo);
-  --font-body: var(--font-inter);
+  --font-heading: var(--font-figtree);
+  --font-body: var(--font-roboto);
 
   /* Restrained radii — large media panels 20-28px, small cards 14-20px, buttons moderate. */
   --radius-panel: 24px;
