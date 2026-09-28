@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/Button";
 import { CheckIcon } from "../ui/icons";
@@ -17,6 +18,17 @@ import {
 } from "@/lib/estimate/types";
 
 const STEP_LABELS = ["Project", "Budget", "Timeline", "Details", "Contact"];
+
+// Verbatim from the live WordPress Gravity Forms "Consent" field
+// (gform_1, /get-a-quote/) -- see docs/migration/rebuild-reconciliation.md.
+// WordPress's two forms use two different business names here
+// ("Elite Bathrooms" on the quote form, "Elite Tile Bathrooms" on the older
+// contact form); since this single component now serves both pages, the
+// current correct name (siteConfig.name, used everywhere else) was kept
+// rather than the stale one -- not new legal language, just picking
+// between two pieces of WordPress's own existing text.
+const CONSENT_TEXT =
+  "By checking this box, you agree to receive emails and text messages from Elite Bathrooms, including non-marketing updates, schedule updates, and service notifications. Message frequency varies. Message and data rates may apply. You may opt out at any time by replying STOP or get help by replying HELP. View our";
 
 function StepShell({
   title,
@@ -90,7 +102,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
       case 3:
         return true;
       case 4:
-        return data.firstName.trim().length > 0 && data.phone.trim().length >= 7;
+        return data.firstName.trim().length > 0 && data.phone.trim().length >= 7 && data.consent;
       default:
         return false;
     }
@@ -235,6 +247,23 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
                 columns={3}
               />
             </div>
+
+            <label className="sm:col-span-2 flex items-start gap-3 text-xs leading-relaxed text-ink-muted">
+              <input
+                type="checkbox"
+                checked={data.consent}
+                onChange={(e) => update("consent", e.target.checked)}
+                required
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-bronze-500 focus:ring-bronze-500"
+              />
+              <span>
+                {CONSENT_TEXT}{" "}
+                <Link href="/privacy-policy" className="underline hover:text-bronze-600">
+                  Privacy Policy
+                </Link>
+                .<span className="text-red-600">*</span>
+              </span>
+            </label>
           </div>
         </StepShell>
       )}

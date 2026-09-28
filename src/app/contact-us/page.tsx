@@ -28,9 +28,9 @@ export default function ContactPage() {
           <Reveal mask className="aspect-[4/5] rounded-panel">
             <ImageSlot
               cover
-              src="/images/team/elite-consultation-alt.jpg"
-              alt="Elite Bathrooms team member ready to help"
-              label="/images/team/elite-consultation-alt.jpg"
+              src="/images/team/elite-truck-rear.jpg"
+              alt="Elite Bathrooms branded service truck"
+              label="/images/team/elite-truck-rear.jpg"
             />
           </Reveal>
 

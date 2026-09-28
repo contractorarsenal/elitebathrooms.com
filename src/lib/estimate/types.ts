@@ -32,6 +32,13 @@ export type Lead = {
   email: string;
   address?: string;
   preferredContactMethod: PreferredContactMethod | null;
+  /**
+   * SMS/email consent checkbox. Required to submit, matching the live
+   * WordPress Gravity Forms "Consent" field (gfield_contains_required) on
+   * both /get-a-quote and /contact-us. Text is copied verbatim from that
+   * field -- see CONSENT_TEXT in components/estimate/EstimateFlow.tsx.
+   */
+  consent: boolean;
   source: string;
   landingPage: string;
   referrer: string;
@@ -50,6 +57,7 @@ export const emptyLead: Lead = {
   email: "",
   address: undefined,
   preferredContactMethod: null,
+  consent: false,
   source: "get-a-quote",
   landingPage: "",
   referrer: "",

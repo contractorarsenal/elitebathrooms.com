@@ -49,3 +49,7 @@ next-env.d.ts
 /wordpress-archive/media/
 /wordpress-archive/screenshots/
 /wordpress-archive/css/litespeed-combined/
+
+# Local-build parity screenshots: large, regenerable via
+# docs/migration/scripts/capture_all.mjs. parity-report.md stays tracked.
+/docs/migration/parity-screenshots/

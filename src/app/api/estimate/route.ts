@@ -27,6 +27,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "First name and phone are required" }, { status: 422 });
   }
 
+  if (!payload.consent) {
+    return NextResponse.json({ error: "Consent is required" }, { status: 422 });
+  }
+
   console.log("[estimate] new lead (Jobber integration pending):", {
     ...payload,
     receivedAt: new Date().toISOString(),

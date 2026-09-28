@@ -12,6 +12,17 @@ Excludes, per the explicit no-fabrication rule for this project:
 - The empty "Business Hours" heading (no real content followed it; real
   verified hours already live in src/lib/site-config.ts)
 
+Also verified excluded, discovered on a later pass by visually comparing a
+rendered page against its WordPress screenshot rather than trusting the
+text extraction alone: each page's "antra-pricing" widget ("Complete
+Bathroom Remodel" / "One-Day Bathroom Conversion" offer cards) carries a
+"$1000 discount" claim and a "in 1 day!" claim inside <span> subheading/
+price elements. This extractor only reads h1-h4/p/li text, so those spans
+were never captured in the first place -- confirmed safe, but by accident
+of scope rather than by a rule written for them. The card *feature lists*
+(e.g. "Full Demolition & Haul-Away") are separate <li> items and ARE kept,
+since those describe real scope of work, not a price or a time promise.
+
 Everything else -- headings, service descriptions, process/projects
 references, the remaining FAQ, and the county/city directory -- is kept
 verbatim as the parity-migration source of truth.

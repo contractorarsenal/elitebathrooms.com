@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
 import { areas } from "@/data/areas";
+import { wpSourcedAreas } from "@/data/areas-wp-sourced";
 import { getPublishedPosts } from "@/data/blog";
 import { SITE_URL } from "@/lib/seo";
 
@@ -39,11 +40,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: a.primary ? 0.9 : 0.7,
   }));
 
+  // The 29 WordPress-sourced service-area pages (see
+  // src/data/areas-wp-sourced.ts / docs/migration/rebuild-reconciliation.md)
+  // were live and indexed on WordPress, so they're included here too,
+  // just at a lower priority than the 7 verified markets.
+  const wpAreaRoutes: MetadataRoute.Sitemap = wpSourcedAreas.map((a) => ({
+    url: `${SITE_URL}/service-area/${a.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
   const blogRoutes: MetadataRoute.Sitemap = getPublishedPosts().map((p) => ({
     url: `${SITE_URL}/blog/${p.slug}`,
     changeFrequency: "monthly",
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...areaRoutes, ...blogRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...areaRoutes, ...wpAreaRoutes, ...blogRoutes];
 }
