@@ -17,10 +17,10 @@ export default function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: 80,
-          background: "#121316",
+          background: "#25272E",
         }}
       >
-        <div style={{ fontSize: 28, fontWeight: 700, color: "#C79B67", letterSpacing: 4 }}>
+        <div style={{ fontSize: 28, fontWeight: 700, color: "#B98A64", letterSpacing: 4 }}>
           TACOMA-BASED BATHROOM SPECIALISTS
         </div>
         <div
@@ -28,7 +28,7 @@ export default function Image() {
             marginTop: 24,
             fontSize: 76,
             fontWeight: 800,
-            color: "#F7F5F0",
+            color: "#F1F0F5",
             lineHeight: 1.05,
             display: "flex",
           }}

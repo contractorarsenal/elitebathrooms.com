@@ -24,14 +24,13 @@ export type Project = {
 //
 // Images are real Elite Bathrooms job photography migrated from the live
 // WordPress site (see /public/images/projects), not stock or AI-generated.
-// Every image below was individually inspected: two projects originally
-// downloaded from the live site's gallery (spa-inspired-bathroom,
-// bathtub-area-renovation-project) turned out to contain only rough/dated
-// "before" shots with no finished result photographed, so they've been
-// removed from this list rather than presented as completed work. Two
-// others (heated-floor-bathroom, old-bathroom-shower-upgrade) had a mix of
-// before and after photos in the same gallery, so their `before` field
-// uses the real matching photo instead of a generic placeholder.
+// Every image below was individually inspected. Four projects
+// (heated-floor-bathroom, old-bathroom-shower-upgrade, spa-inspired-bathroom,
+// bathtub-area-renovation-project) had a mix of before and after photos in
+// the same gallery, so their `before` field uses the real matching photo
+// instead of a generic placeholder -- confirmed by matching room geometry
+// (window layout, tile lines, fixture position) between the before and
+// after shots, not just by filename order.
 function galleryFor(slug: string, nums: number[] = [2, 3, 4]) {
   return nums.map((n) => `/images/projects/${slug}-${String(n).padStart(2, "0")}.jpg`);
 }
@@ -106,6 +105,30 @@ export const projects: Project[] = [
     gallery: galleryFor("ensuite-bathroom-project"),
     tags: ["Full remodel", "Primary ensuite", "Tile"],
     description: "A full remodel of a primary ensuite bathroom.",
+  },
+  {
+    slug: "spa-inspired-bathroom",
+    title: "Spa-Inspired Bathroom",
+    type: "Full Remodel",
+    image: "/images/projects/spa-inspired-bathroom-09.jpg",
+    before: "/images/projects/spa-inspired-bathroom-01.jpg",
+    gallery: ["/images/projects/spa-inspired-bathroom-13.jpg", "/images/projects/spa-inspired-bathroom-17.jpg"],
+    tags: ["Full remodel", "Freestanding tub", "Spa shower"],
+    description:
+      "A spacious primary bathroom remodel built around a freestanding soaking tub and a separate walk-in shower.",
+  },
+  {
+    slug: "bathtub-area-renovation-project",
+    title: "Bathtub Area Renovation",
+    type: "Full Remodel",
+    image: "/images/projects/bathtub-area-renovation-project-12.jpg",
+    before: "/images/projects/bathtub-area-renovation-project-01.jpg",
+    gallery: [
+      "/images/projects/bathtub-area-renovation-project-06.jpg",
+      "/images/projects/bathtub-area-renovation-project-09.jpg",
+    ],
+    tags: ["Full remodel", "Tub and surround", "Updated vanity"],
+    description: "A full renovation of a tub and shower area, finished with new tile, fixtures, and vanity.",
   },
 ];
 
