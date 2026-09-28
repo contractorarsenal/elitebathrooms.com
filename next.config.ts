@@ -1,95 +1,36 @@
 import type { NextConfig } from "next";
 
-// Legacy WordPress → new site URL map, preserving SEO equity.
-// Source: elitebathrooms.com sitemap inventory (page/services/projects/service-area).
+// No redirects are configured here yet.
 //
-// Next.js strips trailing slashes (308) before matching custom redirects,
-// so `source` here is written WITHOUT a trailing slash to match the
-// already-normalized request path. Old project slugs (/projects/<slug>/)
-// need no explicit rule — that trailing-slash normalization alone gets
-// them to the identical new-site path once /projects/[slug] ships.
+// An earlier build pass (before the WordPress-parity migration) set up
+// redirects in the opposite direction from what's needed now: it treated
+// clean, invented Next.js slugs (/about, /contact, /areas-we-serve,
+// /get-a-quote/thank-you, /services (as a hub), /services/tub-to-shower-conversion,
+// /estimate) as canonical and 301'd the WordPress production URLs to them.
+// Per the client's decision (see docs/migration/rebuild-reconciliation.md),
+// WordPress URLs are now the canonical routes themselves — every one of
+// those Next.js-only paths has been renamed to match WordPress exactly, so
+// the old redirect rules were redirecting the correct URLs to routes that
+// no longer exist. Removed rather than "fixed", per the explicit
+// instruction not to implement redirect cleanup until parity routes are
+// established.
 //
-// Non-verified legacy city pages (outside the 7 client-verified service
-// areas) fold into the /areas-we-serve hub rather than being rebuilt
-// individually.
-const legacyCitySlugs = [
-  "newcastle",
-  "mercer-island",
-  "tukwila",
-  "seatac",
-  "des-moines",
-  "burien",
-  "shoreline",
-  "bothel",
-  "kent",
-  "renton",
-  "redmond",
-  "federal-way",
-  "mukilteo",
-  "edmonds",
-  "kenmore",
-  "poulsbo",
-  "lake-forest-park",
-  "black-diamond",
-  "mountlake-terrace",
-  "bainbridge-island",
-  "enumclaw",
-  "everett",
-  "lynnwood",
-  "mill-creek",
-  "covington",
-  "auburn",
-  "maple-valley",
-  "snoqualmie",
-  "woodinville",
-];
-
-const legacyCityRedirects = legacyCitySlugs.map((slug) => ({
-  source: `/service-area/bathroom-remodel-${slug}`,
-  destination: "/areas-we-serve",
-  permanent: true,
-}));
-
-const verifiedAreaSlugs = [
-  "tacoma",
-  "seattle",
-  "bellevue",
-  "kirkland",
-  "issaquah",
-  "sammamish",
-  "puyallup",
-];
-
-const verifiedAreaRedirects = verifiedAreaSlugs.map((slug) => ({
-  source: `/service-area/bathroom-remodel-${slug}`,
-  destination: `/areas-we-serve/${slug}`,
-  permanent: true,
-}));
-
-const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      { source: "/bathroom-remodel-company-seattle", destination: "/about", permanent: true },
-      { source: "/bathroom-remodeling-seattle", destination: "/about", permanent: true },
-      { source: "/bathroom-remodel-services", destination: "/services", permanent: true },
-      { source: "/contact-us", destination: "/contact", permanent: true },
-      { source: "/thank-you", destination: "/get-a-quote/thank-you", permanent: true },
-      { source: "/service-area", destination: "/areas-we-serve", permanent: true },
-
-      // Interim /estimate URL from the first build pass — now canonicalized
-      // to /get-a-quote to match the original WordPress slug exactly.
-      { source: "/estimate", destination: "/get-a-quote", permanent: true },
-      { source: "/estimate/thank-you", destination: "/get-a-quote/thank-you", permanent: true },
-
-      // /services/full-bathroom-remodel, /shower-remodel, /bathtub-remodel, and
-      // /one-day-bathroom-renovation need no rule — those pages live at the
-      // exact old WP slugs. Only /bathroom-conversion (retired) needs a rule.
-      { source: "/services/bathroom-conversion", destination: "/services/tub-to-shower-conversion", permanent: true },
-
-      ...verifiedAreaRedirects,
-      ...legacyCityRedirects,
-    ];
-  },
-};
+// Candidates for a later redirect pass (old interim-only Next.js paths that
+// may have been linked/bookmarked/indexed during earlier development,
+// forwarding them to their real WordPress-matching route):
+//   /about                          -> /bathroom-remodel-company-seattle
+//   /contact                        -> /contact-us
+//   /services                       -> /bathroom-remodel-services
+//   /services/tub-to-shower-conversion -> /services/bathroom-conversion
+//   /areas-we-serve                 -> /service-area
+//   /areas-we-serve/:slug           -> /service-area/bathroom-remodel-:slug
+//   /get-a-quote/thank-you          -> /thank-you
+//   /estimate, /estimate/thank-you  -> /get-a-quote, /thank-you
+//
+// The real 301 map from the *live WordPress* URLs (all 36 service-area
+// pages, etc.) belongs to the eventual WordPress cutover, not here — see
+// docs/migration/rebuild-reconciliation.md and the migration master
+// prompt's Phase 21 (URL PRESERVATION).
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
