@@ -68,7 +68,7 @@ Since WordPress stays live during this whole migration and only gets retired lat
 | `/financing` | *(no WP page — a "Financing" section exists inline elsewhere)* | **EXTRA / NOT ON WORDPRESS** | Legitimate content addition, not a problem |
 | `/process` | *(no WP page — "Our Process" is a homepage section only)* | **EXTRA / NOT ON WORDPRESS** | Legitimate content addition |
 | `/blog` + `/blog/[slug]` | *(WordPress has zero blog posts — confirmed via `post_type=post` returning 0)* | **EXTRA / NOT ON WORDPRESS** | Checked `src/data/blog.ts` directly: it's genuinely original content, explicitly scoped to verified facts only, with unverifiable topics marked `status: "draft"` rather than fabricated. This is a real value-add, not invented WordPress content — recommend keeping. |
-| `404` | *(WP default 404)* | **MISSING (unverified)** | Not yet located/inspected in the Next.js app; add to the queue |
+| `404` | *(WP default 404)* | **MISSING** | Confirmed via `npm run build` output: only Next's default `/_not-found` exists, no custom `not-found.tsx`. Queued for step 15. |
 
 ---
 
@@ -80,7 +80,7 @@ Since WordPress stays live during this whole migration and only gets retired lat
 
 **Homepage.** WordPress has 8 top-level sections (hero/slideshow, scroll button, "Who we are", "What We Do", "Our Services" with 6-tab list + 4 stat counters, image panel, "Our Process" with 4 steps, "Our Projects" carousel). New build has 15 sections (Hero, TrustBar, Positioning, FeaturedService, CoreServices, FeaturedProjects, WhyElite, Waterproofing, Process, OneDayPromo, BeforeAfter, Testimonials, Financing, ServiceAreas, BlogTeaser, NextStepCTA). The new build is more thorough in places (a dedicated Waterproofing section matches the master prompt's explicit "don't bury the warranty" instruction; Testimonials and Financing sections don't exist on WP at all). **Classification: NEEDS CONTENT REWORK** — not because it's worse, but because "same page structure" as instructed and "15 sections vs. 8" are in tension. Recommend keeping the richer structure rather than cutting it down to match WP's, but flagging this as a deliberate deviation rather than an oversight.
 
-**Services / service pages.** 4 of 5 slugs match; `services.ts` has a duplicate `full-bathroom-remodel` entry (a bug — `tub-to-shower-conversion`'s object appears to be missing its own `slug` value, worth a quick fix regardless of the parity work). Copy is well-written and honest but hasn't been diffed line-by-line against the WP service pages yet.
+**Services / service pages.** 4 of 5 slugs match. (Correction: an earlier pass of this report flagged a duplicate `full-bathroom-remodel` slug in `services.ts` as a bug — checked directly, it isn't one; the second occurrence is inside One-Day's `crossSell` field, which intentionally points back to the Full Remodel service.) Copy is well-written and honest but hasn't been diffed line-by-line against the WP service pages yet.
 
 **Projects / project pages.** 7 of 9 WordPress projects exist; 2 are missing entirely (`bathtub-area-renovation-project`, `spa-inspired-bathroom`). Photography for the 7 that exist is real project photography already in `public/images/projects/`.
 
@@ -108,3 +108,13 @@ Fonts are genuinely ambiguous from static analysis, and I want to be honest abou
 - A second, narrower set of rules (scoped to Antra-branded components — the header nav, phone number icon-box, footer CTA icon-box) overrides these to **Cal Sans** and **Golos Text**.
 
 Which one wins for a given element depends on CSS scope/specificity I can't fully resolve without a live browser's computed styles (my design-inventory.md report already flags this limitation). Going with the kit's deliberately-configured values (Roboto + Figtree) as the **global** tokens, since that's the intentional brand decision, not an accidental default. Cal Sans and Golos Text are real and in use, but on the evidence so far they read as targeted component overrides (nav, a couple of icon-boxes) rather than the base system — I'll apply them at the component level if/when I rebuild those specific pieces, not globally. All three fonts are confirmed available via Google's font CDN and `next/font/google`.
+
+**Implemented in this pass:** `src/app/layout.tsx` (Figtree/Roboto via `next/font/google`, replacing Archivo/Inter) and `src/app/globals.css` (`charcoal-950`, `bronze-500`, `line`, `warm-50`, `ink` tokens corrected to the verified hex values above; token *names* and every place that consumes them via `--font-heading`/`--font-body`/`bronze-*`/`charcoal-*`/`warm-*` classes were left untouched — only the 55-file blast radius of a raw hex/font swap was avoided by going through the existing semantic-variable indirection). Verified clean with `npm run lint`, `npx tsc --noEmit`, `npm run build`, and `npm run build:vinext` (the Cloudflare/vinext build already defined in `package.json`).
+
+---
+
+## Status of this pass, and what's next
+
+Completed: git branch, full report reading, full codebase inspection, this reconciliation document, and rebuild step 1 (global tokens), verified building clean on both build paths.
+
+Not started: steps 2–22 (header through final QA). This is not an oversight — items 9–10 (service areas) and, to a lesser extent, several routes in items 5, 11, and 12 are blocked on the two decisions at the top of this document, and guessing at either (which 29 cities are real, or whether to rename `/about`, `/contact`, `/services`, `/areas-we-serve`, and the area/thank-you URL patterns to match WordPress) would mean either inventing business facts or making a one-way URL decision on your behalf. Everything else (steps 2–8, 11–19, 21) is real, visual, page-by-page work against the 122 archived screenshots — large, but not blocked, and I can start on it immediately once you've weighed in on the two decisions, or sooner if you'd rather I proceed with a stated default (e.g. "keep current slugs, don't touch the 29 unverified cities yet") while you decide.
