@@ -52,4 +52,6 @@ next-env.d.ts
 
 # Local-build parity screenshots: large, regenerable via
 # docs/migration/scripts/capture_all.mjs. parity-report.md stays tracked.
-/docs/migration/parity-screenshots/
+# The small interactions/ subfolder (6 files) is kept as direct evidence.
+/docs/migration/parity-screenshots/desktop/
+/docs/migration/parity-screenshots/mobile/

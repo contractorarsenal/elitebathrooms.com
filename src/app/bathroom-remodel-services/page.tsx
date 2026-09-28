@@ -77,7 +77,7 @@ function SideBySideService({ slug }: { slug: string }) {
         href={`/services/${service.slug}`}
         className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-bronze-600 hover:text-bronze-500"
       >
-        Learn More
+        Learn More<span className="sr-only"> about {service.name}</span>
         <ArrowRightIcon className="h-3.5 w-3.5" />
       </Link>
     </Reveal>

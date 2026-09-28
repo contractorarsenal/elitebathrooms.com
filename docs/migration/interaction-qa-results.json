@@ -1,0 +1,82 @@
+[
+  {
+    "name": "desktop: services dropdown opens on hover",
+    "pass": true,
+    "detail": "opacity=1"
+  },
+  {
+    "name": "desktop: dropdown child link href correct",
+    "pass": true,
+    "detail": "/services/full-bathroom-remodel"
+  },
+  {
+    "name": "desktop: header phone link",
+    "pass": true,
+    "detail": "tel:+12063692688"
+  },
+  {
+    "name": "desktop: header Request Estimate button visible",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: hamburger opens nav",
+    "pass": true,
+    "detail": "opacity=1"
+  },
+  {
+    "name": "mobile: nav Services accordion expands",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: nav link navigates correctly",
+    "pass": true,
+    "detail": "http://localhost:3000/services/full-bathroom-remodel"
+  },
+  {
+    "name": "mobile: nav closes after link click",
+    "pass": true,
+    "detail": "opacity=0"
+  },
+  {
+    "name": "mobile: sticky bottom CTA bar visible",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile: sticky CTA call link",
+    "pass": true,
+    "detail": "tel:+12063692688"
+  },
+  {
+    "name": "mobile: sticky CTA quote link",
+    "pass": true,
+    "detail": "/get-a-quote"
+  },
+  {
+    "name": "mobile: FAQ accordion expands on click",
+    "pass": true,
+    "detail": "0 -> 1"
+  },
+  {
+    "name": "404: correct HTTP status",
+    "pass": true,
+    "detail": "status=404"
+  },
+  {
+    "name": "404: correct content renders",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "contact-us: quote form embedded and interactive",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "quote flow: submits and routes to /thank-you",
+    "pass": true,
+    "detail": "http://localhost:3000/thank-you"
+  }
+]

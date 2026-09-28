@@ -13,6 +13,11 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
         open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
       aria-hidden={!open}
+      // `inert` (not just aria-hidden) so the links/buttons inside a closed
+      // menu are truly unreachable by keyboard/AT, not just visually hidden
+      // -- aria-hidden alone left focusable descendants tabbable while
+      // hidden, a real WCAG failure caught by the Lighthouse a11y audit.
+      inert={!open}
     >
       <nav className="flex-1 overflow-y-auto px-6 py-6">
         {primaryNav.map((item) =>
