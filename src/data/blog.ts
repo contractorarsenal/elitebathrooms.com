@@ -27,8 +27,8 @@ export const blogPosts: BlogPost[] = [
     category: "Planning",
     excerpt:
       "Two different projects that solve two different problems. Here's how to tell which one your bathroom actually needs.",
-    relatedServiceSlug: "tub-to-shower-conversion",
-    relatedAreaSlug: "tacoma",
+    relatedServiceSlug: "bathroom-conversion",
+    relatedAreaSlug: "bathroom-remodel-tacoma",
     status: "published",
     sections: [
       {
@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "There's no universal number, but there are real factors that determine your project's actual timeline.",
     relatedServiceSlug: "full-bathroom-remodel",
-    relatedAreaSlug: "tacoma",
+    relatedAreaSlug: "bathroom-remodel-tacoma",
     status: "published",
     sections: [
       {

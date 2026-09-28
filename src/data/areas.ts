@@ -27,7 +27,7 @@ export type Area = {
 // fabricated local detail.
 export const areas: Area[] = [
   {
-    slug: "tacoma",
+    slug: "bathroom-remodel-tacoma",
     name: "Tacoma",
     primary: true,
     blurb:
@@ -48,7 +48,7 @@ export const areas: Area[] = [
       "Elite Bathrooms is a Tacoma-based bathroom remodeling contractor: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   },
   {
-    slug: "seattle",
+    slug: "bathroom-remodel-seattle",
     name: "Seattle",
     primary: false,
     blurb: "We regularly take on bathroom projects in Seattle alongside our Tacoma work.",
@@ -61,7 +61,7 @@ export const areas: Area[] = [
       "Elite Bathrooms remodels bathrooms in Seattle, WA: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   },
   {
-    slug: "bellevue",
+    slug: "bathroom-remodel-bellevue",
     name: "Bellevue",
     primary: false,
     blurb: "Eastside homeowners in Bellevue work with the same crew and process as our Tacoma clients.",
@@ -74,7 +74,7 @@ export const areas: Area[] = [
       "Elite Bathrooms remodels bathrooms in Bellevue, WA: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   },
   {
-    slug: "kirkland",
+    slug: "bathroom-remodel-kirkland",
     name: "Kirkland",
     primary: false,
     blurb: "We serve Kirkland with the same waterproofing standard and process used across every market.",
@@ -87,7 +87,7 @@ export const areas: Area[] = [
       "Elite Bathrooms remodels bathrooms in Kirkland, WA: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   },
   {
-    slug: "issaquah",
+    slug: "bathroom-remodel-issaquah",
     name: "Issaquah",
     primary: false,
     blurb: "Issaquah homeowners get the same design-through-installation process as the rest of our service area.",
@@ -100,7 +100,7 @@ export const areas: Area[] = [
       "Elite Bathrooms remodels bathrooms in Issaquah, WA: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   },
   {
-    slug: "sammamish",
+    slug: "bathroom-remodel-sammamish",
     name: "Sammamish",
     primary: false,
     blurb: "We take on full remodels and conversions for Sammamish households.",
@@ -113,7 +113,7 @@ export const areas: Area[] = [
       "Elite Bathrooms remodels bathrooms in Sammamish, WA: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   },
   {
-    slug: "puyallup",
+    slug: "bathroom-remodel-puyallup",
     name: "Puyallup",
     primary: false,
     blurb: "Puyallup is close enough to Tacoma that scheduling and follow-up visits are straightforward.",

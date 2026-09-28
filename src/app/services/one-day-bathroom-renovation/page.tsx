@@ -61,7 +61,7 @@ export default function OneDayBathroomRenovationPage() {
       <PageHero
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Services", href: "/services" },
+          { name: "Services", href: "/bathroom-remodel-services" },
           { name: "One-Day Bathroom Renovation" },
         ]}
         title="One-Day Bathroom Renovation"

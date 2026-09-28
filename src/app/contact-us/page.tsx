@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with Elite Bathrooms, Tacoma-based bathroom remodeling specialists. Call, email, or request an estimate online.",
-  alternates: { canonical: absoluteUrl("/contact") },
+  alternates: { canonical: absoluteUrl("/contact-us") },
 };
 
 export default function ContactPage() {

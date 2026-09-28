@@ -124,7 +124,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
     setSubmitting(false);
 
     if (result.ok) {
-      router.push("/get-a-quote/thank-you");
+      router.push("/thank-you");
     } else {
       setError(result.error);
     }

@@ -17,7 +17,7 @@ export function ServiceAreaLinks({ exceptSlug }: { exceptSlug?: string }) {
             {list.map((area) => (
               <Link
                 key={area.slug}
-                href={`/areas-we-serve/${area.slug}`}
+                href={`/service-area/${area.slug}`}
                 className="text-sm font-semibold text-charcoal-950 underline-offset-4 hover:text-bronze-600 hover:underline"
               >
                 {area.name}

@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: Props) {
         {relatedArea && (
           <div className="mt-12 border-t border-line pt-8">
             <Link
-              href={`/areas-we-serve/${relatedArea.slug}`}
+              href={`/service-area/${relatedArea.slug}`}
               className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-xs font-bold uppercase tracking-[0.06em] text-charcoal-950 hover:border-charcoal-950/40"
             >
               Bathroom Remodeling in {relatedArea.name}

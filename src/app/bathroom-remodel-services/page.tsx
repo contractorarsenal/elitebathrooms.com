@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Bathroom Remodeling Services",
   description:
     "Full bathroom remodels, shower remodels, bathtub remodels, tub-to-shower conversions, and one-day renovations. Tacoma-based, backed by a 10-year waterproofing warranty.",
-  alternates: { canonical: absoluteUrl("/services") },
+  alternates: { canonical: absoluteUrl("/bathroom-remodel-services") },
 };
 
 const howToChoose = [
@@ -85,7 +85,7 @@ function SideBySideService({ slug }: { slug: string }) {
 }
 
 export default function ServicesPage() {
-  const tubToShower = getServiceBySlug("tub-to-shower-conversion")!;
+  const tubToShower = getServiceBySlug("bathroom-conversion")!;
 
   return (
     <main>
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                 </li>
               ))}
             </ul>
-            <Button href="/services/tub-to-shower-conversion" variant="primary" className="mt-7">
+            <Button href="/services/bathroom-conversion" variant="primary" className="mt-7">
               Explore Tub-to-Shower Conversions
             </Button>
           </Reveal>

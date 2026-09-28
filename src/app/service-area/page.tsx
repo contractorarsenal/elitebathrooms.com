@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Areas We Serve",
   description:
     "Elite Bathrooms is based in Tacoma, WA and serves Seattle, Bellevue, Kirkland, Issaquah, Sammamish, and Puyallup.",
-  alternates: { canonical: absoluteUrl("/areas-we-serve") },
+  alternates: { canonical: absoluteUrl("/service-area") },
 };
 
 export default function AreasWeServePage() {
@@ -35,7 +35,7 @@ export default function AreasWeServePage() {
         <Container>
           <Reveal>
             <Link
-              href={`/areas-we-serve/${tacoma.slug}`}
+              href={`/service-area/${tacoma.slug}`}
               className="group flex flex-col gap-6 rounded-panel border border-bronze-400/60 bg-bronze-500/5 p-8 transition-colors hover:border-bronze-400 sm:flex-row sm:items-center sm:justify-between sm:p-10"
             >
               <div>
@@ -66,7 +66,7 @@ export default function AreasWeServePage() {
             {secondary.map((area, i) => (
               <Reveal key={area.slug} delay={i * 60}>
                 <Link
-                  href={`/areas-we-serve/${area.slug}`}
+                  href={`/service-area/${area.slug}`}
                   className="group flex h-full flex-col justify-between gap-6 rounded-card border border-line bg-warm-50 p-6 transition-colors hover:border-bronze-400"
                 >
                   <div>

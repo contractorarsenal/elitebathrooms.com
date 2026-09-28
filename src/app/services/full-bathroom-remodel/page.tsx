@@ -61,7 +61,7 @@ export default function FullBathroomRemodelPage() {
       <PageHero
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Services", href: "/services" },
+          { name: "Services", href: "/bathroom-remodel-services" },
           { name: "Full Bathroom Remodel" },
         ]}
         title="Full Bathroom Remodel"

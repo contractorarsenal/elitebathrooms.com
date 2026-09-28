@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/get-a-quote/thank-you"],
+        disallow: ["/api/", "/thank-you"],
       },
     ],
     sitemap: "https://www.elitebathrooms.com/sitemap.xml",

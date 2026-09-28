@@ -9,7 +9,7 @@ import { services } from "@/data/services";
 const scope: Record<string, string[]> = {
   "shower-remodel": ["Waterproofed pan and walls", "Frameless or semi-frameless glass", "Built-in niches and benches"],
   "bathtub-remodel": ["Freestanding or alcove tubs", "Tile surround and deck", "Waterproofed tub-to-wall transitions"],
-  "tub-to-shower-conversion": ["Tub removal and disposal", "New waterproofed shower pan", "Grab bars and low-threshold entry"],
+  "bathroom-conversion": ["Tub removal and disposal", "New waterproofed shower pan", "Grab bars and low-threshold entry"],
 };
 
 function ServiceCard({ slug, delay }: { slug: string; delay: number }) {
@@ -58,7 +58,7 @@ export function CoreServices() {
         <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-6">
           <ServiceCard slug="shower-remodel" delay={0} />
           <ServiceCard slug="bathtub-remodel" delay={80} />
-          <ServiceCard slug="tub-to-shower-conversion" delay={160} />
+          <ServiceCard slug="bathroom-conversion" delay={160} />
         </div>
       </Container>
     </section>

@@ -40,7 +40,7 @@ export const primaryNav: {
 }[] = [
   {
     label: "Services",
-    href: "/services",
+    href: "/bathroom-remodel-services",
     children: [
       {
         label: "Full Bathroom Remodel",
@@ -59,7 +59,7 @@ export const primaryNav: {
       },
       {
         label: "Tub-to-Shower",
-        href: "/services/tub-to-shower-conversion",
+        href: "/services/bathroom-conversion",
         description: "Convert an unused tub into a practical shower",
       },
       {
@@ -70,9 +70,9 @@ export const primaryNav: {
     ],
   },
   { label: "Projects", href: "/projects" },
-  { label: "Areas We Serve", href: "/areas-we-serve" },
+  { label: "Service Areas", href: "/service-area" },
   { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/bathroom-remodel-company-seattle" },
 ];
 
 export const trustStats = [

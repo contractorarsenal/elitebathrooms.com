@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "About Elite Bathrooms",
   description:
     "Elite Bathrooms is a Tacoma-based bathroom remodeling specialist. We don't try to do everything. We do bathrooms, and we do them right.",
-  alternates: { canonical: absoluteUrl("/about") },
+  alternates: { canonical: absoluteUrl("/bathroom-remodel-company-seattle") },
 };
 
 const points = [

@@ -9,11 +9,11 @@ import { StarIcon, PhoneIcon, MailIcon } from "../ui/icons";
 
 const companyLinks = [
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/bathroom-remodel-company-seattle" },
   { label: "Process", href: "/process" },
   { label: "Financing", href: "/financing" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 export function Footer() {
@@ -64,7 +64,7 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm">
             {areas.map((area) => (
               <li key={area.slug}>
-                <Link href={`/areas-we-serve/${area.slug}`} className="text-ink-on-dark-muted hover:text-warm-50">
+                <Link href={`/service-area/${area.slug}`} className="text-ink-on-dark-muted hover:text-warm-50">
                   {area.name}
                 </Link>
               </li>

@@ -28,7 +28,7 @@ export function ServiceDetail({
       <PageHero
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Services", href: "/services" },
+          { name: "Services", href: "/bathroom-remodel-services" },
           { name: service.name },
         ]}
         title={service.name}

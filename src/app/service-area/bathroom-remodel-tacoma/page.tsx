@@ -19,14 +19,14 @@ import { siteConfig } from "@/lib/site-config";
 import { localBusinessSchema } from "@/lib/schema";
 import { absoluteUrl } from "@/lib/seo";
 
-const tacomaArea = getAreaBySlug("tacoma")!;
+const tacomaArea = getAreaBySlug("bathroom-remodel-tacoma")!;
 const tacomaFaqs = [...areaFaqs, ...(tacomaArea.faq ?? [])];
 
 export const metadata: Metadata = {
   title: "Bathroom Remodeling in Tacoma, WA",
   description:
     "Elite Bathrooms is a Tacoma-based bathroom remodeling contractor: full remodels, shower remodels, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
-  alternates: { canonical: absoluteUrl("/areas-we-serve/tacoma") },
+  alternates: { canonical: absoluteUrl("/service-area/bathroom-remodel-tacoma") },
 };
 
 const processSteps = [
@@ -43,7 +43,7 @@ export default function TacomaPage() {
 
       {/* HERO */}
       <PageHero
-        crumbs={[{ name: "Home", href: "/" }, { name: "Areas We Serve", href: "/areas-we-serve" }, { name: "Tacoma" }]}
+        crumbs={[{ name: "Home", href: "/" }, { name: "Service Areas", href: "/service-area" }, { name: "Tacoma" }]}
         title="Bathroom Remodeling in Tacoma, WA"
         description="Tacoma-based bathroom remodeling specialists: full remodels, shower remodels, and tub-to-shower conversions."
         imageSrc="/images/team/elite-team-hero.jpg"
@@ -186,11 +186,11 @@ export default function TacomaPage() {
           </h2>
           <Reveal delay={80} className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
             {areas
-              .filter((a) => a.slug !== "tacoma")
+              .filter((a) => a.slug !== "bathroom-remodel-tacoma")
               .map((area) => (
                 <Link
                   key={area.slug}
-                  href={`/areas-we-serve/${area.slug}`}
+                  href={`/service-area/${area.slug}`}
                   className="text-base font-bold text-charcoal-950 underline-offset-4 hover:text-bronze-600 hover:underline"
                 >
                   {area.name}

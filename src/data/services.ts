@@ -18,12 +18,12 @@ export type Service = {
   crossSell?: { label: string; description: string; slug: string };
 };
 
-// Slugs match the original WordPress URLs exactly (full-bathroom-remodel,
-// shower-remodel, bathtub-remodel, one-day-bathroom-renovation) to preserve
-// SEO equity with zero redirect hops. tub-to-shower-conversion consolidates
-// the old bathroom-conversion page. Order matches the homepage/services-hub
-// Bento weighting: Full Remodel first and largest, One-Day last and
-// smallest — it's real, but it's not the primary offer.
+// Slugs match the WordPress production URLs exactly (full-bathroom-remodel,
+// shower-remodel, bathtub-remodel, one-day-bathroom-renovation,
+// bathroom-conversion) to preserve SEO equity — see
+// docs/migration/rebuild-reconciliation.md. Order matches the homepage/
+// services-hub Bento weighting: Full Remodel first and largest, One-Day
+// last and smallest — it's real, but it's not the primary offer.
 export const services: Service[] = [
   {
     slug: "full-bathroom-remodel",
@@ -85,7 +85,7 @@ export const services: Service[] = [
     projectType: "Full Remodel",
   },
   {
-    slug: "tub-to-shower-conversion",
+    slug: "bathroom-conversion",
     name: "Tub-to-Shower Conversion",
     summary:
       "Fast, clean conversions for households that need a walk-in shower without a full gut remodel.",

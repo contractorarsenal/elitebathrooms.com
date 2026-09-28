@@ -30,7 +30,7 @@ export function AreaDetail({ area }: { area: Area }) {
       <PageHero
         crumbs={[
           { name: "Home", href: "/" },
-          { name: "Areas We Serve", href: "/areas-we-serve" },
+          { name: "Service Areas", href: "/service-area" },
           { name: area.name },
         ]}
         title={`Bathroom Remodeling in ${area.name}, WA`}

@@ -20,7 +20,7 @@ export function ServiceAreas() {
           <p className="mt-5 max-w-md text-lg leading-relaxed text-ink-on-dark-muted">
             Serving homeowners throughout Tacoma and select communities across the Puget Sound.
           </p>
-          <Button href={`/areas-we-serve/${tacoma.slug}`} variant="outline-light" className="mt-7">
+          <Button href={`/service-area/${tacoma.slug}`} variant="outline-light" className="mt-7">
             Explore Tacoma
           </Button>
         </Reveal>
@@ -33,7 +33,7 @@ export function ServiceAreas() {
             {secondary.map((area) => (
               <li key={area.slug}>
                 <Link
-                  href={`/areas-we-serve/${area.slug}`}
+                  href={`/service-area/${area.slug}`}
                   className="group flex items-center justify-between gap-4 py-4 text-lg font-bold text-warm-50 transition-colors hover:text-bronze-400"
                 >
                   {area.name}
