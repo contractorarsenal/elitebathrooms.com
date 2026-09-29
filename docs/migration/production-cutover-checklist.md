@@ -211,10 +211,10 @@ preview URL, which has already been validated repeatedly throughout this project
 6. A go/no-go on the two optional, low-risk legacy-URL 301s (item 5) — not required,
    just a nice-to-have if you want them.
 7. Sign-off on the Cookie Policy once item 2 is resolved.
-8. A Cloudflare Turnstile site registration (site key into this app, secret key into the
-   Web3Forms dashboard) for the quote form's spam verification, per §14 below — code is
-   done; file uploads need no Cloudflare setup at all (Web3Forms' own Advanced File
-   Uploader handles storage on their end).
+8. Nothing outstanding for the quote form itself — see §14. Spam protection is
+   honeypot-only (client instruction: no CAPTCHA unless explicitly requested), and file
+   uploads need no Cloudflare setup at all (Web3Forms' own Advanced File Uploader handles
+   storage on their end).
 
 ---
 
@@ -296,39 +296,20 @@ from first paint, and the harvest at submit time needs a real form to read from.
 - **Nothing to create in Cloudflare for this part** — it's entirely a Web3Forms account
   capability, no R2/bucket/binding/secret of any kind.
 
-### 14.2 CAPTCHA — Cloudflare Turnstile, implemented
+### 14.2 CAPTCHA — deliberately none (honeypot only)
 
-The placeholder "Are you human?" box is a real Cloudflare Turnstile widget
-(`src/components/estimate/TurnstileWidget.tsx`, explicit JS rendering — Cloudflare's own
-docs recommend explicit over the auto-scanning `cf-turnstile` div specifically for SPAs
-like this one), in the same visual slot. The honeypot (`botcheck`) remains as a second,
-independent spam layer, unchanged.
+**Cloudflare Turnstile was implemented, then removed at the client's explicit
+instruction.** No CAPTCHA of any kind runs on this form. The honeypot (`botcheck`, a
+hidden checkbox a real visitor never reaches) is the sole spam-protection layer, exactly
+as it was before Turnstile work started. The "Are you human?" visual slot has been
+removed entirely, not left as an empty placeholder — there's no missing-content gap in
+the form's layout.
 
-**Verification is Web3Forms' job, not this app's** — confirmed via their docs
-(`docs.web3forms.com/getting-started/pro-features/cloudflare-turnstile-captcha.md`):
-once `turnstile` is set as the form's captcha provider in the Web3Forms dashboard (with
-the Turnstile secret key entered there), Web3Forms verifies the `cf-turnstile-response`
-field server-side on every submission automatically. This app never holds or sees a
-Turnstile secret — the widget's token is read via its `callback` and included as the
-`cf-turnstile-response` field in the Web3Forms submission (`submit.ts`); Web3Forms
-rejects the submission with a real error message if verification fails, which the form
-surfaces and then resets the widget for a fresh token (Turnstile tokens are single-use).
-
-**BLOCKED ON OWNER — no Turnstile widget is registered for this domain yet, and Web3Forms
-isn't yet configured to check it.** Two separate things need to happen, neither of which
-this session can do:
-1. **Cloudflare dashboard → Turnstile:** add a site (e.g. "Elite Bathrooms — Get a
-   Quote"), hostname `elitebathrooms.com` (add the `*.workers.dev` preview hostname too
-   for preview deploys), widget mode "Managed" (closest match to the original reCAPTCHA
-   v2 checkbox). Copy the **Site Key** (public) into this project's build-time env as
-   `NEXT_PUBLIC_TURNSTILE_SITE_KEY`.
-2. **Web3Forms dashboard (`app.web3forms.com`) → this form's Settings:** set captcha
-   provider to `turnstile` and paste in the **Secret Key** from step 1. This is a
-   Web3Forms account setting, not a Cloudflare Worker secret — nothing to `wrangler
-   secret put` for this piece.
-
-Until the site key is set, the widget shows a clear "not configured yet" message instead
-of a broken/fake checkbox.
+Nothing remains in source referencing Turnstile: no widget component, no site-key env
+var, no `cf-turnstile-response` field in the Web3Forms submission, no Turnstile script
+tag, no Web3Forms Turnstile-provider assumption. If CAPTCHA is wanted again in the
+future, that's a fresh, explicit ask — nothing here should be treated as "ready to
+re-enable."
 
 ### What was tested this session, and what wasn't
 
@@ -338,24 +319,24 @@ Tested directly:
   npm run start`) — 0 broken links/images, confirming the form/script changes didn't
   regress anything else on the site.
 - The rendered `/get-a-quote` HTML was inspected directly (`curl`) and confirmed to
-  contain the Web3Forms script tag, the Turnstile script reference, `data-advanced="true"`,
-  and `name="attachment"` on the file input — i.e. the integration is wired into the
-  actual page output, not just present in source.
+  contain the Web3Forms script tag, `data-advanced="true"`, and `name="attachment"` on
+  the file input, and to contain **no** Turnstile script or markup — i.e. both the
+  uploader integration and the CAPTCHA removal are confirmed in actual page output, not
+  just source.
 - Web3Forms' client script (`web3forms.com/client/script.js`) was fetched and read in
   full to confirm its real upload mechanism (presigned-URL flow → FilePond → hidden
   `attachment` input) rather than assumed from docs alone.
 
 **Not tested this session (no browser automation tool was available):** the actual
-end-to-end submission — Turnstile completing, a real file uploading through FilePond,
-the resulting `attachment` field reaching Web3Forms, and a genuine `success:true` —
-along with drag-and-drop interaction and mobile layout. `api.web3forms.com`'s Cloudflare
+end-to-end submission — a real file uploading through FilePond, the resulting
+`attachment` field reaching Web3Forms, and a genuine `success:true` — along with
+drag-and-drop interaction and mobile layout. `api.web3forms.com`'s Cloudflare
 bot-challenge also blocks scripted/`curl` verification of the upload flow specifically
 (confirmed: direct requests get a 403 challenge page, not real API responses), so this
-needs a real browser pass before launch: `npm run dev:vinext` + `wrangler dev` locally
-(once Turnstile is registered, using a real or Cloudflare's published test site key), or
-the deployed preview once both blockers above are resolved. `check_quote_flow.mjs` (the
-existing Playwright QA script) already needs a rewrite against the current form structure
-— its own description still refers to the pre-parity 5-step design — independent of this
-session's work; not attempted here.
+needs a real browser pass before launch: `npm run dev:vinext` + `wrangler dev` locally,
+or the deployed preview. `check_quote_flow.mjs` (the existing Playwright QA script)
+already needs a rewrite against the current form structure — its own description still
+refers to the pre-parity 5-step design — independent of this session's work; not
+attempted here.
 
 Nothing in Production, DNS, or WordPress has been touched. Stopping here, as instructed.

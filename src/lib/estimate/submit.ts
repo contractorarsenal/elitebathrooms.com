@@ -15,10 +15,8 @@ export type SubmitResult = { ok: true } | { ok: false; error: string };
  * Files upload through Web3Forms' own Advanced File Uploader (see
  * EstimateFlow.tsx) -- by the time this function runs, they're already
  * sitting in Web3Forms' storage, and `attachmentKeys` are just the
- * reference strings their widget produced. Turnstile is verified by
- * Web3Forms itself server-side (their dashboard's "turnstile" captcha
- * provider setting) once `cf-turnstile-response` is included below --
- * this app never holds a Turnstile secret.
+ * reference strings their widget produced. The honeypot (`botcheck`) is
+ * the only spam-protection layer -- no CAPTCHA of any kind.
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -117,7 +115,6 @@ function buildMessage(payload: Partial<Lead>, isContactPage: boolean, attachment
 
 export async function submitLead(
   payload: Lead & { botcheck: boolean },
-  turnstileToken: string,
   attachmentKeys: string[]
 ): Promise<SubmitResult> {
   // Web3Forms' own native honeypot convention is a hidden checkbox named
@@ -140,10 +137,6 @@ export async function submitLead(
     subject: isContactPage ? "New Elite Bathrooms Contact Request" : "New Elite Bathrooms Estimate Request",
     message: buildMessage(payload, isContactPage, attachmentKeys.length),
     lead_source: isContactPage ? "Contact" : "Get a Quote",
-    // Verified server-side by Web3Forms itself once "turnstile" is set as
-    // this form's captcha provider in the Web3Forms dashboard -- this app
-    // never sees or holds the Turnstile secret key.
-    "cf-turnstile-response": turnstileToken,
   };
 
   const fullName = [payload.firstName, payload.lastName].filter(Boolean).join(" ").trim();

@@ -8,7 +8,6 @@ import { useRouter } from "next/navigation";
 import { submitLead } from "@/lib/estimate/submit";
 import { getAttribution } from "@/lib/attribution";
 import { WEB3FORMS_ACCESS_KEY } from "@/lib/estimate/web3forms";
-import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/estimate/TurnstileWidget";
 import {
   emptyLead,
   serviceTypeOptions,
@@ -34,8 +33,9 @@ import {
  * window.gf_form_conditional_logic[1] (the real show/hide rules), and the
  * live site (read-only) for measured colors/sizes. See
  * docs/migration/form-visual-diff/ for the parity screenshots and
- * docs/migration/production-cutover-checklist.md for the file-upload/
- * reCAPTCHA gaps this rebuild has relative to the original.
+ * docs/migration/production-cutover-checklist.md §14 for the file-upload
+ * architecture and the deliberate choice (per client instruction) to run
+ * honeypot-only spam protection, no CAPTCHA of any kind.
  *
  * Structure matches the real form exactly: ONE progressively-revealing
  * page (service type -> conditional reason -> which bathroom -> home age
@@ -193,8 +193,6 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
   const [page, setPage] = useState<1 | 2>(1);
   const [data, setData] = useState<Lead>({ ...emptyLead, ...prefill });
   const [botcheck, setBotcheck] = useState(false);
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [attemptedNext, setAttemptedNext] = useState(false);
@@ -243,11 +241,6 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
     if (submitting) return;
     if (!page2Valid()) return;
 
-    if (!turnstileToken) {
-      setError("Please complete the human verification above before submitting.");
-      return;
-    }
-
     setSubmitting(true);
     setError(null);
 
@@ -274,7 +267,6 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
         },
         botcheck,
       },
-      turnstileToken,
       attachmentKeys
     );
 
@@ -282,8 +274,6 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
 
     if (!result.ok) {
       setError(result.error);
-      setTurnstileToken(null);
-      turnstileRef.current?.reset();
       return;
     }
 
@@ -587,27 +577,6 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
             {attemptedSubmit && !data.consent && (
               <p className="text-xs font-semibold text-red-600">Consent is required to submit.</p>
             )}
-
-            {/*
-              Real Cloudflare Turnstile, occupying the same visual slot the
-              original WordPress form's reCAPTCHA v2 checkbox used. The
-              honeypot field above remains a second, independent spam layer.
-              See TurnstileWidget.tsx and
-              docs/migration/production-cutover-checklist.md §14.
-            */}
-            <div>
-              <p className="text-sm font-bold text-[#112337]">Are you human?</p>
-              <div className="mt-3">
-                <TurnstileWidget
-                  ref={turnstileRef}
-                  onToken={(token) => {
-                    setTurnstileToken(token);
-                    setError(null);
-                  }}
-                  onExpire={() => setTurnstileToken(null)}
-                />
-              </div>
-            </div>
 
             {error && <p className="text-sm font-semibold text-red-700">{error}</p>}
 

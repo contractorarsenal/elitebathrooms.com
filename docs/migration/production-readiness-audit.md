@@ -121,9 +121,12 @@ matches. The current form has **no bot/spam protection at all** on either the cl
 This is not a parity regression (WordPress had none either) but it is a real production
 risk once the form has a live lead destination (§3) — an unprotected public POST endpoint
 that triggers a real business action (a Jobber lead, an email, etc.) is a spam magnet.
-**Recommend adding Cloudflare Turnstile** (free, same platform as the deploy target,
-no third-party script needed) before or immediately after §3 ships — not required to be
-solved in this pass, but flagged as a real gap rather than a false "matches WordPress" pass.
+
+**Update (later session):** Turnstile was subsequently built, then removed at the
+client's explicit instruction — spam protection is honeypot-only by deliberate choice,
+not an open gap. See `production-cutover-checklist.md` §14.2. This section is kept as
+the original historical audit finding; don't treat the recommendation above as current
+guidance.
 
 ## 7. GTM/tracking status
 
