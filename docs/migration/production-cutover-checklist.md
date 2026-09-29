@@ -211,5 +211,45 @@ preview URL, which has already been validated repeatedly throughout this project
 6. A go/no-go on the two optional, low-risk legacy-URL 301s (item 5) — not required,
    just a nice-to-have if you want them.
 7. Sign-off on the Cookie Policy once item 2 is resolved.
+8. A decision on the quote-form file upload/reCAPTCHA gaps in §14 below.
+
+---
+
+## 14. Quote form rebuild — Gravity Forms parity
+
+The quote/contact form (`EstimateFlow`) was rebuilt from scratch to match the real
+WordPress Gravity Form (`gform_1`, `/get-a-quote/`) instead of the earlier custom 5-step
+card design. Source of truth: `wordpress-archive/forms/gform_1.json`, the embedded
+`window.gf_form_conditional_logic[1]` ruleset in `wordpress-archive/html/get-a-quote.html`,
+and the live site (read-only) for measured colors/sizes. Full field set, real conditional
+logic (service type → conditionally "reason for converting" only for Full Bathroom
+Remodel → which bathroom → home age → timeline, each progressively revealed on one page),
+real two-page structure (page 1 progressive reveal, page 2 = contact/address/file/
+consent/spam-check via a real Next/Previous transition, not a route change), and the
+original image-choice service cards (same icon assets, byte-confirmed identical to the
+originals) are all reproduced. Parity screenshots: `docs/migration/form-visual-diff/`.
+
+**Two real gaps found and NOT silently worked around:**
+
+1. **File upload.** Original WordPress limit: up to 5 files, jpg/gif/png/pdf/jpeg, 256MB
+   each. Web3Forms' Basic plan (the only plan this project is on) — confirmed against
+   their own docs — supports a single file, 5MB max, and requires their paid Pro plan
+   plus an advanced uploader for anything beyond that. **Implemented: a real, working
+   single-file upload, 5MB max**, sent via a genuine multipart submission to Web3Forms —
+   not faked, not silently removed, just honestly scoped to what this plan supports. The
+   UI copy says "Max. files: 1" / "Max. file size: 5 MB", not the original's numbers.
+   **Your call:** upgrade to Web3Forms Pro (their advanced uploader supports configurable
+   multi-file/larger limits) if full parity matters, or accept the single-file/5MB
+   version as final.
+2. **reCAPTCHA.** The original form uses Google reCAPTCHA v2 (a site-key-gated widget
+   tied to the live `elitebathrooms.com` domain). No credential for that widget was
+   provided, and inventing one isn't possible — a reCAPTCHA site key is registered per
+   domain in Google's own console. Rather than embed a non-functional or fake checkbox,
+   the same visual slot/copy ("Are you human?") is kept, backed by the same honeypot
+   (`botcheck`) spam filter already used elsewhere on this site. **Your call:** provide a
+   real Google reCAPTCHA v2 site key registered for the Production domain, or (my
+   recommendation) use Cloudflare Turnstile instead — same platform as the deploy target,
+   no credential exists for it yet either, but it's a cleaner fit than carrying two
+   different CAPTCHA providers across the site.
 
 Nothing in Production, DNS, or WordPress has been touched. Stopping here, as instructed.
