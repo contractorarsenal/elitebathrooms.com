@@ -1,4 +1,4 @@
-import { US_STATES, type Lead, type UploadedFile } from "./types";
+import { US_STATES, type Lead } from "./types";
 import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from "./web3forms";
 
 export type SubmitResult = { ok: true } | { ok: false; error: string };
@@ -12,11 +12,13 @@ export type SubmitResult = { ok: true } | { ok: false; error: string };
  * server-side-equivalent before any network call so a bad submission never
  * reaches Web3Forms regardless of the UI's own button-disabled state.
  *
- * Uploaded files never go through Web3Forms itself (their Basic plan only
- * ever supported one 5MB attachment) — they're uploaded to Cloudflare R2
- * first (src/app/api/estimate/upload/route.ts), and only the resulting
- * signed retrieval URLs are included here as plain text fields, so this is
- * always a plain JSON POST regardless of how many files were attached.
+ * Files upload through Web3Forms' own Advanced File Uploader (see
+ * EstimateFlow.tsx) -- by the time this function runs, they're already
+ * sitting in Web3Forms' storage, and `attachmentKeys` are just the
+ * reference strings their widget produced. Turnstile is verified by
+ * Web3Forms itself server-side (their dashboard's "turnstile" captcha
+ * provider setting) once `cf-turnstile-response` is included below --
+ * this app never holds a Turnstile secret.
  */
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -66,7 +68,7 @@ function validate(payload: Partial<Lead>): string | null {
 }
 
 /** Human-readable summary for the Web3Forms notification email body. */
-function buildMessage(payload: Partial<Lead>, isContactPage: boolean, uploadedFiles: UploadedFile[]): string {
+function buildMessage(payload: Partial<Lead>, isContactPage: boolean, attachmentCount: number): string {
   const lines: string[] = [isContactPage ? "New contact request" : "New estimate request", ""];
 
   const fullName = [payload.firstName, payload.lastName].filter(Boolean).join(" ").trim();
@@ -97,12 +99,9 @@ function buildMessage(payload: Partial<Lead>, isContactPage: boolean, uploadedFi
     lines.push(payload.additionalInfo.trim());
   }
 
-  if (uploadedFiles.length > 0) {
+  if (attachmentCount > 0) {
     lines.push("");
-    lines.push(`Uploaded Files (${uploadedFiles.length}, links expire in 90 days):`);
-    for (const f of uploadedFiles) {
-      lines.push(`- ${f.name}: ${new URL(f.url, window.location.origin).toString()}`);
-    }
+    lines.push(`Uploaded Files: ${attachmentCount} (see attachment${attachmentCount === 1 ? "" : "s"} on this submission)`);
   }
 
   lines.push("");
@@ -118,7 +117,8 @@ function buildMessage(payload: Partial<Lead>, isContactPage: boolean, uploadedFi
 
 export async function submitLead(
   payload: Lead & { botcheck: boolean },
-  uploadedFiles: UploadedFile[]
+  turnstileToken: string,
+  attachmentKeys: string[]
 ): Promise<SubmitResult> {
   // Web3Forms' own native honeypot convention is a hidden checkbox named
   // "botcheck" — a real visitor never checks it. Checked first, before
@@ -138,15 +138,13 @@ export async function submitLead(
     access_key: WEB3FORMS_ACCESS_KEY,
     from_name: "Elite Bathrooms Website",
     subject: isContactPage ? "New Elite Bathrooms Contact Request" : "New Elite Bathrooms Estimate Request",
-    message: buildMessage(payload, isContactPage, uploadedFiles),
+    message: buildMessage(payload, isContactPage, attachmentKeys.length),
     lead_source: isContactPage ? "Contact" : "Get a Quote",
+    // Verified server-side by Web3Forms itself once "turnstile" is set as
+    // this form's captcha provider in the Web3Forms dashboard -- this app
+    // never sees or holds the Turnstile secret key.
+    "cf-turnstile-response": turnstileToken,
   };
-  if (uploadedFiles.length > 0) {
-    fields.uploaded_file_count = String(uploadedFiles.length);
-    fields.uploaded_file_urls = uploadedFiles
-      .map((f) => new URL(f.url, window.location.origin).toString())
-      .join(", ");
-  }
 
   const fullName = [payload.firstName, payload.lastName].filter(Boolean).join(" ").trim();
   if (fullName) fields.name = fullName;
@@ -175,16 +173,29 @@ export async function submitLead(
   if (payload.utm?.utm_term) fields.utm_term = payload.utm.utm_term;
 
   try {
-    const res = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(fields),
-    });
+    let res: Response;
 
-    const json = (await res.json().catch(() => null)) as { success?: boolean } | null;
+    if (attachmentKeys.length > 0) {
+      // Web3Forms' Advanced File Uploader convention: the file reference
+      // strings its widget produced go back in repeated "attachment"
+      // fields (see EstimateFlow.tsx) -- multipart, not JSON, since a
+      // plain JS object can't hold repeated keys.
+      const form = new FormData();
+      Object.entries(fields).forEach(([k, v]) => form.append(k, v));
+      attachmentKeys.forEach((key) => form.append("attachment", key));
+      res = await fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: form });
+    } else {
+      res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(fields),
+      });
+    }
+
+    const json = (await res.json().catch(() => null)) as { success?: boolean; message?: string } | null;
 
     if (!res.ok || json?.success !== true) {
-      return { ok: false, error: "Something went wrong submitting your request. Please try again." };
+      return { ok: false, error: json?.message || "Something went wrong submitting your request. Please try again." };
     }
 
     return { ok: true };

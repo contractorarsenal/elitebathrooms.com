@@ -32,9 +32,6 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
-# wrangler's local-dev secret injection (see `wrangler dev` docs) -- same
-# reasoning as .env* above, never committed.
-.dev.vars*
 
 # vercel
 .vercel
@@ -42,8 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-# regenerate with `npx wrangler types` after any wrangler.jsonc binding change
-worker-configuration.d.ts
 /dist/
 .vinext/
 .wrangler/

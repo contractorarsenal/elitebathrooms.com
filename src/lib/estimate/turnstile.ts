@@ -1,9 +1,10 @@
 /**
  * Client-safe Turnstile config. The site key is public by design (it's
  * embedded in every page that renders the widget, same as any CAPTCHA
- * site key) -- the secret half never appears here or anywhere in client
- * code; it's a Worker secret read server-side in
- * src/app/api/estimate/upload/route.ts.
+ * site key). The token this widget produces is verified server-side by
+ * Web3Forms itself (their dashboard's "turnstile" captcha provider
+ * setting, paired with a secret key entered there) -- this app never
+ * holds or sees the Turnstile secret.
  *
  * No fallback value: unlike WEB3FORMS_ACCESS_KEY, a Turnstile site key is
  * registered per-domain in the Cloudflare dashboard and can't be invented

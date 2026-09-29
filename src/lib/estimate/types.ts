@@ -136,29 +136,20 @@ export const US_STATES = [
 
 /**
  * Real field 21 file-upload limits are jpg/gif/png/pdf/jpeg, up to 256MB
- * each, up to 5 files. WordPress's own 256MB-per-file setting is not
- * reproduced here -- it's a Gravity Forms max, not a real production
- * limit anyone needs, and would make an abandoned upload tab hold open a
- * 5x256MB=1.28GB request. Files now go straight to Cloudflare R2 (not
- * through Web3Forms, whose Basic plan only ever supported one 5MB
- * attachment), so the file count/size limit is a genuine, enforced
- * production choice rather than a workaround: 5 files matches the
- * original form exactly, and 10MB/file comfortably covers real phone
- * photos and PDFs while keeping a full 5-file batch (<=50MB) well inside
- * Cloudflare Workers' request-body limits. Enforced both client-side
- * (immediate feedback) and server-side in
- * `src/app/api/estimate/upload/route.ts` (never trust the client alone).
+ * each, up to 5 files. Files upload via Web3Forms' own Advanced File
+ * Uploader (a Pro-tier feature -- see
+ * docs/migration/production-cutover-checklist.md §14 for how that was
+ * confirmed against this account), which uploads directly to Web3Forms'
+ * own storage and hands the resulting reference back to the form; nothing
+ * in this app stores files itself. 5 files matches the original form
+ * exactly; WordPress's 256MB/file is deliberately not reproduced (it's a
+ * Gravity Forms max, not a real limit anyone needs) in favor of 10MB/file,
+ * which comfortably covers real phone photos and PDFs. This is the target
+ * limit requested for this account; Web3Forms' backend enforces its own
+ * real ceiling server-side regardless of what's configured here, so an
+ * account limit lower than 10MB still fails safely with a clear error
+ * rather than a silently-accepted oversized file.
  */
-export const FILE_UPLOAD_ACCEPT = ".jpg,.jpeg,.gif,.png,.pdf";
 export const FILE_UPLOAD_MAX_BYTES = 10 * 1024 * 1024;
 export const FILE_UPLOAD_MAX_FILES = 5;
 export const FILE_UPLOAD_MIME_TYPES = ["image/jpeg", "image/png", "image/gif", "application/pdf"] as const;
-export const FILE_UPLOAD_EXTENSIONS = [".jpg", ".jpeg", ".gif", ".png", ".pdf"] as const;
-
-/** One successfully uploaded file, as returned by the upload API route. */
-export type UploadedFile = {
-  key: string;
-  url: string;
-  name: string;
-  size: number;
-};

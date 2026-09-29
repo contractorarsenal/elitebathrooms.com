@@ -10,21 +10,5 @@
     "directory": "dist/client",
     "not_found_handling": "none",
     "binding": "ASSETS"
-  },
-  // Quote-form file uploads (see docs/migration/production-cutover-checklist.md
-  // §14). This bucket does not exist in the real Cloudflare account yet --
-  // it must be created (`npx wrangler r2 bucket create elite-bathrooms-uploads`)
-  // before `@vinext/cloudflare deploy` will succeed against the real account.
-  // Local dev (`wrangler dev` / `vinext dev`) simulates this binding locally
-  // with no cloud resource required.
-  "r2_buckets": [
-    {
-      "binding": "UPLOADS_BUCKET",
-      "bucket_name": "elite-bathrooms-uploads"
-    }
-  ]
-  // Secrets (never stored in this file): TURNSTILE_SECRET_KEY,
-  // FILE_RETRIEVAL_SIGNING_SECRET -- set with `npx wrangler secret put <NAME>`
-  // once the real account is authenticated. See production-cutover-checklist.md
-  // §14 for what each one is for.
+  }
 }

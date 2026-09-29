@@ -3,10 +3,11 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { useRouter } from "next/navigation";
 import { submitLead } from "@/lib/estimate/submit";
 import { getAttribution } from "@/lib/attribution";
-import { uploadFiles, cleanupUploadedFiles, validateFileForSelection, validateSelectionCount } from "@/lib/estimate/upload";
+import { WEB3FORMS_ACCESS_KEY } from "@/lib/estimate/web3forms";
 import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/estimate/TurnstileWidget";
 import {
   emptyLead,
@@ -16,9 +17,9 @@ import {
   homeAgeOptions,
   timelineOptions,
   US_STATES,
-  FILE_UPLOAD_ACCEPT,
   FILE_UPLOAD_MAX_BYTES,
   FILE_UPLOAD_MAX_FILES,
+  FILE_UPLOAD_MIME_TYPES,
   type Lead,
   type ConversionReason,
   type WhichBathroom,
@@ -42,6 +43,19 @@ import {
  * answered, never a full-page replace), then a real second page (AJAX
  * "Next", not a route change) for contact info/address/file/consent/spam
  * check, with "Previous"/"Submit".
+ *
+ * File uploads use Web3Forms' own Advanced File Uploader
+ * (web3forms.com/client/script.js, a Pro-tier feature -- see
+ * docs/migration/production-cutover-checklist.md §14) rather than any
+ * storage this app owns: it wires a FilePond widget onto the `attachment`
+ * input below, uploads each file straight to Web3Forms' storage, and
+ * leaves a reference in a hidden field with that same name for every file
+ * once done. Because that vendor script only scans the DOM once (no
+ * MutationObserver), the input has to exist in the DOM from first paint --
+ * it can't be mounted only once page 2 is reached -- so both "pages"
+ * below are always mounted and only their visibility toggles with `page`.
+ * At submit time, `new FormData(formRef.current)` harvests whatever
+ * `attachment` entries the widget produced.
  */
 
 // Verbatim from the live WordPress Gravity Forms "Consent" field.
@@ -147,94 +161,6 @@ function CheckOption({
   );
 }
 
-function formatBytes(bytes: number): string {
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-}
-
-function FileDropzone({
-  files,
-  onAdd,
-  onRemove,
-  disabled,
-}: {
-  files: File[];
-  onAdd: (files: File[]) => void;
-  onRemove: (index: number) => void;
-  disabled: boolean;
-}) {
-  const [dragActive, setDragActive] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  return (
-    <div>
-      <div
-        onDragOver={(e) => {
-          e.preventDefault();
-          if (!disabled) setDragActive(true);
-        }}
-        onDragLeave={() => setDragActive(false)}
-        onDrop={(e) => {
-          e.preventDefault();
-          setDragActive(false);
-          if (disabled) return;
-          onAdd(Array.from(e.dataTransfer.files));
-        }}
-        className={`rounded-md border border-dashed p-6 text-center transition-colors ${
-          dragActive ? "border-bronze-500 bg-bronze-50" : "border-[#686E77]/40 bg-white"
-        }`}
-      >
-        <p className="text-sm text-ink-muted">Drop files here or</p>
-        <label
-          className={`mt-2 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md bg-[#204CE5] px-5 text-sm font-bold text-white ${
-            disabled ? "pointer-events-none opacity-50" : ""
-          }`}
-        >
-          Select files
-          <input
-            ref={inputRef}
-            type="file"
-            accept={FILE_UPLOAD_ACCEPT}
-            multiple
-            disabled={disabled}
-            className="sr-only"
-            onChange={(e) => {
-              onAdd(Array.from(e.target.files ?? []));
-              if (inputRef.current) inputRef.current.value = "";
-            }}
-          />
-        </label>
-        <p className="mt-2 text-xs text-ink-muted">
-          Accepted file types: jpg, gif, png, pdf, jpeg. Max. file size: {FILE_UPLOAD_MAX_BYTES / (1024 * 1024)} MB.
-          Max. files: {FILE_UPLOAD_MAX_FILES}.
-        </p>
-      </div>
-
-      {files.length > 0 && (
-        <ul className="mt-3 space-y-2">
-          {files.map((file, index) => (
-            <li
-              key={`${file.name}-${file.size}-${index}`}
-              className="flex items-center justify-between gap-3 rounded-md border border-[#686E77]/20 bg-white px-4 py-2.5 text-sm"
-            >
-              <span className="min-w-0 flex-1 truncate text-[#112337]">{file.name}</span>
-              <span className="shrink-0 text-xs text-ink-muted">{formatBytes(file.size)}</span>
-              <button
-                type="button"
-                onClick={() => onRemove(index)}
-                disabled={disabled}
-                aria-label={`Remove ${file.name}`}
-                className="shrink-0 text-lg font-bold leading-none text-ink-muted hover:text-red-600 disabled:opacity-40"
-              >
-                &times;
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
-
 function Field({
   label,
   required,
@@ -263,15 +189,13 @@ const textInputClass =
 
 export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
   const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
   const [page, setPage] = useState<1 | 2>(1);
   const [data, setData] = useState<Lead>({ ...emptyLead, ...prefill });
-  const [files, setFiles] = useState<File[]>([]);
-  const [fileError, setFileError] = useState<string | null>(null);
   const [botcheck, setBotcheck] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [stage, setStage] = useState<"idle" | "uploading" | "submitting">("idle");
   const [error, setError] = useState<string | null>(null);
   const [attemptedNext, setAttemptedNext] = useState(false);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
@@ -304,35 +228,8 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
       data.city.trim().length > 0 &&
       data.state.trim().length > 0 &&
       data.zip.trim().length >= 5 &&
-      data.consent &&
-      !fileError
+      data.consent
     );
-  }
-
-  function handleFilesAdded(newFiles: File[]) {
-    if (newFiles.length === 0) return;
-
-    const countError = validateSelectionCount(files.length, newFiles.length);
-    if (countError) {
-      setFileError(countError);
-      return;
-    }
-
-    for (const f of newFiles) {
-      const err = validateFileForSelection(f);
-      if (err) {
-        setFileError(err);
-        return;
-      }
-    }
-
-    setFileError(null);
-    setFiles((prev) => [...prev, ...newFiles]);
-  }
-
-  function handleRemoveFile(index: number) {
-    setFileError(null);
-    setFiles((prev) => prev.filter((_, i) => i !== index));
   }
 
   function handleNext() {
@@ -354,19 +251,14 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
     setSubmitting(true);
     setError(null);
 
-    setStage("uploading");
-    const uploadResult = await uploadFiles(files, turnstileToken);
+    // Web3Forms' Advanced File Uploader widget (see the header comment)
+    // injects a hidden `attachment` input for every file it finished
+    // uploading -- this is the only way to retrieve those reference
+    // strings, since the vendor script exposes no JS callback for them.
+    const attachmentKeys = formRef.current
+      ? Array.from(new FormData(formRef.current).getAll("attachment")).map(String).filter(Boolean)
+      : [];
 
-    if (!uploadResult.ok) {
-      setSubmitting(false);
-      setStage("idle");
-      setError(uploadResult.error);
-      setTurnstileToken(null);
-      turnstileRef.current?.reset();
-      return;
-    }
-
-    setStage("submitting");
     const attribution = getAttribution();
     const result = await submitLead(
       {
@@ -382,26 +274,27 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
         },
         botcheck,
       },
-      uploadResult.files
+      turnstileToken,
+      attachmentKeys
     );
 
+    setSubmitting(false);
+
     if (!result.ok) {
-      await cleanupUploadedFiles(uploadResult.files, uploadResult.batchToken);
-      setSubmitting(false);
-      setStage("idle");
       setError(result.error);
       setTurnstileToken(null);
       turnstileRef.current?.reset();
       return;
     }
 
-    setSubmitting(false);
-    setStage("idle");
     router.push("/thank-you");
   }
 
   return (
-    <div className="mx-auto w-full max-w-3xl">
+    <form ref={formRef} onSubmit={(e) => e.preventDefault()} className="mx-auto w-full max-w-3xl">
+      {/* Web3Forms' Advanced File Uploader widget -- see the header comment. */}
+      <Script src="https://web3forms.com/client/script.js" strategy="afterInteractive" />
+
       {/* Honeypot -- zero-size, real visitors never see/reach it. */}
       <input
         type="checkbox"
@@ -421,8 +314,13 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
       <ProgressBar page={page} />
 
       <div className="mt-10 space-y-8">
-        {page === 1 && (
-          <>
+        {/*
+          Both "pages" stay mounted at all times (visibility toggled via
+          CSS, not conditional JSX) -- see the header comment on why the
+          Advanced File Uploader input needs to exist in the DOM from
+          first paint.
+        */}
+        <div className={page === 1 ? "space-y-8" : "hidden"}>
             <Field label="What can we help you transform today?" required>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {serviceTypeOptions.map((opt) => (
@@ -526,11 +424,9 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
                 Next
               </button>
             </div>
-          </>
-        )}
+        </div>
 
-        {page === 2 && (
-          <>
+        <div className={page === 2 ? "space-y-8" : "hidden"}>
             <Field label="Full Name" required>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
@@ -649,8 +545,28 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
             </Field>
 
             <Field label="Add pictures, plans, drafts">
-              <FileDropzone files={files} onAdd={handleFilesAdded} onRemove={handleRemoveFile} disabled={submitting} />
-              {fileError && <p className="mt-2 text-xs font-semibold text-red-600">{fileError}</p>}
+              {/*
+                Web3Forms' Advanced File Uploader takes over this input
+                (via `data-advanced`) and replaces it with its own
+                drag-and-drop widget: drop zone, "Select files" trigger,
+                selected-file list, per-file remove, and upload progress
+                are all its native behavior -- see the header comment.
+              */}
+              <input
+                type="file"
+                name="attachment"
+                data-advanced="true"
+                data-form-id={WEB3FORMS_ACCESS_KEY}
+                data-max-files={String(FILE_UPLOAD_MAX_FILES)}
+                data-max-file-size={`${FILE_UPLOAD_MAX_BYTES / (1024 * 1024)}MB`}
+                data-content="Drop files here or click to upload"
+                accept={FILE_UPLOAD_MIME_TYPES.join(",")}
+                multiple
+              />
+              <p className="mt-2 text-xs text-ink-muted">
+                Accepted file types: jpg, gif, png, pdf, jpeg. Max. file size: {FILE_UPLOAD_MAX_BYTES / (1024 * 1024)}{" "}
+                MB. Max. files: {FILE_UPLOAD_MAX_FILES}.
+              </p>
             </Field>
 
             <label className="flex items-start gap-3 rounded-md border border-[#686E77]/20 bg-white p-4 text-xs leading-relaxed text-ink-muted">
@@ -710,12 +626,11 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
                 disabled={submitting}
                 className="min-h-12 rounded-full bg-bronze-500 px-9 text-base font-bold text-white transition-colors hover:bg-bronze-600 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                {stage === "uploading" ? "Uploading files…" : stage === "submitting" ? "Submitting…" : "Submit"}
+                {submitting ? "Submitting…" : "Submit"}
               </button>
             </div>
-          </>
-        )}
+        </div>
       </div>
-    </div>
+    </form>
   );
 }
