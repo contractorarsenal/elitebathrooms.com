@@ -55,3 +55,10 @@ next-env.d.ts
 # The small interactions/ subfolder (6 files) is kept as direct evidence.
 /docs/migration/parity-screenshots/desktop/
 /docs/migration/parity-screenshots/mobile/
+
+# Per-template WordPress-vs-rebuild visual-diff screenshot sets: same
+# reasoning as parity-screenshots above — forensic comparison PNGs
+# (before/after/diff/overlay), not part of the production source, large,
+# and regenerable. Written findings about them stay in tracked .md docs.
+/docs/migration/homepage-visual-diff/
+/docs/migration/template-visual-diff/

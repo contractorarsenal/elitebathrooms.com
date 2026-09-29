@@ -1,6 +1,6 @@
 # Elite Bathrooms
 
-[elitebathrooms.com](https://www.elitebathrooms.com)
+[elitebathrooms.com](https://elitebathrooms.com)
 
 Custom Next.js website for Elite Bathrooms — a Tacoma-based bathroom
 remodeling specialist. Built from scratch as a greenfield replacement for

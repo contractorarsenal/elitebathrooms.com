@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { ServiceDetail } from "@/components/services/ServiceDetail";
-import { getServiceBySlug } from "@/data/services";
+import { ServiceDetailTemplate } from "@/components/services/ServiceDetailTemplate";
+import { serviceDetailContent } from "@/data/service-detail-content";
 import { absoluteUrl } from "@/lib/seo";
 
-const service = getServiceBySlug("shower-remodel")!;
-
 export const metadata: Metadata = {
-  title: "Shower Remodeling in Tacoma",
+  title: "Shower Remodel - Custom Walk-In & Frameless Glass Showers",
   description:
-    "Frameless glass, large-format tile, and properly waterproofed shower pans and walls. Tacoma-based shower remodels backed by a 10-year waterproofing warranty.",
+    "Shower remodel services in Seattle, WA: frameless glass enclosures, custom tile, and properly waterproofed shower pans and walls.",
   alternates: { canonical: absoluteUrl("/services/shower-remodel") },
 };
 
 export default function ShowerRemodelPage() {
-  return <ServiceDetail service={service} />;
+  return <ServiceDetailTemplate data={serviceDetailContent["shower-remodel"]} />;
 }

@@ -23,7 +23,14 @@ def fetch(url):
 def get_routes():
     xml = urllib.request.urlopen(f"{BASE}/sitemap.xml").read().decode()
     locs = re.findall(r"<loc>([^<]*)</loc>", xml)
-    return sorted(set((l.replace("https://www.elitebathrooms.com", "") or "/") for l in locs))
+    # Sitemap now emits the apex domain (no www) — see src/lib/seo.ts's
+    # SITE_URL and the canonical-domain decision it documents.
+    return sorted(
+        set(
+            (l.replace("https://elitebathrooms.com", "").replace("https://www.elitebathrooms.com", "") or "/")
+            for l in locs
+        )
+    )
 
 def main():
     routes = get_routes()

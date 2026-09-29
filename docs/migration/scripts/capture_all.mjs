@@ -57,7 +57,11 @@ async function capture(routes) {
 }
 
 const xml = await (await fetch(`${BASE}/sitemap.xml`)).text();
-const locs = [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1].replace("https://www.elitebathrooms.com", "") || "/");
+// Sitemap now emits the apex domain (no www) — see src/lib/seo.ts's
+// SITE_URL and the canonical-domain decision it documents.
+const locs = [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map(
+  (m) => m[1].replace("https://elitebathrooms.com", "").replace("https://www.elitebathrooms.com", "") || "/"
+);
 const routes = [...new Set(locs)].sort();
 routes.push("/thank-you");
 routes.push("/this-page-does-not-exist-parity-check");

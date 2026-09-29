@@ -27,27 +27,35 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
                 The whole row is the accordion toggle, full stop — no Link
                 inside it. Nesting a Link inside <summary> made one tap do
                 two conflicting things (navigate vs. expand) depending on
-                exactly where the tap landed. "View All Services" below is
-                the only way to navigate to /services from here now.
+                exactly where the tap landed. `viewAllLabel` (only set where
+                the parent's own hub page isn't already one of the listed
+                children — see site-config.ts) is the way to navigate there
+                from here instead.
               */}
               <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between py-3 text-lg font-semibold uppercase tracking-wide text-warm-50 marker:content-none">
                 {item.label}
                 <ChevronDownIcon className="h-4 w-4 shrink-0 text-warm-50/60 transition-transform group-open:rotate-180" />
               </summary>
               <div className="flex flex-col gap-0.5 pb-3 pl-4">
-                <Link
-                  href={item.href}
-                  onClick={onClose}
-                  className="min-h-11 py-2 text-sm font-bold uppercase tracking-wide text-bronze-400"
-                >
-                  View All Services
-                </Link>
+                {item.viewAllLabel && (
+                  <Link
+                    href={item.href}
+                    onClick={onClose}
+                    className="min-h-11 py-2 text-sm font-bold uppercase tracking-wide text-bronze-400"
+                  >
+                    {item.viewAllLabel}
+                  </Link>
+                )}
                 {item.children.map((child) => (
                   <Link
                     key={child.href}
                     href={child.href}
                     onClick={onClose}
-                    className="min-h-11 py-2 text-sm font-semibold text-warm-50/75"
+                    className={`min-h-11 py-2 text-sm font-semibold ${
+                      child.emphasized
+                        ? "mt-1 border-t border-charcoal-700 pt-3 text-bronze-400"
+                        : "text-warm-50/75"
+                    }`}
                   >
                     {child.label}
                   </Link>

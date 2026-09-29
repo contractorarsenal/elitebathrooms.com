@@ -6,7 +6,15 @@ import { usePathname } from "next/navigation";
 import { primaryNav, siteConfig } from "@/lib/site-config";
 import { Button } from "../ui/Button";
 import { Logo } from "../ui/Logo";
-import { ArrowRightIcon, ChevronDownIcon, MenuIcon, PhoneIcon } from "../ui/icons";
+import {
+  ArrowRightIcon,
+  ChevronDownIcon,
+  DotGridIcon,
+  FacebookIcon,
+  InstagramIcon,
+  MenuIcon,
+  PhoneIcon,
+} from "../ui/icons";
 import { MobileNav } from "./MobileNav";
 
 function useIsActive(pathname: string) {
@@ -37,9 +45,9 @@ export function Header() {
   }, [menuOpen]);
 
   // Transparent-over-hero only applies on the homepage, and only before the
-  // user scrolls past it. Every interior page starts solid immediately —
-  // there's no dark hero photo behind the header to justify transparency,
-  // and waiting for scroll left white nav text unreadable on light pages.
+  // user scrolls past it — matches WordPress's "header-absolute" treatment,
+  // which sits transparent on the hero photo and never needs a solid state
+  // until the hero has scrolled by.
   const solid = !isHome || scrolled || menuOpen;
 
   return (
@@ -50,18 +58,18 @@ export function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto grid h-16 max-w-[1360px] grid-cols-[auto_1fr_auto] items-center gap-4 px-5 sm:px-8 lg:h-24">
-        <Logo />
+      <div className="mx-auto flex h-16 max-w-[1770px] items-center justify-between gap-4 px-5 lg:h-24">
+        <Logo className="lg:mr-[61px]" />
 
-        <nav className="hidden items-center justify-center gap-6 lg:flex lg:gap-7 xl:gap-9">
+        <nav className="hidden items-center justify-center gap-[10px] lg:flex">
           {primaryNav.map((item) => {
             const active = isActive(item.href);
             return item.children ? (
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className={`relative flex items-center gap-1.5 py-2 text-[0.9rem] font-bold uppercase tracking-[0.03em] transition-colors ${
-                    active ? "text-bronze-400" : "text-warm-50/95 hover:text-bronze-400"
+                  className={`relative flex items-center gap-1.5 py-2 font-heading text-[1rem] font-bold uppercase tracking-normal transition-colors ${
+                    active ? "text-bronze-400" : "text-warm-50 hover:text-bronze-400"
                   }`}
                 >
                   {item.label}
@@ -89,10 +97,19 @@ export function Header() {
                         href={child.href}
                         className={`flex items-center justify-between gap-3 rounded-[10px] px-4 py-3.5 transition-colors hover:bg-charcoal-800 ${
                           i === 0 ? "bg-charcoal-900/60" : ""
+                        } ${
+                          // Areas We Serve (or any future emphasized entry) is
+                          // visually set apart from the plain service links
+                          // above it, not just another row in the list.
+                          child.emphasized ? "mt-1.5 border-t border-charcoal-700 pt-4" : ""
                         }`}
                       >
                         <span>
-                          <span className="block text-sm font-bold uppercase tracking-[0.04em] text-warm-50">
+                          <span
+                            className={`block text-sm font-bold uppercase tracking-[0.04em] ${
+                              child.emphasized ? "text-bronze-400" : "text-warm-50"
+                            }`}
+                          >
                             {child.label}
                           </span>
                           <span className="mt-0.5 block text-[0.8rem] text-ink-on-dark-muted">
@@ -109,8 +126,8 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative py-2 text-[0.9rem] font-bold uppercase tracking-[0.03em] transition-colors ${
-                  active ? "text-bronze-400" : "text-warm-50/95 hover:text-bronze-400"
+                className={`relative py-2 font-heading text-[1rem] font-bold uppercase tracking-normal transition-colors ${
+                  active ? "text-bronze-400" : "text-warm-50 hover:text-bronze-400"
                 }`}
               >
                 {item.label}
@@ -125,19 +142,51 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-5 lg:flex xl:gap-6">
+        <div className="hidden items-center gap-[10px] lg:flex">
+          <a
+            href={siteConfig.social.facebook}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Elite Bathrooms on Facebook"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-bronze-500 text-warm-50 transition-colors hover:bg-charcoal-800"
+          >
+            <FacebookIcon className="h-3.5 w-3.5" />
+          </a>
+          <a
+            href={siteConfig.social.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Elite Bathrooms on Instagram"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-bronze-500 text-warm-50 transition-colors hover:bg-charcoal-800"
+          >
+            <InstagramIcon className="h-3.5 w-3.5" />
+          </a>
           <a
             href={siteConfig.phone.href}
             aria-label={`Call ${siteConfig.name}`}
-            className="flex items-center gap-2 text-[0.9rem] font-bold text-warm-50/90 transition-colors hover:text-bronze-400"
+            className="flex items-center gap-[13px] text-warm-50 transition-colors hover:text-bronze-400"
           >
-            <PhoneIcon className="h-[1.1rem] w-[1.1rem]" />
-            <span className="hidden xl:inline">Call Now</span>
+            <PhoneIcon className="h-[30px] w-[30px]" />
+            <span className="font-heading text-[18px] font-normal">{siteConfig.phone.display}</span>
           </a>
-          <Button href="/get-a-quote" variant="primary">
-            Request Estimate
-          </Button>
+          <a
+            href="/get-a-quote"
+            className="inline-flex h-[38px] shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-bronze-500 px-[25px] text-base font-bold text-warm-50 transition-colors hover:bg-bronze-600"
+          >
+            Get A Quote
+          </a>
+          <a
+            href="/contact-us"
+            aria-label="Contact info"
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-warm-50/25 text-warm-50 transition-colors hover:border-warm-50/60"
+          >
+            <DotGridIcon className="h-4 w-4" />
+          </a>
         </div>
+
+        <Button href="/get-a-quote" variant="primary" className="lg:hidden">
+          Get A Quote
+        </Button>
 
         <button
           type="button"

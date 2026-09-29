@@ -12,8 +12,10 @@ export const siteConfig = {
     state: "WA",
     zip: "98402",
   },
+  // Client-confirmed business hours — do not overwrite from the WordPress
+  // frontend without explicit client sign-off on newer hours.
   hours: [
-    { days: "Monday to Saturday", time: "8 AM to 6 PM" },
+    { days: "Monday – Saturday", time: "8:00 AM – 6:00 PM" },
     { days: "Sunday", time: "Closed" },
   ],
   // Verified by inspecting the live elitebathrooms.com footer directly.
@@ -33,14 +35,45 @@ export const siteConfig = {
   },
 };
 
+// Restructured per explicit client direction (supersedes the earlier
+// verbatim-WordPress nav): Home / About / Services / Projects / Contact as
+// the five top-level items, with About and Services carrying a dropdown.
+// "Blog & Resources" lives only under About (not a 6th top-level item), and
+// "Areas We Serve" lives only under Services, visually set apart at the
+// bottom of that dropdown (see the `emphasized` flag below) rather than
+// listing all 36 service-area cities in the navbar. `viewAllLabel` gives
+// the mobile accordion body an explicit link to the parent's own hub page,
+// only where that page isn't already one of the listed children (About's
+// first child already covers /bathroom-remodel-company-seattle, so it has
+// none — Services needs one, since its hub isn't repeated among the 6
+// dropdown links).
 export const primaryNav: {
   label: string;
   href: string;
-  children?: { label: string; href: string; description: string }[];
+  viewAllLabel?: string;
+  children?: { label: string; href: string; description: string; emphasized?: boolean }[];
 }[] = [
+  { label: "Home", href: "/" },
+  {
+    label: "About",
+    href: "/bathroom-remodel-company-seattle",
+    children: [
+      {
+        label: "About Elite Bathrooms",
+        href: "/bathroom-remodel-company-seattle",
+        description: "Who we are and how we work",
+      },
+      {
+        label: "Blog & Resources",
+        href: "/blog",
+        description: "Planning guides and remodeling advice",
+      },
+    ],
+  },
   {
     label: "Services",
     href: "/bathroom-remodel-services",
+    viewAllLabel: "View All Services",
     children: [
       {
         label: "Full Bathroom Remodel",
@@ -58,21 +91,25 @@ export const primaryNav: {
         description: "Tub replacement and surrounding upgrades",
       },
       {
-        label: "Tub-to-Shower",
+        label: "Tub-to-Shower Conversion",
         href: "/services/bathroom-conversion",
-        description: "Convert an unused tub into a practical shower",
+        description: "Swap a tub for a walk-in shower",
       },
       {
-        label: "One-Day Renovation",
+        label: "One-Day Bathroom Renovation",
         href: "/services/one-day-bathroom-renovation",
         description: "Fast, focused bathroom upgrades",
+      },
+      {
+        label: "Areas We Serve",
+        href: "/service-area",
+        description: "Every city and neighborhood we work in",
+        emphasized: true,
       },
     ],
   },
   { label: "Projects", href: "/projects" },
-  { label: "Service Areas", href: "/service-area" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/bathroom-remodel-company-seattle" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 export const trustStats = [

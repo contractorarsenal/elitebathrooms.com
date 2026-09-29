@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
@@ -6,10 +7,12 @@ import { Eyebrow } from "@/components/ui/SectionHeading";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { NextStepCTA } from "@/components/sections/NextStepCTA";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { getPostBySlug, getPublishedPosts, readTimeMinutes } from "@/data/blog";
 import { getServiceBySlug } from "@/data/services";
 import { getAreaBySlug } from "@/data/areas";
 import { absoluteUrl } from "@/lib/seo";
+import { articleSchema } from "@/lib/schema";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,6 +29,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     alternates: { canonical: absoluteUrl(`/blog/${post.slug}`) },
+    openGraph: {
+      type: "article",
+      url: absoluteUrl(`/blog/${post.slug}`),
+      title: post.title,
+      description: post.excerpt,
+      ...(post.publishedAt ? { publishedTime: post.publishedAt, modifiedTime: post.publishedAt } : {}),
+      ...(post.image ? { images: [{ url: absoluteUrl(post.image) }] } : {}),
+    },
   };
 }
 
@@ -41,16 +52,32 @@ export default async function BlogPostPage({ params }: Props) {
   const nextPost = published[(postIndex + 1) % published.length];
   const showToc = post.sections.length > 3;
 
+  const crumbs = [{ name: "Home", href: "/" }, { name: "Blog", href: "/blog" }, { name: post.title }];
+
   return (
     <main className="bg-warm-50 pb-14 pt-16 lg:pb-0 lg:pt-24">
+      {/* Breadcrumbs below renders its own matching BreadcrumbList JSON-LD. */}
+      <JsonLd data={articleSchema(post)} />
+
       <div className="border-b border-line py-10 sm:py-14">
         <Container className="max-w-3xl">
-          <Breadcrumbs
-            tone="light"
-            items={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog" }, { name: post.title }]}
-          />
+          <Breadcrumbs tone="light" items={crumbs} />
           <span className="mt-4 block text-xs font-bold uppercase tracking-[0.14em] text-bronze-600">
             {post.category} · {readTimeMinutes(post)} min read
+            {post.publishedAt && (
+              <>
+                {" "}
+                ·{" "}
+                <time dateTime={post.publishedAt}>
+                  {new Date(`${post.publishedAt}T00:00:00Z`).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    timeZone: "UTC",
+                  })}
+                </time>
+              </>
+            )}
           </span>
           <h1 className="mt-3 text-3xl font-extrabold leading-[1.08] text-charcoal-950 sm:text-4xl">
             {post.title}
@@ -58,6 +85,21 @@ export default async function BlogPostPage({ params }: Props) {
           <p className="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">{post.excerpt}</p>
         </Container>
       </div>
+
+      {post.image && (
+        <Container className="max-w-3xl pt-10 sm:pt-14">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-panel">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </Container>
+      )}
 
       <Container className="max-w-3xl py-14 sm:py-16">
         {showToc && (

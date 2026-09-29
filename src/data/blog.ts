@@ -9,6 +9,30 @@ export type BlogPost = {
   relatedServiceSlug?: string;
   relatedAreaSlug?: string;
   status: "published" | "draft";
+  /** Real photo already verified elsewhere on the site — never stock/AI art. */
+  image?: string;
+  /**
+   * ISO date this article was genuinely published. Left unset (undefined)
+   * for every article below on purpose — these four were authored fresh
+   * during this rebuild and never existed on the live WordPress site (its
+   * archive has zero blog pages, zero blog sitemap entries, and an empty
+   * media/blog folder — confirmed by direct inspection), so there is no
+   * real original publication date to carry over, and this rebuild's own
+   * git-commit date is not a publication date either (the content was
+   * never public before now). Do NOT set this to today's date, a preview
+   * deploy date, or any other placeholder — see `needsPublicationDate`.
+   * Set it to the real date once, at the moment this article actually
+   * goes live in Production, and never change it after that.
+   */
+  publishedAt?: string;
+  /**
+   * true = this article has no verified publication date yet and must get
+   * one (set once, for real) at Production launch, before dates are shown
+   * or emitted in schema/OG. Checked by the hub/article pages and by the
+   * schema/OG helpers so an unset date never silently prints as blank in a
+   * way that looks like an oversight — see the "Needs a launch date" badge.
+   */
+  needsPublicationDate?: boolean;
 };
 
 /**
@@ -18,7 +42,9 @@ export type BlogPost = {
  * requirement, or legal claim we haven't verified; where a topic needs
  * that kind of authoritative sourcing (cost figures, permit specifics),
  * it's listed below with status: "draft" and no content yet, rather than
- * published with invented numbers.
+ * published with invented numbers. No individual author byline is used
+ * anywhere (Article schema attributes authorship to the Elite Bathrooms
+ * organization, not a fabricated named person) — see blog/[slug]/page.tsx.
  */
 export const blogPosts: BlogPost[] = [
   {
@@ -30,6 +56,8 @@ export const blogPosts: BlogPost[] = [
     relatedServiceSlug: "bathroom-conversion",
     relatedAreaSlug: "bathroom-remodel-tacoma",
     status: "published",
+    image: "/images/services/elite-curbless-shower.jpg",
+    needsPublicationDate: true,
     sections: [
       {
         heading: "What a Tub-to-Shower Conversion Actually Changes",
@@ -68,6 +96,8 @@ export const blogPosts: BlogPost[] = [
       "Tile is the last five percent of a bathroom. The waterproofing underneath it is what actually determines whether the room lasts.",
     relatedServiceSlug: "shower-remodel",
     status: "published",
+    image: "/images/services/elite-glass-shower.jpg",
+    needsPublicationDate: true,
     sections: [
       {
         heading: "Tile Isn't What Keeps Water Out",
@@ -103,6 +133,8 @@ export const blogPosts: BlogPost[] = [
       "Fast, focused, and low-disruption, but not a fit for every bathroom. Here's exactly what's in scope.",
     relatedServiceSlug: "one-day-bathroom-renovation",
     status: "published",
+    image: "/images/process/elite-installation.jpg",
+    needsPublicationDate: true,
     sections: [
       {
         heading: "What It Is",
@@ -139,6 +171,8 @@ export const blogPosts: BlogPost[] = [
     relatedServiceSlug: "full-bathroom-remodel",
     relatedAreaSlug: "bathroom-remodel-tacoma",
     status: "published",
+    image: "/images/process/elite-process-planning.jpg",
+    needsPublicationDate: true,
     sections: [
       {
         heading: "Why There's No Universal Timeline",

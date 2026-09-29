@@ -1,152 +1,143 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { areas } from "@/data/areas";
-import { services } from "@/data/services";
-import { Container } from "../ui/Container";
-import { Logo } from "../ui/Logo";
-import { Button } from "../ui/Button";
-import { StarIcon, PhoneIcon, MailIcon } from "../ui/icons";
+import { WatermarkText } from "../sections/WatermarkText";
 
+// Exact WordPress footer: logo, description, Thumbtack badge, the same
+// three link columns and contact block, copyright bar, and the giant
+// "ELITE" watermark — verbatim from wordpress-archive/html/home.html,
+// except the site-credit link, which points at this rebuild's own
+// provider (Contractor Arsenal) rather than the old site's provider —
+// see docs/migration/provider-cleanup.md for the full removal audit.
 const companyLinks = [
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/bathroom-remodel-company-seattle" },
-  { label: "Process", href: "/process" },
-  { label: "Financing", href: "/financing" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact-us" },
+  { label: "About Us", href: "/bathroom-remodel-company-seattle" },
+  { label: "Our Services", href: "/bathroom-remodel-services" },
+  { label: "Our Projects", href: "/projects" },
+  { label: "Service Area", href: "/service-area" },
+  { label: "Our Contacts", href: "/contact-us" },
+  { label: "Get A Quote", href: "/get-a-quote" },
+  { label: "Blog & Resources", href: "/blog" },
+];
+
+const serviceLinks = [
+  { label: "Full Bathroom Remodel", href: "/services/full-bathroom-remodel" },
+  { label: "Bathtub Remodel", href: "/services/bathtub-remodel" },
+  { label: "Shower Remodel", href: "/services/shower-remodel" },
+  { label: "One Day Conversion", href: "/services/one-day-bathroom-renovation" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal-950 pb-14 text-warm-50 lg:pb-0">
-      <Container className="grid gap-12 py-20 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-24">
-        <div>
-          <Logo />
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-on-dark-muted">
-            Tacoma-based bathroom remodeling specialists. Design, waterproofing, tile, plumbing,
-            and finish work: one crew, start to finish.
-          </p>
-          <ul className="mt-6 space-y-2 text-sm font-semibold text-warm-50/90">
-            <li className="flex items-center gap-2">
-              <StarIcon className="h-4 w-4 shrink-0 text-bronze-400" />
-              {siteConfig.reviews.rating.toFixed(1)} Google Rating
-            </li>
-            <li>{siteConfig.reviews.count} Reviews</li>
-            <li>{siteConfig.warranty.label}</li>
-          </ul>
-          <div className="mt-6 flex gap-4 text-ink-on-dark-muted">
-            <a href={siteConfig.social.facebook} aria-label="Elite Bathrooms on Facebook" className="hover:text-bronze-400">
-              Facebook
-            </a>
-            <a href={siteConfig.social.instagram} aria-label="Elite Bathrooms on Instagram" className="hover:text-bronze-400">
-              Instagram
+    <footer className="relative overflow-hidden bg-charcoal-900 text-warm-50">
+      {/*
+        Real footer background photo (wp-content/uploads/2025/06/footer-bg-1.jpg)
+        — measured from live DOM: background-size:cover, no extra dark
+        overlay layer, the photo's own natural dimness carries the legibility.
+      */}
+      <Image
+        src="/images/wordpress/footer-bg-1.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover"
+        aria-hidden="true"
+      />
+      <div className="relative mx-auto max-w-[1410px] px-5 pb-16 pt-16 sm:pt-20">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.1fr_0.8fr_0.8fr_0.9fr]">
+          <div>
+            <Image
+              src="/images/wordpress/logo_color_white.svg"
+              alt="Elite Bathrooms"
+              width={228}
+              height={77}
+              className="h-auto w-[170px]"
+            />
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-warm-50/70">
+              Elite Bathrooms provides professional bathroom remodeling services designed to
+              improve comfort, function, and style in your home. From one-day bathroom conversions
+              and shower remodels to bathtub upgrades and full bathroom renovations, our team
+              focuses on quality work and lasting results. Proudly serving Seattle, WA and nearby
+              areas.
+            </p>
+            <a
+              href="https://www.thumbtack.com/wa/tacoma/bathroom-remodeling/elite-bathrooms/service/439700822396575829"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center gap-2"
+            >
+              <Image
+                src="/images/wordpress/thumbtack-elite-pro.png"
+                alt="Elite Bathrooms — Thumbtack Top Pro 2023"
+                width={160}
+                height={52}
+                className="h-9 w-auto"
+              />
             </a>
           </div>
-        </div>
 
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bronze-400">Services</h3>
-          <ul className="mt-5 space-y-3 text-sm">
-            {services.map((service) => (
-              <li key={service.slug}>
-                <Link href={`/services/${service.slug}`} className="text-ink-on-dark-muted hover:text-warm-50">
-                  {service.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bronze-400">
-            Areas We Serve
-          </h3>
-          <ul className="mt-5 space-y-3 text-sm">
-            {areas.map((area) => (
-              <li key={area.slug}>
-                <Link href={`/service-area/${area.slug}`} className="text-ink-on-dark-muted hover:text-warm-50">
-                  {area.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bronze-400">Company</h3>
-          <ul className="mt-5 space-y-3 text-sm">
+          <div>
             {companyLinks.map((item) => (
-              <li key={item.label}>
-                <Link href={item.href} className="text-ink-on-dark-muted hover:text-warm-50">
-                  {item.label}
-                </Link>
-              </li>
+              <Link
+                key={item.label}
+                href={item.href}
+                className="block py-1.5 font-heading text-base font-bold text-warm-50 hover:text-bronze-400"
+              >
+                {item.label}
+              </Link>
             ))}
-          </ul>
+          </div>
+
+          <div>
+            {serviceLinks.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="block py-1.5 font-heading text-base font-bold text-warm-50 hover:text-bronze-400"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          <div>
+            <a href={siteConfig.phone.href} className="block font-heading text-xl font-extrabold text-bronze-400">
+              {siteConfig.phone.display}
+            </a>
+            <a href={`mailto:${siteConfig.email}`} className="mt-4 block font-heading text-lg font-extrabold text-warm-50">
+              {siteConfig.email}
+            </a>
+            <p className="mt-4 text-sm leading-relaxed text-warm-50/70">
+              {siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.state}{" "}
+              {siteConfig.address.zip}, United States
+            </p>
+          </div>
         </div>
-      </Container>
-
-      <div className="border-t border-charcoal-800">
-        <Container className="grid gap-10 py-12 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
-          <div className="grid gap-8 sm:grid-cols-2">
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bronze-400">
-                Tacoma Office
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-on-dark-muted">
-                {siteConfig.address.street}
-                <br />
-                {siteConfig.address.city}, {siteConfig.address.state} {siteConfig.address.zip}
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-bronze-400">
-                Hours
-              </h3>
-              <ul className="mt-3 space-y-1 text-sm leading-relaxed text-ink-on-dark-muted">
-                {siteConfig.hours.map((h) => (
-                  <li key={h.days}>
-                    {h.days}: {h.time}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row lg:shrink-0">
-            <a
-              href={siteConfig.phone.href}
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-btn border border-warm-50/25 px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-warm-50 transition-colors hover:border-warm-50/50"
-            >
-              <PhoneIcon className="h-4 w-4" />
-              Call Now
-            </a>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-btn border border-warm-50/25 px-6 py-3 text-sm font-bold uppercase tracking-[0.06em] text-warm-50 transition-colors hover:border-warm-50/50"
-            >
-              <MailIcon className="h-4 w-4" />
-              Email Us
-            </a>
-            <Button href="/get-a-quote" variant="primary">
-              Request Estimate
-            </Button>
-          </div>
-        </Container>
       </div>
 
-      <div className="border-t border-charcoal-800">
-        <Container className="flex flex-col gap-3 py-6 text-xs text-ink-on-dark-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>&copy; {new Date().getFullYear()} Elite Bathrooms. All rights reserved.</span>
-          <div className="flex gap-5">
-            <Link href="/privacy-policy" className="hover:text-warm-50">
-              Privacy Policy
-            </Link>
-            <Link href="/cookie-policy" className="hover:text-warm-50">
-              Cookie Policy
-            </Link>
-          </div>
-        </Container>
+      <div className="relative border-t border-white/10">
+        <div className="mx-auto max-w-[1410px] px-5 py-6">
+          <p className="text-center text-sm text-warm-50/60 sm:text-left">
+            &copy; Copyright {new Date().getFullYear()} Elite Bathrooms. All rights reserved.
+            Website by{" "}
+            <a
+              href="https://contractorarsenal.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="font-bold text-bronze-400 hover:underline"
+            >
+              Contractor Arsenal
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div className="overflow-hidden pb-2 pt-4">
+        <div className="mx-auto max-w-[1410px] overflow-hidden px-4">
+          {/* Measured from live DOM: font-size 400px, weight 400, color rgba(255,251,244,0.25). */}
+          <WatermarkText className="block text-[10rem] font-normal text-warm-50/25 sm:text-[16rem] lg:text-[25rem]">
+            ELITE
+          </WatermarkText>
+        </div>
       </div>
     </footer>
   );

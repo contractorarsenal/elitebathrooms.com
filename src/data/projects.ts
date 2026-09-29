@@ -22,6 +22,13 @@ export type Project = {
 // real title text and our own verified service standards (e.g. every
 // shower we build is waterproofed) — never a specific unverified detail.
 //
+// Array order matches wordpress-archive/html/projects.html's portfolio
+// widget item order exactly (Luxury Full Bathroom Remodel, Double Vanity
+// Upgrade, Bathtub Area Renovation, Old Bathroom Shower Upgrade, Glass
+// Shower Remodel, Heated Floor Bathroom, Luxury Bathroom Renovation,
+// Spa-Inspired Bathroom, Ensuite Bathroom Project) so the rebuilt Projects
+// grid reproduces the same visual sequence as the archived source.
+//
 // Images are real Elite Bathrooms job photography migrated from the live
 // WordPress site (see /public/images/projects), not stock or AI-generated.
 // Every image below was individually inspected. Four projects
@@ -47,16 +54,6 @@ export const projects: Project[] = [
       "A complete bathroom remodel focused on elevated finishes and a more refined everyday layout.",
   },
   {
-    slug: "glass-shower-remodel",
-    title: "Glass Shower Remodel",
-    type: "Shower Remodel",
-    image: "/images/projects/glass-shower-remodel-01.jpg",
-    gallery: galleryFor("glass-shower-remodel"),
-    tags: ["Frameless glass", "Shower remodel", "Waterproofed pan"],
-    description:
-      "A shower remodel centered on a clean frameless glass enclosure and a properly waterproofed pan and wall assembly.",
-  },
-  {
     slug: "double-vanity-upgrade",
     title: "Double Vanity Upgrade",
     type: "Full Remodel",
@@ -65,57 +62,6 @@ export const projects: Project[] = [
     tags: ["Double vanity", "Custom tile", "Updated lighting"],
     description:
       "A complete bathroom refresh focused on better storage, cleaner lines, and a more functional everyday layout.",
-  },
-  {
-    slug: "heated-floor-bathroom",
-    title: "Heated Floor Bathroom",
-    type: "Full Remodel",
-    image: "/images/projects/heated-floor-bathroom-04.jpg",
-    before: "/images/projects/heated-floor-bathroom-01.jpg",
-    gallery: galleryFor("heated-floor-bathroom", [2, 3]),
-    tags: ["Heated floors", "Full remodel", "Tile"],
-    description:
-      "A full remodel built around heated floors for a warmer, more comfortable everyday bathroom.",
-  },
-  {
-    slug: "old-bathroom-shower-upgrade",
-    title: "Old Bathroom Shower Upgrade",
-    type: "Shower Remodel",
-    image: "/images/projects/old-bathroom-shower-upgrade-03.jpg",
-    before: "/images/projects/old-bathroom-shower-upgrade-01.jpg",
-    gallery: galleryFor("old-bathroom-shower-upgrade", [4]),
-    tags: ["Shower remodel", "Updated fixtures", "Waterproofed pan"],
-    description:
-      "A shower-focused upgrade that replaced dated fixtures and rebuilt the pan and wall assembly correctly.",
-  },
-  {
-    slug: "luxury-bathroom-renovation",
-    title: "Luxury Bathroom Renovation",
-    type: "Full Remodel",
-    image: "/images/projects/luxury-bathroom-renovation-01.jpg",
-    gallery: galleryFor("luxury-bathroom-renovation"),
-    tags: ["Full remodel", "Premium finishes", "Custom tile"],
-    description: "A full renovation focused on elevated finishes throughout the room.",
-  },
-  {
-    slug: "ensuite-bathroom-project",
-    title: "Ensuite Bathroom Project",
-    type: "Full Remodel",
-    image: "/images/projects/ensuite-bathroom-project-01.jpg",
-    gallery: galleryFor("ensuite-bathroom-project"),
-    tags: ["Full remodel", "Primary ensuite", "Tile"],
-    description: "A full remodel of a primary ensuite bathroom.",
-  },
-  {
-    slug: "spa-inspired-bathroom",
-    title: "Spa-Inspired Bathroom",
-    type: "Full Remodel",
-    image: "/images/projects/spa-inspired-bathroom-09.jpg",
-    before: "/images/projects/spa-inspired-bathroom-01.jpg",
-    gallery: ["/images/projects/spa-inspired-bathroom-13.jpg", "/images/projects/spa-inspired-bathroom-17.jpg"],
-    tags: ["Full remodel", "Freestanding tub", "Spa shower"],
-    description:
-      "A spacious primary bathroom remodel built around a freestanding soaking tub and a separate walk-in shower.",
   },
   {
     slug: "bathtub-area-renovation-project",
@@ -129,6 +75,67 @@ export const projects: Project[] = [
     ],
     tags: ["Full remodel", "Tub and surround", "Updated vanity"],
     description: "A full renovation of a tub and shower area, finished with new tile, fixtures, and vanity.",
+  },
+  {
+    slug: "old-bathroom-shower-upgrade",
+    title: "Old Bathroom Shower Upgrade",
+    type: "Shower Remodel",
+    image: "/images/projects/old-bathroom-shower-upgrade-03.jpg",
+    before: "/images/projects/old-bathroom-shower-upgrade-01.jpg",
+    gallery: galleryFor("old-bathroom-shower-upgrade", [4]),
+    tags: ["Shower remodel", "Updated fixtures", "Waterproofed pan"],
+    description:
+      "A shower-focused upgrade that replaced dated fixtures and rebuilt the pan and wall assembly correctly.",
+  },
+  {
+    slug: "glass-shower-remodel",
+    title: "Glass Shower Remodel",
+    type: "Shower Remodel",
+    image: "/images/projects/glass-shower-remodel-01.jpg",
+    gallery: galleryFor("glass-shower-remodel"),
+    tags: ["Frameless glass", "Shower remodel", "Waterproofed pan"],
+    description:
+      "A shower remodel centered on a clean frameless glass enclosure and a properly waterproofed pan and wall assembly.",
+  },
+  {
+    slug: "heated-floor-bathroom",
+    title: "Heated Floor Bathroom",
+    type: "Full Remodel",
+    image: "/images/projects/heated-floor-bathroom-04.jpg",
+    before: "/images/projects/heated-floor-bathroom-01.jpg",
+    gallery: galleryFor("heated-floor-bathroom", [2, 3]),
+    tags: ["Heated floors", "Full remodel", "Tile"],
+    description:
+      "A full remodel built around heated floors for a warmer, more comfortable everyday bathroom.",
+  },
+  {
+    slug: "luxury-bathroom-renovation",
+    title: "Luxury Bathroom Renovation",
+    type: "Full Remodel",
+    image: "/images/projects/luxury-bathroom-renovation-01.jpg",
+    gallery: galleryFor("luxury-bathroom-renovation"),
+    tags: ["Full remodel", "Premium finishes", "Custom tile"],
+    description: "A full renovation focused on elevated finishes throughout the room.",
+  },
+  {
+    slug: "spa-inspired-bathroom",
+    title: "Spa-Inspired Bathroom",
+    type: "Full Remodel",
+    image: "/images/projects/spa-inspired-bathroom-09.jpg",
+    before: "/images/projects/spa-inspired-bathroom-01.jpg",
+    gallery: ["/images/projects/spa-inspired-bathroom-13.jpg", "/images/projects/spa-inspired-bathroom-17.jpg"],
+    tags: ["Full remodel", "Freestanding tub", "Spa shower"],
+    description:
+      "A spacious primary bathroom remodel built around a freestanding soaking tub and a separate walk-in shower.",
+  },
+  {
+    slug: "ensuite-bathroom-project",
+    title: "Ensuite Bathroom Project",
+    type: "Full Remodel",
+    image: "/images/projects/ensuite-bathroom-project-01.jpg",
+    gallery: galleryFor("ensuite-bathroom-project"),
+    tags: ["Full remodel", "Primary ensuite", "Tile"],
+    description: "A full remodel of a primary ensuite bathroom.",
   },
 ];
 

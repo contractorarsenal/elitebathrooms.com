@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
-import { ProjectCard } from "@/components/sections/FeaturedProjects";
-import { NextStepCTA } from "@/components/sections/NextStepCTA";
-import { projects } from "@/data/projects";
+import { ProjectsHubIntro } from "@/components/sections/ProjectsHubIntro";
+import { ProjectsGrid } from "@/components/sections/ProjectsGrid";
+import { GoogleReviews } from "@/components/sections/GoogleReviews";
+import { ThumbtackReviews } from "@/components/sections/ThumbtackReviews";
+import { WarrantyStrip } from "@/components/sections/WarrantyStrip";
 import { absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Bathroom Remodeling Projects",
+  title: "Bathroom Renovation Projects - Modern & Functional Bathrooms",
   description:
-    "Completed bathroom remodeling projects from Elite Bathrooms: full remodels, shower remodels, and conversions in Tacoma and the greater Seattle area.",
+    "Completed bathroom renovation projects from Elite Bathrooms: full remodels, shower remodels, and conversions in Seattle and the greater Puget Sound area.",
   alternates: { canonical: absoluteUrl("/projects") },
 };
 
@@ -18,45 +19,13 @@ export default function ProjectsPage() {
     <main>
       <PageHero
         crumbs={[{ name: "Home", href: "/" }, { name: "Projects" }]}
-        title="Bathrooms we've actually built."
-        description="No stock photography, no AI renders. Every project here is a completed Elite Bathrooms job."
-        imageSrc="/images/projects/luxury-bathroom-renovation-01.jpg"
-        imageLabel="/images/projects/luxury-bathroom-renovation-01.jpg"
-        imageAlt="Completed Elite Bathrooms project"
+        title="Bathroom Renovation Projects - Modern & Functional Bathrooms"
       />
-
-      <section className="bg-charcoal-950 py-20 sm:py-28">
-        <Container>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-65 lg:grid-flow-dense">
-            {projects.map((project, i) => {
-              const pattern: { size: "large" | "tall" | "small"; minimal: boolean }[] = [
-                { size: "large", minimal: false },
-                { size: "small", minimal: true },
-                { size: "small", minimal: false },
-                { size: "tall", minimal: true },
-                { size: "small", minimal: false },
-                { size: "large", minimal: false },
-                { size: "small", minimal: true },
-              ];
-              const { size, minimal } = pattern[i % pattern.length];
-              return (
-                <ProjectCard
-                  key={project.slug}
-                  project={project}
-                  size={size}
-                  minimal={minimal}
-                  delay={(i % 3) * 70}
-                />
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      <NextStepCTA
-        heading="Don't see your bathroom style yet?"
-        variant="compact"
-      />
+      <ProjectsHubIntro />
+      <ProjectsGrid />
+      <GoogleReviews />
+      <ThumbtackReviews />
+      <WarrantyStrip />
     </main>
   );
 }

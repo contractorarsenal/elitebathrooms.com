@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import { ServiceDetail } from "@/components/services/ServiceDetail";
-import { getServiceBySlug } from "@/data/services";
+import { ServiceDetailTemplate } from "@/components/services/ServiceDetailTemplate";
+import { serviceDetailContent } from "@/data/service-detail-content";
 import { absoluteUrl } from "@/lib/seo";
 
-const service = getServiceBySlug("bathtub-remodel")!;
-
 export const metadata: Metadata = {
-  title: "Bathtub Remodeling in Tacoma",
+  title: "Bathtub Remodel - Custom Tub Upgrades & Replacement Experts",
   description:
-    "Freestanding soaking tubs, tile surrounds, and waterproofed tub-to-wall transitions. Tacoma-based bathtub remodels backed by a 10-year waterproofing warranty.",
+    "Bathtub remodel and replacement services in Seattle, WA: freestanding tubs, alcove tubs, and jetted systems, installed with proper waterproofing.",
   alternates: { canonical: absoluteUrl("/services/bathtub-remodel") },
 };
 
 export default function BathtubRemodelPage() {
-  return <ServiceDetail service={service} />;
+  return <ServiceDetailTemplate data={serviceDetailContent["bathtub-remodel"]} />;
 }

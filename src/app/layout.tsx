@@ -24,7 +24,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.elitebathrooms.com"),
+  // Apex domain, no www — matches WordPress's own canonical. See
+  // src/lib/seo.ts's SITE_URL comment for the source of truth.
+  metadataBase: new URL("https://elitebathrooms.com"),
   title: {
     default: "Elite Bathrooms | Tacoma Bathroom Remodeling Specialists",
     template: "%s | Elite Bathrooms",

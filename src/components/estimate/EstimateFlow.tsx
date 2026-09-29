@@ -84,6 +84,14 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<Lead>({ ...emptyLead, ...prefill });
+  // Honeypot — Web3Forms' own documented convention is a hidden checkbox
+  // named "botcheck" (see docs.web3forms.com's honeypot spam-filtering
+  // guide); using their exact field name means Web3Forms' own server-side
+  // filter recognizes it too, on top of the client-side check in
+  // submit.ts. Invisible to real visitors (off-screen, unfocusable, not
+  // announced to assistive tech), so it stays unchecked for everyone
+  // except a bot that blindly fills every field in the DOM.
+  const [botcheck, setBotcheck] = useState(false);
 
   const isLastStep = step === STEP_LABELS.length - 1;
 
@@ -131,6 +139,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
         utm_content: attribution.utm_content,
         utm_term: attribution.utm_term,
       },
+      botcheck,
     });
 
     setSubmitting(false);
@@ -147,6 +156,22 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
 
   return (
     <div className="mx-auto max-w-2xl rounded-panel border border-line bg-warm-100 p-7 sm:p-12">
+      {/*
+        Honeypot: zero-size, non-positioned, so it can't introduce any
+        scroll/overflow the way an off-canvas absolute offset could. Real
+        visitors never see, tab to, or hear about this field.
+      */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        checked={botcheck}
+        onChange={(e) => setBotcheck(e.target.checked)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="pointer-events-none absolute h-0 w-0 overflow-hidden opacity-0"
+        style={{ clip: "rect(0,0,0,0)" }}
+      />
       <Stepper step={step} />
 
       {step === 0 && (

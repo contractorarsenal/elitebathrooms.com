@@ -1,32 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Real Elite Bathrooms logomark, migrated from elitebathrooms.com. This is
-// the icon only (no wordmark baked in), so it's paired with a text label
-// rather than recreating the whole brand mark in CSS. Swap ICON_SRC for a
-// full lockup PNG if the client supplies one later.
-const ICON_SRC = "/images/brand/elite-logomark.png";
+// Real Elite Bathrooms header lockup, downloaded directly from the live
+// WordPress site (wp-content/uploads/2026/02/logo_color_white.svg) — see
+// docs/migration/homepage-parity.md. White wordmark + bronze shield glyph,
+// intended for the dark/transparent header only.
+const LOGO_SRC = "/images/wordpress/logo_color_white.svg";
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <Link
-      href="/"
-      aria-label="Elite Bathrooms home"
-      className={`flex shrink-0 items-center gap-2.5 ${className}`}
-    >
+    <Link href="/" aria-label="Elite Bathrooms home" className={`flex shrink-0 items-center ${className}`}>
       <Image
-        src={ICON_SRC}
-        alt=""
-        width={700}
-        height={716}
+        src={LOGO_SRC}
+        alt="Elite Bathrooms"
+        width={228}
+        height={77}
         priority
-        className="h-10 w-auto sm:h-12"
+        className="h-auto w-[110px] sm:w-[150px] lg:w-[200px] xl:w-[220px]"
       />
-      <span className="font-heading text-lg font-extrabold uppercase leading-none tracking-tight text-warm-50 sm:text-xl">
-        Elite
-        <br />
-        <span className="text-bronze-400">Bathrooms</span>
-      </span>
     </Link>
   );
 }

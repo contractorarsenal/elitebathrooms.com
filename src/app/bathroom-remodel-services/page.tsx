@@ -1,168 +1,91 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/ui/Container";
-import { ImageSlot } from "@/components/ui/ImageSlot";
-import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
-import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
-import { CheckIcon, ArrowRightIcon } from "@/components/ui/icons";
 import { PageHero } from "@/components/sections/PageHero";
-import { WaterproofingBanner } from "@/components/sections/WaterproofingBanner";
-import { RelatedProjects } from "@/components/sections/RelatedProjects";
+import { ServicesHubIntro } from "@/components/sections/ServicesHubIntro";
+import { ServiceCardsGrid } from "@/components/sections/ServiceCardsGrid";
+import { ServiceTimelineTable } from "@/components/sections/ServiceTimelineTable";
 import { FaqAccordion } from "@/components/sections/FaqAccordion";
-import { NextStepCTA } from "@/components/sections/NextStepCTA";
-import { FeaturedService } from "@/components/sections/FeaturedService";
-import { OneDayPromo } from "@/components/sections/OneDayPromo";
-import { getServiceBySlug } from "@/data/services";
+import { GoogleReviews } from "@/components/sections/GoogleReviews";
+import { OneDayPromoWp } from "@/components/sections/OneDayPromoWp";
+import { ThumbtackReviews } from "@/components/sections/ThumbtackReviews";
+import { WarrantyStrip } from "@/components/sections/WarrantyStrip";
 import { absoluteUrl } from "@/lib/seo";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Bathroom Remodeling Services",
+  title: "Bathroom Remodel Services - Trusted Renovation Professionals",
   description:
-    "Full bathroom remodels, shower remodels, bathtub remodels, tub-to-shower conversions, and one-day renovations. Tacoma-based, backed by a 10-year waterproofing warranty.",
+    "Bathroom remodel services providing attention to detail, skilled installation, and reliable bathroom remodeling services that transform your home with style.",
   alternates: { canonical: absoluteUrl("/bathroom-remodel-services") },
 };
 
-const howToChoose = [
-  {
-    title: "Full Bathroom Remodel",
-    fit: "More than one thing needs to change: layout, storage, dated plumbing, or several fixtures at once.",
-  },
-  {
-    title: "Shower or Bathtub Remodel",
-    fit: "The shower or tub itself is the problem, and the rest of the room still works fine.",
-  },
-  {
-    title: "Tub-to-Shower Conversion",
-    fit: "The household no longer needs the tub and wants a properly waterproofed walk-in shower instead.",
-  },
-  {
-    title: "One-Day Renovation",
-    fit: "You want a fast, surface-focused update with the same layout and minimal disruption.",
-  },
-];
-
+// Verbatim from wordpress-archive/html/bathroom-remodel-services.html. Two
+// items (cost and permit-fee answers) have specific dollar figures redacted
+// per the standing no-unverified-pricing-claims policy — the surrounding
+// real copy is otherwise untouched.
 const faqs = [
   {
-    question: "How do I know which service I need?",
+    question: "How much does a professional bathroom remodel cost in Seattle?",
     answer:
-      "It depends on what's actually wrong with the bathroom. If it's just the tub or shower, a conversion or remodel of that fixture usually covers it. If the layout, storage, or plumbing all need to change, a full remodel is the more realistic path. A consultation is where we give you a straight answer.",
+      "Cost varies significantly by scope: a mid-range bathroom remodel is a different investment than a full luxury primary suite renovation. These costs reflect the high demand for skilled labor in King County and the necessity of using premium, moisture-resistant materials that can withstand the local climate. We provide a detailed, project-specific quote after a consultation.",
   },
   {
-    question: "Is waterproofing included in every service?",
+    question: "Do I need a permit for my bathroom renovation in King County?",
     answer:
-      "Yes. Every service that involves a shower or tub gets the same fully sealed pan and wall assembly, backed by our 10-year waterproofing warranty against leaks.",
+      "Generally, yes. In Seattle, any project that involves moving plumbing, changing electrical wiring, or structural alterations requires a permit from the SDCI. Minor cosmetic changes may be exempt, but for a full service remodel, being permitted is vital for your home's resale value and insurance compliance. We handle the entire permitting process for our clients.",
   },
   {
-    question: "How long does each service take?",
+    question: "What is the typical timeline for a full bathroom remodel?",
     answer:
-      "A one-day renovation or tub-to-shower conversion moves through construction faster than a full remodel, simply because there's less being rebuilt. We'll give you a project-specific timeline during your consultation.",
+      "A standard full-gut renovation usually takes 3 to 5 weeks. This includes demolition, rough-in plumbing/electrical, inspections, tiling, and final fixture installation. Our “One-Day” options are strictly for wet-area replacements (tubs/showers), whereas a comprehensive “Elite” remodel ensures no detail is rushed.",
   },
   {
-    question: "Is financing available for any of these services?",
-    answer: "Yes, financing is available for qualifying projects across every service we offer.",
+    question: "Which materials are best for the damp Pacific Northwest climate?",
+    answer:
+      "We prioritize non-porous surfaces like porcelain tile and quartz countertops. For shower walls, we recommend large-format tiles to minimize grout lines—which are the primary site for mold growth. Additionally, high-CFM ventilation fans are a non-negotiable part of our installs to ensure proper moisture extraction.",
+  },
+  {
+    question: "Will a bathroom remodel increase my Seattle home's value?",
+    answer:
+      "Updated bathrooms are consistently one of the highest-return renovations in the current Seattle real estate market. Buyers in the PNW specifically look for “move-in ready” wet areas that show no signs of water damage or dated plumbing.",
+  },
+  {
+    question: "Can I stay in my home during the renovation?",
+    answer:
+      "Yes, though there will be noise and dust during the demolition phase. We use industrial-grade HEPA air scrubbers and floor protection to keep the rest of your home pristine. If the home only has one bathroom, we can coordinate a phased approach or suggest temporary solutions to minimize the impact on your daily life.",
+  },
+  {
+    question: "Why are Seattle bathroom permits so expensive and necessary?",
+    answer:
+      "The Seattle Department of Construction & Inspections (SDCI) requires rigorous reviews for tree protection and energy efficiency. Permit fees are your only protection against future insurance claims and resale hurdles. A permitted remodel ensures your electrical and moisture-rated ventilation meet current Seattle Electrical Code, which is strictly enforced during resale inspections.",
+  },
+  {
+    question: 'What is the "2-Inch Drain Rule" for Seattle shower conversions?',
+    answer:
+      "If you are converting a bathtub to a walk-in shower, Seattle plumbing code generally requires a 2-inch drain line. Most older Seattle homes (pre-1980) were built with 1.5-inch drains for tubs. Simply swapping the fixture without upgrading the pipe behind the wall is a common “budget contractor” mistake that will fail a King County plumbing inspection and lead to slow drainage or overflow issues.",
   },
 ];
 
-function SideBySideService({ slug }: { slug: string }) {
-  const service = getServiceBySlug(slug)!;
-  return (
-    <Reveal className="flex h-full flex-col">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-panel">
-        <ImageSlot cover src={service.cardImage} alt={`${service.name} by Elite Bathrooms`} label={service.cardImage} />
-      </div>
-      <h3 className="mt-5 text-2xl font-extrabold text-charcoal-950">{service.name}</h3>
-      <p className="mt-2 max-w-sm text-sm leading-relaxed text-ink-muted sm:text-base">{service.summary}</p>
-      <Link
-        href={`/services/${service.slug}`}
-        className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.08em] text-bronze-600 hover:text-bronze-500"
-      >
-        Learn More<span className="sr-only"> about {service.name}</span>
-        <ArrowRightIcon className="h-3.5 w-3.5" />
-      </Link>
-    </Reveal>
-  );
-}
-
 export default function ServicesPage() {
-  const tubToShower = getServiceBySlug("bathroom-conversion")!;
-
   return (
     <main>
       <PageHero
         crumbs={[{ name: "Home", href: "/" }, { name: "Services" }]}
-        title="Bathroom Remodeling Services"
-        description="Full remodels, showers, tubs, and conversions, all backed by the same waterproofing standard."
-        imageSrc="/images/services/elite-glass-shower.jpg"
-        imageLabel="/images/services/elite-glass-shower.jpg"
-        imageAlt="Elite Bathrooms crew at work on a bathroom remodel"
+        title="Bathroom Remodel Services - Trusted Renovation Professionals"
       />
-
-      <FeaturedService />
-
-      <section className="bg-warm-100 py-20 sm:py-28">
-        <Container>
-          <SectionHeading eyebrow="Shower & Bathtub" title="Shower and bathtub remodeling." />
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-8">
-            <SideBySideService slug="shower-remodel" />
-            <SideBySideService slug="bathtub-remodel" />
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-warm-50 py-20 sm:py-28">
-        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal mask className="aspect-[4/3] rounded-panel">
-            <ImageSlot
-              cover
-              src={tubToShower.cardImage}
-              alt={`${tubToShower.name} by Elite Bathrooms`}
-              label={tubToShower.cardImage}
-            />
-          </Reveal>
-          <Reveal>
-            <Eyebrow>Conversions</Eyebrow>
-            <h2 className="mt-3 text-3xl font-extrabold leading-[1.05] text-charcoal-950 sm:text-4xl">
-              Tub-to-Shower Conversions
-            </h2>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-ink-muted">
-              {tubToShower.intro}
-            </p>
-            <ul className="mt-6 space-y-2.5">
-              {tubToShower.features.slice(0, 4).map((f) => (
-                <li key={f} className="flex items-start gap-2.5 text-sm text-ink sm:text-base">
-                  <CheckIcon className="mt-1 h-4 w-4 shrink-0 text-bronze-500" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <Button href="/services/bathroom-conversion" variant="primary" className="mt-7">
-              Explore Tub-to-Shower Conversions
-            </Button>
-          </Reveal>
-        </Container>
-      </section>
-
-      <OneDayPromo />
-
-      <section className="bg-warm-50 py-20 sm:py-28">
-        <Container className="max-w-3xl">
-          <SectionHeading eyebrow="Not Sure Where to Start?" title="How to choose the right service." />
-          <div className="mt-10 divide-y divide-line border-t border-line">
-            {howToChoose.map((item, i) => (
-              <Reveal key={item.title} delay={i * 60} className="flex flex-col gap-1.5 py-5 sm:flex-row sm:items-baseline sm:gap-6">
-                <span className="shrink-0 text-base font-extrabold text-charcoal-950 sm:w-64">{item.title}</span>
-                <span className="text-sm leading-relaxed text-ink-muted sm:text-base">{item.fit}</span>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <WaterproofingBanner />
-      <RelatedProjects />
-      <FaqAccordion faqs={faqs} title="Choosing a Service" />
-      <NextStepCTA variant="split" heading="Ready to talk about your bathroom?" />
+      <ServicesHubIntro />
+      <ServiceCardsGrid />
+      <ServiceTimelineTable />
+      <FaqAccordion
+        faqs={faqs}
+        title={
+          <>
+            Frequently Asked Questions About <span className="text-bronze-500">Bathroom Remodeling</span>
+          </>
+        }
+      />
+      <GoogleReviews />
+      <OneDayPromoWp />
+      <ThumbtackReviews />
+      <WarrantyStrip />
     </main>
   );
 }

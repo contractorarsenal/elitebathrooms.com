@@ -1,5 +1,5 @@
 import { siteConfig } from "@/lib/site-config";
-import { PhoneIcon } from "../ui/icons";
+import { PhoneIcon, SendIcon } from "../ui/icons";
 
 /**
  * Persistent bottom bar, mobile only. Static — no scroll-direction JS —
@@ -16,13 +16,14 @@ export function MobileCTA() {
         className="flex min-h-14 flex-1 items-center justify-center gap-2 border-r border-charcoal-700 text-sm font-bold uppercase tracking-wide text-warm-50"
       >
         <PhoneIcon className="h-5 w-5" />
-        Call Now
+        Call Us
       </a>
       <a
         href="/get-a-quote"
         className="flex min-h-14 flex-1 items-center justify-center gap-2 bg-bronze-500 text-sm font-bold uppercase tracking-wide text-warm-50"
       >
-        Request Estimate
+        <SendIcon className="h-5 w-5" />
+        Get A Quote
       </a>
     </div>
   );

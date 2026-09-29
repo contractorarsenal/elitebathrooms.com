@@ -20,7 +20,7 @@ type ButtonAsButton = CommonProps &
   };
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-btn px-6 py-3 font-heading text-sm font-bold uppercase tracking-[0.06em] transition-all duration-200";
+  "inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-btn px-6 py-3 font-heading text-sm font-bold uppercase tracking-[0.06em] transition-all duration-200";
 
 const variants: Record<Variant, string> = {
   primary: "bg-bronze-500 text-warm-50 hover:bg-bronze-600 hover:shadow-[0_8px_20px_-6px_rgba(175,124,69,0.5)]",

@@ -14,8 +14,9 @@ export type Timeline = "asap" | "1-3-months" | "3-6-months" | "just-exploring";
 export type PreferredContactMethod = "phone" | "text" | "email";
 
 /**
- * Normalized lead payload — the shape /api/estimate accepts and the shape
- * a future Jobber client-creation call would be built from. `address` is
+ * Normalized lead payload — the shape lib/estimate/submit.ts sends to
+ * Web3Forms, and the shape a future Jobber client-creation call would be
+ * built from. `address` is
  * optional because the current flow only ever collects a ZIP, not a full
  * street address; `utm`/`landingPage`/`referrer` are captured passively via
  * lib/attribution.ts and never shown to the homeowner.
