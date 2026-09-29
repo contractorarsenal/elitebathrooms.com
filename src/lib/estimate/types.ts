@@ -136,11 +136,29 @@ export const US_STATES = [
 
 /**
  * Real field 21 file-upload limits are jpg/gif/png/pdf/jpeg, up to 256MB
- * each, up to 5 files — but Web3Forms' plan this project uses only
- * supports a SINGLE file up to 5MB (confirmed against their docs; see
- * docs/migration/production-cutover-checklist.md for the full writeup).
- * These constants reflect what this build can actually deliver, not the
- * original WordPress limit — the UI copy is written to match.
+ * each, up to 5 files. WordPress's own 256MB-per-file setting is not
+ * reproduced here -- it's a Gravity Forms max, not a real production
+ * limit anyone needs, and would make an abandoned upload tab hold open a
+ * 5x256MB=1.28GB request. Files now go straight to Cloudflare R2 (not
+ * through Web3Forms, whose Basic plan only ever supported one 5MB
+ * attachment), so the file count/size limit is a genuine, enforced
+ * production choice rather than a workaround: 5 files matches the
+ * original form exactly, and 10MB/file comfortably covers real phone
+ * photos and PDFs while keeping a full 5-file batch (<=50MB) well inside
+ * Cloudflare Workers' request-body limits. Enforced both client-side
+ * (immediate feedback) and server-side in
+ * `src/app/api/estimate/upload/route.ts` (never trust the client alone).
  */
 export const FILE_UPLOAD_ACCEPT = ".jpg,.jpeg,.gif,.png,.pdf";
-export const FILE_UPLOAD_MAX_BYTES = 5 * 1024 * 1024;
+export const FILE_UPLOAD_MAX_BYTES = 10 * 1024 * 1024;
+export const FILE_UPLOAD_MAX_FILES = 5;
+export const FILE_UPLOAD_MIME_TYPES = ["image/jpeg", "image/png", "image/gif", "application/pdf"] as const;
+export const FILE_UPLOAD_EXTENSIONS = [".jpg", ".jpeg", ".gif", ".png", ".pdf"] as const;
+
+/** One successfully uploaded file, as returned by the upload API route. */
+export type UploadedFile = {
+  key: string;
+  url: string;
+  name: string;
+  size: number;
+};

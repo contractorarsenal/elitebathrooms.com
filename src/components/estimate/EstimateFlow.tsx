@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { submitLead } from "@/lib/estimate/submit";
 import { getAttribution } from "@/lib/attribution";
+import { uploadFiles, cleanupUploadedFiles, validateFileForSelection, validateSelectionCount } from "@/lib/estimate/upload";
+import { TurnstileWidget, type TurnstileWidgetHandle } from "@/components/estimate/TurnstileWidget";
 import {
   emptyLead,
   serviceTypeOptions,
@@ -16,6 +18,7 @@ import {
   US_STATES,
   FILE_UPLOAD_ACCEPT,
   FILE_UPLOAD_MAX_BYTES,
+  FILE_UPLOAD_MAX_FILES,
   type Lead,
   type ConversionReason,
   type WhichBathroom,
@@ -144,6 +147,94 @@ function CheckOption({
   );
 }
 
+function formatBytes(bytes: number): string {
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function FileDropzone({
+  files,
+  onAdd,
+  onRemove,
+  disabled,
+}: {
+  files: File[];
+  onAdd: (files: File[]) => void;
+  onRemove: (index: number) => void;
+  disabled: boolean;
+}) {
+  const [dragActive, setDragActive] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <div>
+      <div
+        onDragOver={(e) => {
+          e.preventDefault();
+          if (!disabled) setDragActive(true);
+        }}
+        onDragLeave={() => setDragActive(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragActive(false);
+          if (disabled) return;
+          onAdd(Array.from(e.dataTransfer.files));
+        }}
+        className={`rounded-md border border-dashed p-6 text-center transition-colors ${
+          dragActive ? "border-bronze-500 bg-bronze-50" : "border-[#686E77]/40 bg-white"
+        }`}
+      >
+        <p className="text-sm text-ink-muted">Drop files here or</p>
+        <label
+          className={`mt-2 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md bg-[#204CE5] px-5 text-sm font-bold text-white ${
+            disabled ? "pointer-events-none opacity-50" : ""
+          }`}
+        >
+          Select files
+          <input
+            ref={inputRef}
+            type="file"
+            accept={FILE_UPLOAD_ACCEPT}
+            multiple
+            disabled={disabled}
+            className="sr-only"
+            onChange={(e) => {
+              onAdd(Array.from(e.target.files ?? []));
+              if (inputRef.current) inputRef.current.value = "";
+            }}
+          />
+        </label>
+        <p className="mt-2 text-xs text-ink-muted">
+          Accepted file types: jpg, gif, png, pdf, jpeg. Max. file size: {FILE_UPLOAD_MAX_BYTES / (1024 * 1024)} MB.
+          Max. files: {FILE_UPLOAD_MAX_FILES}.
+        </p>
+      </div>
+
+      {files.length > 0 && (
+        <ul className="mt-3 space-y-2">
+          {files.map((file, index) => (
+            <li
+              key={`${file.name}-${file.size}-${index}`}
+              className="flex items-center justify-between gap-3 rounded-md border border-[#686E77]/20 bg-white px-4 py-2.5 text-sm"
+            >
+              <span className="min-w-0 flex-1 truncate text-[#112337]">{file.name}</span>
+              <span className="shrink-0 text-xs text-ink-muted">{formatBytes(file.size)}</span>
+              <button
+                type="button"
+                onClick={() => onRemove(index)}
+                disabled={disabled}
+                aria-label={`Remove ${file.name}`}
+                className="shrink-0 text-lg font-bold leading-none text-ink-muted hover:text-red-600 disabled:opacity-40"
+              >
+                &times;
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function Field({
   label,
   required,
@@ -174,10 +265,13 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
   const router = useRouter();
   const [page, setPage] = useState<1 | 2>(1);
   const [data, setData] = useState<Lead>({ ...emptyLead, ...prefill });
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
   const [botcheck, setBotcheck] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [stage, setStage] = useState<"idle" | "uploading" | "submitting">("idle");
   const [error, setError] = useState<string | null>(null);
   const [attemptedNext, setAttemptedNext] = useState(false);
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
@@ -215,18 +309,30 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
     );
   }
 
-  function handleFileChange(f: File | null) {
+  function handleFilesAdded(newFiles: File[]) {
+    if (newFiles.length === 0) return;
+
+    const countError = validateSelectionCount(files.length, newFiles.length);
+    if (countError) {
+      setFileError(countError);
+      return;
+    }
+
+    for (const f of newFiles) {
+      const err = validateFileForSelection(f);
+      if (err) {
+        setFileError(err);
+        return;
+      }
+    }
+
     setFileError(null);
-    if (!f) {
-      setFile(null);
-      return;
-    }
-    if (f.size > FILE_UPLOAD_MAX_BYTES) {
-      setFileError("That file is over the 5MB limit. Please choose a smaller file.");
-      setFile(null);
-      return;
-    }
-    setFile(f);
+    setFiles((prev) => [...prev, ...newFiles]);
+  }
+
+  function handleRemoveFile(index: number) {
+    setFileError(null);
+    setFiles((prev) => prev.filter((_, i) => i !== index));
   }
 
   function handleNext() {
@@ -237,11 +343,30 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
 
   async function handleSubmit() {
     setAttemptedSubmit(true);
+    if (submitting) return;
     if (!page2Valid()) return;
+
+    if (!turnstileToken) {
+      setError("Please complete the human verification above before submitting.");
+      return;
+    }
 
     setSubmitting(true);
     setError(null);
 
+    setStage("uploading");
+    const uploadResult = await uploadFiles(files, turnstileToken);
+
+    if (!uploadResult.ok) {
+      setSubmitting(false);
+      setStage("idle");
+      setError(uploadResult.error);
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+      return;
+    }
+
+    setStage("submitting");
     const attribution = getAttribution();
     const result = await submitLead(
       {
@@ -257,16 +382,22 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
         },
         botcheck,
       },
-      file
+      uploadResult.files
     );
 
-    setSubmitting(false);
-
-    if (result.ok) {
-      router.push("/thank-you");
-    } else {
+    if (!result.ok) {
+      await cleanupUploadedFiles(uploadResult.files, uploadResult.batchToken);
+      setSubmitting(false);
+      setStage("idle");
       setError(result.error);
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
+      return;
     }
+
+    setSubmitting(false);
+    setStage("idle");
+    router.push("/thank-you");
   }
 
   return (
@@ -518,23 +649,8 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
             </Field>
 
             <Field label="Add pictures, plans, drafts">
-              <div className="rounded-md border border-dashed border-[#686E77]/40 bg-white p-6 text-center">
-                <p className="text-sm text-ink-muted">Drop a file here or</p>
-                <label className="mt-2 inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md bg-[#204CE5] px-5 text-sm font-bold text-white">
-                  Select file
-                  <input
-                    type="file"
-                    accept={FILE_UPLOAD_ACCEPT}
-                    className="sr-only"
-                    onChange={(e) => handleFileChange(e.target.files?.[0] ?? null)}
-                  />
-                </label>
-                {file && <p className="mt-2 text-xs font-semibold text-charcoal-950">{file.name}</p>}
-                {fileError && <p className="mt-2 text-xs font-semibold text-red-600">{fileError}</p>}
-                <p className="mt-2 text-xs text-ink-muted">
-                  Accepted file types: jpg, gif, png, pdf, jpeg. Max. file size: 5 MB. Max. files: 1.
-                </p>
-              </div>
+              <FileDropzone files={files} onAdd={handleFilesAdded} onRemove={handleRemoveFile} disabled={submitting} />
+              {fileError && <p className="mt-2 text-xs font-semibold text-red-600">{fileError}</p>}
             </Field>
 
             <label className="flex items-start gap-3 rounded-md border border-[#686E77]/20 bg-white p-4 text-xs leading-relaxed text-ink-muted">
@@ -557,21 +673,23 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
             )}
 
             {/*
-              Real WordPress form uses Google reCAPTCHA v2 here. This
-              rebuild deliberately does not embed a real reCAPTCHA/
-              Turnstile widget without real, domain-registered credentials
-              (none were provided) -- a fake checkbox that doesn't actually
-              validate anything would be worse than an honest placeholder.
-              The honeypot field above is the real, working spam-filter for
-              this build; this section keeps the same visual slot/copy so
-              the layout matches, ready for a real Cloudflare Turnstile
-              site key to be dropped in before Production launch. See
-              docs/migration/production-cutover-checklist.md.
+              Real Cloudflare Turnstile, occupying the same visual slot the
+              original WordPress form's reCAPTCHA v2 checkbox used. The
+              honeypot field above remains a second, independent spam layer.
+              See TurnstileWidget.tsx and
+              docs/migration/production-cutover-checklist.md §14.
             */}
             <div>
               <p className="text-sm font-bold text-[#112337]">Are you human?</p>
-              <div className="mt-3 flex h-[74px] w-[300px] max-w-full items-center gap-3 rounded-md border border-[#686E77]/30 bg-white px-4">
-                <span className="text-xs text-ink-muted">Spam protection active (see form notes)</span>
+              <div className="mt-3">
+                <TurnstileWidget
+                  ref={turnstileRef}
+                  onToken={(token) => {
+                    setTurnstileToken(token);
+                    setError(null);
+                  }}
+                  onExpire={() => setTurnstileToken(null)}
+                />
               </div>
             </div>
 
@@ -592,7 +710,7 @@ export function EstimateFlow({ prefill }: { prefill: Partial<Lead> }) {
                 disabled={submitting}
                 className="min-h-12 rounded-full bg-bronze-500 px-9 text-base font-bold text-white transition-colors hover:bg-bronze-600 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                {submitting ? "Submitting…" : "Submit"}
+                {stage === "uploading" ? "Uploading files…" : stage === "submitting" ? "Submitting…" : "Submit"}
               </button>
             </div>
           </>

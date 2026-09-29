@@ -211,7 +211,9 @@ preview URL, which has already been validated repeatedly throughout this project
 6. A go/no-go on the two optional, low-risk legacy-URL 301s (item 5) — not required,
    just a nice-to-have if you want them.
 7. Sign-off on the Cookie Policy once item 2 is resolved.
-8. A decision on the quote-form file upload/reCAPTCHA gaps in §14 below.
+8. R2 bucket creation + 3 Worker secrets + Turnstile site registration for the quote
+   form's file upload/spam-verification, per §14 below (code is done; these are the
+   remaining Cloudflare account actions).
 
 ---
 
@@ -229,27 +231,134 @@ consent/spam-check via a real Next/Previous transition, not a route change), and
 original image-choice service cards (same icon assets, byte-confirmed identical to the
 originals) are all reproduced. Parity screenshots: `docs/migration/form-visual-diff/`.
 
-**Two real gaps found and NOT silently worked around:**
+**Both gaps below are now built** (branch `fix/gravity-form-parity`, not merged to
+`main`). What's left on each is real Cloudflare account setup, not code.
 
-1. **File upload.** Original WordPress limit: up to 5 files, jpg/gif/png/pdf/jpeg, 256MB
-   each. Web3Forms' Basic plan (the only plan this project is on) — confirmed against
-   their own docs — supports a single file, 5MB max, and requires their paid Pro plan
-   plus an advanced uploader for anything beyond that. **Implemented: a real, working
-   single-file upload, 5MB max**, sent via a genuine multipart submission to Web3Forms —
-   not faked, not silently removed, just honestly scoped to what this plan supports. The
-   UI copy says "Max. files: 1" / "Max. file size: 5 MB", not the original's numbers.
-   **Your call:** upgrade to Web3Forms Pro (their advanced uploader supports configurable
-   multi-file/larger limits) if full parity matters, or accept the single-file/5MB
-   version as final.
-2. **reCAPTCHA.** The original form uses Google reCAPTCHA v2 (a site-key-gated widget
-   tied to the live `elitebathrooms.com` domain). No credential for that widget was
-   provided, and inventing one isn't possible — a reCAPTCHA site key is registered per
-   domain in Google's own console. Rather than embed a non-functional or fake checkbox,
-   the same visual slot/copy ("Are you human?") is kept, backed by the same honeypot
-   (`botcheck`) spam filter already used elsewhere on this site. **Your call:** provide a
-   real Google reCAPTCHA v2 site key registered for the Production domain, or (my
-   recommendation) use Cloudflare Turnstile instead — same platform as the deploy target,
-   no credential exists for it yet either, but it's a cleaner fit than carrying two
-   different CAPTCHA providers across the site.
+### 14.1 File upload — Cloudflare R2, implemented
+
+Files no longer go through Web3Forms at all (their Basic plan only ever supported one
+5MB attachment). The quote form now uploads directly to a private Cloudflare R2 bucket
+through this app's own API routes, and only signed retrieval URLs are included in the
+Web3Forms lead email.
+
+- **Limit chosen: 5 files, 10MB each** (not WordPress's 256MB/file — see the comment on
+  `FILE_UPLOAD_MAX_BYTES` in `src/lib/estimate/types.ts` for why: 256MB/file would let one
+  abandoned upload hold open a 1.28GB request for no real-world benefit; 10MB comfortably
+  covers phone photos and PDFs, and a full 5-file batch stays under 50MB, well inside
+  Workers' request-body limits). File count (5) matches the original form exactly.
+- **Allowed types:** jpg, jpeg, gif, png, pdf — same as the original form. Enforced by
+  extension AND MIME type, both client-side (`src/lib/estimate/upload.ts`, UX only) and
+  server-side (`src/app/api/estimate/upload/route.ts`, the real boundary — never trusts
+  the client).
+- **Object keys are randomized** (`uploads/<crypto.randomUUID()>.<ext>`), never the
+  original filename.
+- **Private-bucket access:** the bucket has no public access. Every object is only ever
+  reachable through `src/app/api/estimate/files/[...key]/route.ts`, which requires a
+  valid HMAC-SHA256 signature + expiry over the object key (`FILE_RETRIEVAL_SIGNING_SECRET`
+  Worker secret) — a request with a missing, tampered, or expired signature gets a 403,
+  confirmed by direct testing. Retrieval links are valid for 90 days from upload (long
+  enough for a real follow-up window without leaving files retrievable forever), and are
+  the exact URLs embedded in the Web3Forms lead email.
+- **Submission order implemented exactly as specified:** verify Turnstile → upload files
+  (server re-validates count/size/type, all-or-nothing per batch, any partial R2 failure
+  rolls back the objects already written) → submit lead + file URLs to Web3Forms → only
+  on a real Web3Forms `success:true` does the form navigate to `/thank-you`. If Web3Forms
+  fails *after* a successful upload, the client calls `src/app/api/estimate/cleanup/route.ts`
+  to delete that batch's own R2 objects (authorized by a signed `batchToken` returned from
+  the upload call, so this endpoint can't be used to delete arbitrary keys) — confirmed by
+  direct testing (wrong token rejected with 403, correct token deletes and a subsequent
+  fetch of that file 404s).
+- **Duplicate-submission guard:** the submit button disables immediately and the handler
+  no-ops on re-entry while a submission is in flight; no duplicate R2 objects or Web3Forms
+  entries are created by a repeated click.
+
+**BLOCKED ON OWNER — the R2 bucket does not exist in the real Cloudflare account yet.**
+`wrangler.jsonc` already declares the binding (`UPLOADS_BUCKET` → bucket name
+`elite-bathrooms-uploads`), and local testing (`wrangler dev`, which simulates R2 locally
+with no cloud resource required) fully exercised the upload/retrieval/cleanup flow
+end-to-end — see the test log below. But `@vinext/cloudflare deploy` against the real
+account will fail until the bucket actually exists. Once authenticated (`npx wrangler
+login` — see item 1 above, same blocker):
+```
+npx wrangler r2 bucket create elite-bathrooms-uploads
+```
+No other config changes needed — the binding is already wired up.
+
+Three Worker **secrets** also need to be set on the real account before deploy (never
+committed, never pasted into chat — generate your own random values, e.g.
+`openssl rand -hex 32`):
+```
+npx wrangler secret put FILE_RETRIEVAL_SIGNING_SECRET
+npx wrangler secret put UPLOAD_BATCH_SIGNING_SECRET
+```
+(the third secret, `TURNSTILE_SECRET_KEY`, is covered in 14.2 below since it comes from
+the Turnstile dashboard, not a random value).
+
+### 14.2 CAPTCHA — Cloudflare Turnstile, implemented
+
+The placeholder "Are you human?" box is now a real Cloudflare Turnstile widget
+(`src/components/estimate/TurnstileWidget.tsx`), in the same visual slot. The honeypot
+(`botcheck`) remains as a second, independent spam layer, unchanged. The token is
+**verified server-side** in `src/app/api/estimate/upload/route.ts` (Turnstile's own
+`siteverify` API) before any file upload or lead submission proceeds — token *presence*
+alone is never trusted. An expired/invalid token keeps the visitor on the form with a
+retry message and resets the widget for a fresh token. Confirmed by direct testing against
+Turnstile's own published test keys: the "always passes" test secret succeeds, the
+"always fails" test secret is correctly rejected with a clear retry message, and a
+tampered/expired file-retrieval signature is independently rejected with 403.
+
+**BLOCKED ON OWNER — no Turnstile widget is registered for this domain yet.** In the
+Cloudflare dashboard → Turnstile:
+1. Add a site: name it something like "Elite Bathrooms — Get a Quote", hostname
+   `elitebathrooms.com` (add the `*.workers.dev` preview hostname too if you want
+   Turnstile to work on preview deploys as well).
+2. Widget mode: "Managed" (recommended — matches the original reCAPTCHA v2 checkbox
+   behavior most closely).
+3. Copy the **Site Key** (public) into this project's build-time env as
+   `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (a `.env.local`/`.env.production` file, or your CI's
+   env config — never hardcoded, since unlike the Web3Forms key this one has no safe
+   placeholder default).
+4. Set the **Secret Key** as a Worker secret (never in `wrangler.jsonc`, never pasted into
+   chat):
+   ```
+   npx wrangler secret put TURNSTILE_SECRET_KEY
+   ```
+
+Until both the site key (build-time) and secret key (Worker secret) are set, the widget
+shows a clear "not configured yet" message instead of a broken/fake checkbox, and the
+upload route refuses with a 503 rather than silently skipping verification.
+
+### Local test log (this session, `wrangler dev` against the vinext build)
+
+Ran directly against the local Worker (`npx wrangler dev --config dist/server/wrangler.json`)
+using Turnstile's own published test keys (`.dev.vars`, gitignored) — **note:** `wrangler
+dev` reads `.dev.vars` from next to whichever `wrangler.json` it's given, i.e.
+`dist/server/.dev.vars`, not the repo root:
+- Missing Turnstile token → rejected, clear message. ✅
+- Turnstile "always fails" test secret → rejected, clear retry message. ✅
+- Turnstile "always passes" test secret, 0 files → accepted (files are optional). ✅
+- Invalid extension (`.exe`) → rejected server-side. ✅
+- Oversized file (11MB) → rejected server-side with the exact 10MB limit in the message. ✅
+- 6 files → rejected ("up to 5 files"). ✅
+- Valid 2-file upload → both stored in R2, signed URLs + batch token returned. ✅
+- Valid signed URL → 200, correct content-type, file bytes match. ✅
+- Tampered signature → 403. ✅
+- Expired signature → 403. ✅
+- Cleanup with wrong batch token → 403, nothing deleted. ✅
+- Cleanup with correct batch token → both objects deleted; a subsequent fetch of either
+  signed URL → 404. ✅
+
+Not tested in this session (no browser automation tool was available): the Turnstile
+widget's actual on-page rendering, drag-and-drop interaction, and mobile layout. These
+need a real browser pass before launch — `npm run dev:vinext` + `wrangler dev` locally,
+or the deployed preview once the R2 bucket/Turnstile credentials above exist.
+
+`npm run lint`, `npx tsc --noEmit`, `npm run build`, and `npm run build:vinext` all pass
+clean with these changes. `validate_links_images.py` re-run against the full 73-route
+site (`npm run build && npm run start`) — 0 broken links/images. `check_quote_flow.mjs`
+was not re-run: its own description already refers to the old 5-step form design from
+before this session (superseded by the Gravity Forms parity rebuild), so it needs a
+rewrite against the current form structure regardless of this session's R2/Turnstile
+work — a separate, pre-existing gap, not introduced here.
 
 Nothing in Production, DNS, or WordPress has been touched. Stopping here, as instructed.
