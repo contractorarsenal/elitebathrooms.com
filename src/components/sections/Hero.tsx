@@ -3,8 +3,12 @@ import { ArrowUpRightIcon, ArrowDownIcon } from "../ui/icons";
 
 // Exact WordPress homepage hero: real crew-and-vans photo
 // (wp-content/uploads/2026/09/elite-bathrooms-home-pic.png), full-bleed,
-// with the transparent header sitting on top of it. Copy, button text, and
-// link targets are verbatim from wordpress-archive/html/home.html.
+// with the transparent header sitting on top of it. Layout/button/link
+// targets are verbatim from wordpress-archive/html/home.html; the
+// headline and intro copy were later repositioned from Tacoma-first to
+// Greater Seattle Area-first per explicit client instruction (general
+// brand positioning, not a parity regression -- Tacoma itself is kept as
+// a factual served city in the intro sentence).
 export function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-charcoal-950">
@@ -33,14 +37,14 @@ export function Hero() {
             <span className="text-bronze-400">Bathroom Remodeling</span>{" "}
             <span className="text-warm-50">In</span>
             <br />
-            <span className="text-warm-50">Tacoma, WA</span>
+            <span className="text-warm-50">the Greater Seattle Area</span>
           </h1>
           <p className="mt-9 text-base leading-[1.2] text-white lg:mt-12 lg:text-[1.4rem] lg:leading-[26.88px]">
             Elite Bathrooms specializes in full bathroom remodels, shower remodels, bathtub
             remodels, tub-to-shower conversions, and one-day bathroom renovations for homeowners
-            in Tacoma and select communities across the Puget Sound. We coordinate the project
-            from planning through final walkthrough, backed by a 10-year waterproofing warranty
-            against leaks.
+            across the Greater Seattle Area, including Tacoma and surrounding Puget Sound
+            communities. We coordinate the project from planning through final walkthrough,
+            backed by a 10-year waterproofing warranty against leaks.
           </p>
           <a
             href="/bathroom-remodel-company-seattle"

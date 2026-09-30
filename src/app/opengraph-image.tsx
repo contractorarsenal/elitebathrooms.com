@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Elite Bathrooms: Tacoma Bathroom Remodeling Specialists";
+export const alt = "Elite Bathrooms: Greater Seattle Area Bathroom Remodeling Specialists";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +21,7 @@ export default function Image() {
         }}
       >
         <div style={{ fontSize: 28, fontWeight: 700, color: "#B98A64", letterSpacing: 4 }}>
-          TACOMA-BASED BATHROOM SPECIALISTS
+          GREATER SEATTLE AREA SPECIALISTS
         </div>
         <div
           style={{

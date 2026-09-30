@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   // src/lib/seo.ts's SITE_URL comment for the source of truth.
   metadataBase: new URL("https://elitebathrooms.com"),
   title: {
-    default: "Elite Bathrooms | Tacoma Bathroom Remodeling Specialists",
+    default: "Elite Bathrooms | Greater Seattle Area Bathroom Remodeling Specialists",
     template: "%s | Elite Bathrooms",
   },
   description:
-    "Elite Bathrooms is a Tacoma-based bathroom remodeling specialist serving Tacoma, Seattle, Bellevue, Kirkland, Issaquah, Sammamish, and Puyallup. Full remodels, showers, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
+    "Elite Bathrooms is a bathroom remodeling specialist serving the Greater Seattle Area, including Tacoma, Seattle, Bellevue, Kirkland, Issaquah, Sammamish, and Puyallup. Full remodels, showers, and tub-to-shower conversions, backed by a 10-year waterproofing warranty.",
   openGraph: {
     type: "website",
     siteName: "Elite Bathrooms",

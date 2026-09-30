@@ -21,9 +21,26 @@ function useIsActive(pathname: string) {
   return (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 }
 
+/**
+ * Desktop nav fix: "About" and "Services" are dropdown triggers, not
+ * destinations -- clicking either must not navigate (only the real links
+ * inside each dropdown do). The open/close mechanics are unchanged and
+ * still pure CSS (`.group:hover`/`.group:focus-within` on `.nav-dropdown`
+ * in globals.css) -- this fix only swaps the trigger element itself from
+ * an `<a>`/`<Link>` (which always navigates on click) to a `<button
+ * type="button">` (which never does), with identical classes so it's
+ * visually indistinguishable from the plain nav links beside it.
+ */
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Mirrors the CSS `:hover`/`:focus-within` state that actually drives the
+  // dropdown's visibility (see `.nav-dropdown` in globals.css) -- this state
+  // is read-only with respect to that visibility, purely so `aria-expanded`
+  // reports something accurate. It never gates showing/hiding the dropdown
+  // itself, so there's no click-driven "stays open" state to get stuck.
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const isActive = useIsActive(pathname);
 
@@ -65,10 +82,28 @@ export function Header() {
           {primaryNav.map((item) => {
             const active = isActive(item.href);
             return item.children ? (
-              <div key={item.label} className="group relative">
-                <Link
-                  href={item.href}
-                  className={`relative flex items-center gap-1.5 py-2 font-heading text-[1rem] font-bold uppercase tracking-normal transition-colors ${
+              <div
+                key={item.label}
+                className="group relative"
+                onMouseEnter={() => setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown((prev) => (prev === item.label ? null : prev))}
+                onFocus={() => setOpenDropdown(item.label)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                    setOpenDropdown((prev) => (prev === item.label ? null : prev));
+                  }
+                }}
+              >
+                {/*
+                  A dropdown trigger, not a destination -- see the desktop-nav
+                  fix note above. Visually identical to the plain nav <Link>
+                  below (same classes); only the element type changes.
+                */}
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  aria-expanded={openDropdown === item.label}
+                  className={`relative flex cursor-pointer items-center gap-1.5 py-2 font-heading text-[1rem] font-bold uppercase tracking-normal transition-colors ${
                     active ? "text-bronze-400" : "text-warm-50 hover:text-bronze-400"
                   }`}
                 >
@@ -80,7 +115,7 @@ export function Header() {
                     }`}
                     aria-hidden="true"
                   />
-                </Link>
+                </button>
                 {/*
                   The bridge wrapper sits flush against the trigger (top-full,
                   no margin) so there is never a dead hover gap between them —

@@ -1,12 +1,15 @@
 import Image from "next/image";
 
-// Exact WordPress "Who We Are" section (id="whoweare"). Copy and the three
-// service cards are verbatim from wordpress-archive/html/home.html. On the
-// live site those three white cards are gated behind a scroll-triggered
-// animation whose final state never fires in a plain headless capture; the
-// true final state was captured by forcing the live DOM's own
-// elementor-invisible/visibility gates open (read-only, in a throwaway tab)
-// and reading exact computed geometry from it. See
+// Exact WordPress "Who We Are" section (id="whoweare"). Layout and the
+// three service cards are verbatim from wordpress-archive/html/home.html;
+// the bio paragraph's "based in Tacoma" framing was later repositioned to
+// lead with Greater Seattle Area per explicit client instruction (general
+// brand positioning) -- Tacoma is kept as the real HQ location, not
+// removed. On the live site those three white cards are gated behind a
+// scroll-triggered animation whose final state never fires in a plain
+// headless capture; the true final state was captured by forcing the live
+// DOM's own elementor-invisible/visibility gates open (read-only, in a
+// throwaway tab) and reading exact computed geometry from it. See
 // docs/migration/homepage-parity.md.
 const cards = [
   {
@@ -64,7 +67,8 @@ export function WhoWeAre() {
                 <a href="/bathroom-remodel-company-seattle" className="font-semibold text-bronze-500 hover:underline">
                   bathroom remodeling company
                 </a>{" "}
-                based in Tacoma, Washington. For 5 years, we have focused on one thing: bathrooms.
+                serving the Greater Seattle Area, headquartered in Tacoma, Washington. For 5
+                years, we have focused on one thing: bathrooms.
               </p>
               <p>
                 From planning through final walkthrough, we keep the project coordinated under one

@@ -12,7 +12,7 @@ import { absoluteUrl } from "@/lib/seo";
 import { breadcrumbSchema, blogCollectionSchema } from "@/lib/schema";
 
 const description =
-  "Straight answers about bathroom remodeling, waterproofing, and planning a project, from Elite Bathrooms, Tacoma's bathroom-only specialists.";
+  "Straight answers about bathroom remodeling, waterproofing, and planning a project, from Elite Bathrooms, the Greater Seattle Area's bathroom-only specialists.";
 
 export const metadata: Metadata = {
   title: "Bathroom Remodeling Resources",
